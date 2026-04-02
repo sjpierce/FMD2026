@@ -13,7 +13,7 @@ progress.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repost
 <!-- badges: end -->
 
 This repository holds materials for one of my professional presentations
-(Pierce, 2026, July 13). Its primary purpose is for me to use version
+(Pierce, 2026, July 15). Its primary purpose is for me to use version
 control tools while developing my slides, but its secondary purposes
 include distributing the slides to my audience and demonstrating how to
 use Quarto to create slides. The repository is public so that attendees
@@ -153,7 +153,7 @@ entry-spacing="0" line-spacing="2">
 
 <div id="ref-Pierce-RN8953" class="csl-entry">
 
-Pierce, S. J. (2026, July 13). *Fundamentals of missing data* \[Invited
+Pierce, S. J. (2026, July 15). *Fundamentals of missing data* \[Invited
 oral presentation\]. The Global Health Institute’s University César
 Vallejo Faculty Development Program, East Lansing, MI, United States.
 <https://github.com/sjpierce/FMD2026>
@@ -164,7 +164,7 @@ Vallejo Faculty Development Program, East Lansing, MI, United States.
 
 ## Citing This Repository
 
-Please cite my actual presentation (Pierce, 2026, July 13).
+Please cite my actual presentation (Pierce, 2026, July 15).
 
 ## License
 

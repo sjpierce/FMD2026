@@ -7,7 +7,7 @@ author:
     orcid: 0000-0002-0679-3019
     email: pierces1@msu.edu
 institute: "[Center for Statistical Training and Consulting](https://cstat.msu.edu)"
-date: 2026-07-13
+date: 2026-07-15
 title-slide-attributes: 
   data-notes: "1 hr (45-50 min talk + 10-15 min Q & A) My talk today focuses on 
   some concepts and issues related to missing data in scientific research 
