@@ -8,7 +8,7 @@ author:
 institute: "[Center for Statistical Training and Consulting](https://cstat.msu.edu)"
 date: 2026-07-15
 title-slide-attributes: 
-  data-notes: "1 hr (45-50 min talk + 10-15 min Q & A) My talk today focuses on 
+  data-notes: "1.5 hr (70 min talk + 20 min Q & A) My talk today focuses on 
   some concepts and issues related to missing data in scientific research 
   contexts. My expertise lies in applied statistics, so I'll focus on aspects of 
   missing data relevant to quantitative methods and statistical analyses. Even 
