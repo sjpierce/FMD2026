@@ -1,7 +1,6 @@
 ---
 title: "Fundamentals of Missing Data"
-subtitle: "Workshop for the Global Health Institute's University César Vallejo 
-           Faculty Development Program, East Lansing, MI"
+subtitle: "Faculty Development Program for Universidad César Vallejo, Peru"
 author: 
   - name: Steven J. Pierce
     orcid: 0000-0002-0679-3019
