@@ -24,14 +24,6 @@ audience. I assume most of my audience just wants copies of my slides,
 but some may want to see exactly how they were created by examining
 other parts of the repository (especially the Quarto scripts).
 
-Since there are no other contributors, I am omitting details that may
-otherwise be useful to collaborators. However, here is a link to my web
-page on [software for reproducible research with
-R](https://sjpierce.github.io/rr_software.html). This presentation uses
-the Quarto extension called `reveal-header`
-(https://github.com/shafayetShafee/reveal-header). Installing that
-created the `_extensions/` subfolder here.
-
 ## Obtaining the Slides
 
 For each of the links below, you will land on a GitHub page that has a
@@ -55,9 +47,26 @@ web browsers like Chrome, Edge, and Firefox.
   notes.
 - There are also other [slide navigation keyboard
   shortcuts](https://quarto.org/docs/presentations/revealjs/presenting.html).
-- Try opening both a Quarto script and the output it generates and look
-  at them side-by-side. For more intensive examination of how things
-  work, see the Rendering the Scripts section below.
+
+## Software Tools
+
+I used [RStudio](www.rstudio.org) to create, edit, and render the
+[Quarto](https://quarto.org/) scripts that create my slides. These
+scripts may contain [R](https://www.r-project.org/) code. My web page on
+[software for reproducible research with
+R](https://sjpierce.github.io/rr_software.html) has more details.
+
+- Software chain: **qmd file \> RStudio \> Quarto \> R \> knitr \> md
+  file \> Pandoc \> HTML file**.
+- [Quarto](https://quarto.org/) runs `*.qmd` files through
+  [R](https://www.r-project.org/) and [knitr](https://yihui.org/knitr/)
+  to produce `*.md` markdown files.
+- [Pandoc](https://pandoc.org) converts markdown files (`*.md`) to other
+  formats, including HTML (`*.html`) among others.
+
+This presentation uses the Quarto extension called `reveal-header`
+(https://github.com/shafayetShafee/reveal-header). Installing that
+created the `_extensions/` subfolder here.
 
 ## Repository Structure and Contents
 
@@ -154,9 +163,10 @@ entry-spacing="0" line-spacing="2">
 <div id="ref-Pierce-RN8953" class="csl-entry">
 
 Pierce, S. J. (2026, July 15). *Fundamentals of missing data* \[Invited
-oral presentation\]. The Global Health Institute’s University César
-Vallejo Faculty Development Program, East Lansing, MI, United States.
-<https://github.com/sjpierce/FMD2026>
+oral presentation\]. Faculty Development Program for Universidad César
+Vallejo, Peru hosted by the Global Health Institute and the Center for
+Statistical Training and Consulting, Michigan State University, East
+Lansing, MI, United States. <https://github.com/sjpierce/FMD2026>
 
 </div>
 
