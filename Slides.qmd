@@ -189,44 +189,75 @@ it. But why should we care about missing data? That's the crucial question I'll
 answer next. 
 :::
 
-## Ethics for Evaluators
-Handling missing data well enacts our guiding principles [@AEA-RN8648]: 
-
-:::: {.columns}
-
-::: {.column width="25%"}
-![](graphics/AEA_Logo.png){fig-alt="AEA logo." width=150% height=150%}
-:::
-
-::: {.column width="75%"}
+## ASA Ethical Guidelines [@ASACPE-RN8343] {.smaller}
+Handling missing data well is an ethical issue. An ethical statistical 
+practitioner:
 
 ::: {.incremental}
-* Systematic inquiry
-* Competence 
-* Integrity 
-:::
+* "Uses methodology and data that are valid, relevant, and appropriate, without 
+  favoritism or prejudice, and in a manner intended to produce valid, 
+  interpretable, and reproducible results."
+* "Communicates data sources and fitness for use, including data generation and 
+  collection processes and known biases." 
+* "Communicates data processing and transformation procedures, including missing 
+   data handling."
 
 :::
-
-::::
 
 ::: {.notes}
 Perhaps the broadest answer to why we should care about missing data is that 
-this is an ethics issue. Thoughtful handling of missing data is a good way to 
-enact several of AEA's guiding principles for evaluators. 
+this is an ethics issue. Here I'm going to draw on the ethical guidelines for 
+a professional organization to which I belong. The American Statistical 
+Association's ethical guidelines include a section on professional integrity 
+that says an ethical statistical practitioner 
 
-* **>** *Systematic inquiry* demands that we examine the quality of the 
-  available data and use it appropriately. We have an obligation to use sound 
-  methodology. There are scientific consequences of missing data but there are 
-  also legitimate, evidence-based methods for minimizing its impact on our 
-  analyses, conclusions, and products. 
-* **>** *Competence* demands that we invest in skills necessary to understand 
-  and handle missing data properly because doing it poorly may compromise our 
-  evaluations. Our funders, clients, and stakeholders--including the program 
-  staff and the people and communities they serve and operate within--need and 
-  deserve competent evaluation services. 
-* **>** *Integrity* demands that we be transparent about the amount of missing 
-  data, how we handled it, and how it may affect our evaluation results. 
+▶ "Uses methodology and data that are valid, relevant, and appropriate, without 
+favoritism or prejudice, and in a manner intended to produce valid, 
+interpretable, and reproducible results." 
+
+▶ There is also a section on integrity of data and methods that says an ethical 
+practitioner "Communicates data sources and fitness for use, including data
+generation and collection processes and known biases." and
+
+▶ "Communicates data processing and transformation procedures, including 
+missing data handling."
+
+Other professional societies also have ethics codes that would also touch on 
+these ideas about integrity. 
+:::
+
+## Research Ethics
+The ethical quality of an analysis depends on the credibility of its 
+assumptions [@Enders-RN8974]. 
+
+::: {.incremental}
+* Analyzing data with missing values requires making assumptions, some of which 
+  cannot be empirically tested. 
+* Rigor demands using methods that can plausibly yield unbiased estimates. Poor
+  assumptions lead to bias. 
+* Transparency requires reporting the extent of missing data, how we handled 
+  them, & defending our assumptions. 
+  
+:::
+
+::: {.notes}
+Craig Enders and Amanda Gottschall wrote a paper that articulates the 
+relationship between how we handle missing data and the ethical quality of a 
+study. They start from the premise that the ethical quality of an analysis 
+depends on the credibility of its assumptions.
+
+▶ They go on to point out that analyzing data with missing values requires 
+making assumptions, some of which cannot be empirically tested. We have to pay
+attention to which assumptions are reasonable and defensible. That will vary
+across studies. 
+
+▶ Ultimately, scientific rigor and ethics demand using methods that can 
+plausibly yield unbiased estimates of the quantities we want to study.
+Conducting analyses built on poor assumptions about missing data leads to biased 
+and misleading results. And that would be unethical.
+
+▶ It follows then that transparency requires reporting things like the extent 
+of missing data, how we handled them, and defending our assumptions. 
 :::
 
 ## Scientific Activities [@McKnight-RN1296]
