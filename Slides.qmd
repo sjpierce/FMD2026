@@ -260,8 +260,10 @@ and misleading results. And that would be unethical.
 of missing data, how we handled them, and defending our assumptions. 
 :::
 
-## Scientific Activities [@McKnight-RN1296]
-There are 3 major scientific activities that can be affected by missing data.
+
+## Scientific Activities 
+There are 3 major scientific activities that can be affected by missing data. 
+[@McKnight-RN1296]
 
 ::: {.incremental}
 * Making structured observations of constructs.
@@ -273,13 +275,13 @@ There are 3 major scientific activities that can be affected by missing data.
 Broadly speaking, scientific work consists of three major activities, each of
 which has associated methodology concerns. 
 
-* **>** First, we put effort into making structured observations of constructs. 
+* ▶  First, we put effort into making structured observations of constructs. 
 We have to be concerned about how missing data affects measurement of the 
 constructs we want to study. 
-* **>** Second, we use those observations to draw inferences about relationships 
+* ▶  Second, we use those observations to draw inferences about relationships 
 between constructs. Here, we have to consider how missing data could affect the 
 internal validity of our inferences. 
-* **>** Finally, we often want to generalize our results to a broader population 
+* ▶  Finally, we often want to generalize our results to a broader population 
 than the sample we collected. Missing data can affect the generalizability of 
 our results. 
 
