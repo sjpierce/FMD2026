@@ -159,14 +159,26 @@ Plan -> Collect -> Enter -> Manage -> Analyze
 ::: {.notes}
 Missing data result from events at various points in a project's lifecycle and 
 that may affect your options to handle the problem. At the planning stage, one 
-could leave out an item by accident while designing an instrument. Most missing 
-data is probably a result of things happening during data collection events, 
-but there are some post-data collection things that can happen too. Suppose you 
-have staff entering data from paper forms into electronic files: simple data 
-entry errors can introduce missing data at that stage. Similarly, at the data 
-storage and management stage before analyses begin, someone might make a mistake 
-while working with a data file or a computer hard drive might fail. Vigilance is
-warranted throughout the project lifecycle. 
+could leave out an item by accident while designing an instrument. 
+
+Most missing data is probably a result of things happening during data 
+collection events. If you are collecting data from students in a school setting,
+some students in your sample might be absent due to illness on the day you
+visit. That could leave you with missing data for them.  
+
+However, there are some post-data collection things that can happen too. For
+example, paper files might get lost or damaged after data collection before
+anyone even has a chance to enter them into an electronic data file. Another 
+possibility is that your staff entering data from paper forms into electronic
+files may accidentally skip entering one or more items that were actually
+recorded. That can introduce missing data at that stage.
+
+Similarly, at the data storage and management stage before analyses begin,
+someone might make a mistake while working with a data file or a computer hard
+drive might fail. Finally, sometimes we make errors in during data analysis 
+that cause missing data. 
+
+Vigilance is warranted throughout the project lifecycle.
 :::
 
 # Why should we care about missing data? 
