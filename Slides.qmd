@@ -334,7 +334,7 @@ out before the posttest more often than those with mild symptoms. Dropping out
 leads to missing data at posttest. If we fail to handle that properly in the
 analysis, we may draw inaccurate conclusions about the longitudinal trend in
 outcome scores. Or perhaps the retention rates differ between treatment and
-control groups in that same study. Selection bias from such differences reduce
+control groups in that same study. Selection biases from such differences reduce
 the sample representativeness and become rival explanations for findings, making
 them a threat to internal validity.
 
@@ -398,7 +398,7 @@ important decisions.
 
 ::: {.notes}
 So, I've laid some foundations by defining missing data and discussing why it 
-matters, but each study is unique so the nature and extent of the missing data 
+matters, but each study is unique. The nature and extent of the missing data 
 issues it faces will vary across studies. Now the question is "how can we 
 diagnose the missing data issues for a given study?" because we can't make good 
 choices about what to do about missing data problems until we thoroughly 
@@ -530,7 +530,7 @@ missing values for each variable, both overall and separately by time point.
 Finally, it can be really useful to report on the reasons why participants drop 
 out, skip data collection events, or have other missing data. 
 
-**>** All of these things get easier when you have a tracking system that 
+▶  All of these things get easier when you have a tracking system that 
 records: 
 
 * Whether & when participants attended data each collection event
@@ -561,16 +561,16 @@ We can aggregrate and visualize **R** to describe patterns of missingness!
 ::: {.notes}
 Now I need to define a few terms. 
 
-* **>** Suppose Y is a complete matrix of all the cases, variables, and values 
+* ▶  Suppose Y is a complete matrix of all the cases, variables, and values 
 that could be observed. We can split it into two pieces, 
-* **>** Y_obs which is the subset of Y that that ends up being observed and 
-* **>** Y_miss is the subset that ends up missing. 
-* **>** We can then define a repsonse matrix called R that has a set of 
+* ▶  Y_obs which is the subset of Y that that ends up being observed and 
+* ▶  Y_miss is the subset that ends up missing. 
+* ▶  We can then define a repsonse matrix called R that has a set of 
   dummy-coded missingess indicators that use a 0 to denote which Y values are 
   observed and part of Y_obs, and a 1 for those that are missing and belong to 
   Y_miss instead. R has the same number of variables as Y.
 
-**>** Creating R gives us some ways to examine missing data issues. For example, 
+▶  Creating R gives us some ways to examine missing data issues. For example, 
 we can aggregate across cases to identify unique patterns of missing vs observed
 values and see how often they occur.
 :::
@@ -586,18 +586,18 @@ plot_pattern(boys, square = FALSE, rotate = FALSE)
 ```
 
 ::: {.notes}
-This is graph summarizes data from a developmental study about growth in 748
-Dutch boys. The variables include age, region, weight, height, body mass index,
-head circumference, and three measures of pubertal development. This is just a
-convenient dataset because it comes with an R package that I use to deal with 
-missing data. The graph illustrates what I mean by missing data patterns. Each 
-row in the graph represents a distinct pattern of observed versus missing values 
-across the whole set of variables. The left side is annotated with the number of 
-boys showing each pattern, the right side tells you how many missing values 
-there are on that row, and the bottom shows the total number of missing values 
-for each variable. With 748 boys and 9 variables, there should be 6732 values, 
-but we can see at the bottom that 1622 (24%) are missing. So this data box has 
-a lot of holes in it. 
+This graph summarizes data from a developmental study about growth in 748 Dutch
+boys. The variables include age, region, weight, height, body mass index, head
+circumference, and three measures of pubertal development. This is just a
+convenient dataset because it comes with an R package that I use to deal with
+missing data. The graph illustrates what I mean by missing data patterns. Each
+row in the graph represents a distinct pattern of observed versus missing values
+across the whole set of variables. The left side is annotated with the number of
+boys showing each pattern, the right side tells you how many missing values
+there are on that row, and the bottom shows the total number of missing values
+for each variable. With 748 boys and 9 variables, there should be 6732 values,
+but we can see at the bottom that 1622 (24%) are missing. So this data box has a
+lot of holes in it.
 
 The first row shows 223 boys have complete data: that's about 30% of the sample. 
 So, 70% of them have at least one missing value. We can also see that the most 
@@ -636,7 +636,7 @@ data. The three categories are:
 * Missing at random (MAR)
 * Missing not at random (MNAR)
 
-**>** These three mechanisms affect the amount of bias missing data causes in 
+▶  These three mechanisms affect the amount of bias missing data causes in 
 statistical analyses, with MCAR yielding the least bias and MNAR yielding the 
 most. Let's take a closer look at each mechanism. 
 :::
@@ -772,10 +772,10 @@ McKnight and colleagues pointed out that classfying large datasets into Rubin's
 mechanisms is a practical challenge because it just gets messy. The task can 
 feel overwhelming. 
 
-* **>** It can be daunting because variables may be subject to different 
+* ▶  It can be daunting because variables may be subject to different 
   missingness mechanisms. One set of variables might really be MCAR while others 
   are MAR. 
-* **>** One way to start solving that problem is to use the dimensions of 
+* ▶  One way to start solving that problem is to use the dimensions of 
   Cattell's box (persons, variables, and times) to describe missing data and 
   classify missingness mechanisms in meaningful subsets of the data. 
 
@@ -820,7 +820,7 @@ data later on.
 Of course, demographics and other covariates may also be predictors of missing 
 data. 
 
-**>** So the take away here is that your initial data analysis needs to consider 
+▶  So the take away here is that your initial data analysis needs to consider 
 testing for predictors of missingness. That may be a matter of predicting 
 either person-level non-response (refusal to participate), item or 
 construct-level missingness, or person-period missingness, such as attrition or 
