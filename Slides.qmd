@@ -17,7 +17,10 @@ title-slide-attributes:
   then offer resources you can use to learn more on your own. Jot down either my 
   email address or the link you see at the bottom of the screen. My slides, 
   complete with speaker notes, reference list, and links to resources, will be 
-  available from that link."
+  available from that link.
+  
+  [In speaker notes, the symbol ▶ marks when to press the spacebar or click the 
+  right arrow to reveal the next animated element on a slide.]"
 csl: apa-numeric-superscript-brackets.csl
 bibliography: references.bib
 format: 
