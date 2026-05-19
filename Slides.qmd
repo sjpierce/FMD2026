@@ -74,21 +74,23 @@ Missing data (MD) are measurements you want or intended to collect but did not
 get. [@Fernández-García-RN4151]
 
 ::: {.incremental}
-* Having MD is *common* in research & evaluation studies.
-* If you do much evaluation work, you *will* run into MD.
+* Having MD is *common* in research studies.
+* If you do much research, you *will* run into MD.
 :::
 
 ::: {.notes}
-In the simplest terms, missing data are simply measurements that you want or 
+In the simplest terms, missing data are simply measurements that you want or
 intended to collect but did not get. While you can sometimes categorize what
-kind of missing data you have or why it is missing, the basic problem is that
-you didn't get all the data you need. 
+kind of missing data you have or identify why they are missing, but the heart of
+the problem is that not having all the desired data means you have to decide how 
+to adapt your plans for completing the study. 
 
-**>** Having missing data is a common issue afflicting research and evaluation 
+▶ Having missing data is a common issue afflicting research and evaluation 
 studies. Entirely avoiding it is difficult and rare.
 
-**>** If you do much evaluation work, you *will* eventually run into some 
-missing data. Therefore, it's worth learning about how to handle it.
+▶ If you do much research work, you *will* eventually run into an issue with 
+missing data. Therefore, it's worth learning about the issues surrounding 
+missing data and the consequences of how we deal with them.
 :::
 
 # Why do we end up with missing data? 
