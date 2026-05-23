@@ -101,6 +101,7 @@ Data collection doesn't always go according to plan...
 ::: {.fragment}
 ```{r}
 #| label: tbl-factors
+#| tbl-cap: Factors That May Lead to Missing Data
 
 data.frame(Human = c("Participant behavior", "Researcher errors", 
                      "Partner behavior"),
