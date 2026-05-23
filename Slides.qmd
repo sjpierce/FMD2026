@@ -190,9 +190,17 @@ it. But why should we care about missing data? That's the crucial question I'll
 answer next. 
 :::
 
-## ASA Ethical Guidelines [@ASACPE-RN8343] {.smaller}
-Handling missing data well is an ethical issue. An ethical statistical 
-practitioner:
+## Ethical Guidelines {.smaller}
+Handling missing data well is an ethics issue. An ethical statistical 
+practitioner: [@ASACPE-RN8343]
+
+:::: {.columns}
+
+::: {.column width="25%"}
+![](graphics/ASA_logo_no_title_tagRGB.png){fig-alt="American Statistical Association logo." width=150% height=150%}
+:::
+
+::: {.column width="75%"}
 
 ::: {.incremental}
 * "Uses methodology and data that are valid, relevant, and appropriate, without 
@@ -204,6 +212,10 @@ practitioner:
    data handling."
 
 :::
+
+:::
+
+::::
 
 ::: {.notes}
 Perhaps the broadest answer to why we should care about missing data is that 
