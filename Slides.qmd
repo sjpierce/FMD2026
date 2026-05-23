@@ -478,6 +478,64 @@ patterns in where and why those holes are located relative to the data you want
 to analyze. 
 :::
 
+## Data Structure: Long
+
+```{r}
+#| label: tbl-LONG
+#| tbl-cap: Long Univariate Format
+
+set.seed(24687)
+
+LONG <- expand.grid(ID = 1:3, Time = 1:2) %>% 
+  mutate(X1 = sample(x = 11:33, size = 6, replace = TRUE), 
+         X2 = sample(x = 1:7, size = 6, replace = TRUE),
+         X3 = sample(x = letters[1:3], size = 6, replace = TRUE)) %>% 
+  arrange(ID, Time)
+
+kable(LONG, format = "html", align = "c") %>% 
+  kable_styling(full_width = FALSE)
+```
+
+
+
+:::{.notes}
+The 3-dimensional data cube concept is useful, but actual data files are often
+constrined to 2-dimensional structure with rows for people (cases) and columns
+for variables. We have to slice and rearrange the box to handle the time
+dimension sensibly. There are two common formats for representing longitudinal
+or repeated measures data. The long univariate format keeps all data about a
+given variable in a single column, so it each time point must become a distinct
+set of rows. Each person ends up with one row per time point.
+
+Here we need an explicit time variable so we can tell which row for each person
+corresponds to a specific time point. We have collected two variables X1 and X1 
+at each time point, and of course we have an ID variable to show which person 
+was observed. 
+:::
+
+## Data Structure: Wide
+
+```{r}
+#| label: tbl-WIDE
+#| tbl-cap: Wide Multivariate Format
+
+WIDE <- LONG %>% 
+  pivot_wider(names_from = Time, values_from = c(X1, X2, X3), 
+              names_glue = "T{Time}_{.value}", names_vary = "slowest")
+
+kable(WIDE, format = "html", align = "c") %>% 
+  kable_styling(full_width = FALSE) %>% 
+  add_header_above(header = c(" ", "Time 1" = 3, "Time 2" = 3))
+```
+
+:::{.notes}
+The wide multivariate format instead keeps all data about a single case in one 
+row, with each time point represented by a distinct set of variables. Here, we 
+have two variables for T1_X1 for X1 at time 1, and another column T2_X1 for the 
+same variable measured at a later time 2. I've added column grouping labels 
+above the variable names to clarify the structure. 
+:::
+
 ## Types of Missingness [@McKnight-RN1296; @Schafer-RN425]
 
 * Item level
