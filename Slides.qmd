@@ -49,6 +49,7 @@ library(kableExtra) # Functions for formatting nice tables.
 library(rgl)        # for cube3d()
 library(mice)       # for the boys dataset
 library(ggmice)     # for plot_pattern
+library(piercer)    # for cvv_missingnes(), var_missingness()
 ```
 
 ## Outline
