@@ -168,17 +168,16 @@ collection events. If you are collecting data from students in a school setting,
 some students in your sample might be absent due to illness on the day you
 visit. That could leave you with missing data for them.  
 
-However, there are some post-data collection things that can happen too. For
-example, paper files might get lost or damaged after data collection before
-anyone even has a chance to enter them into an electronic data file. Another 
-possibility is that your staff entering data from paper forms into electronic
-files may accidentally skip entering one or more items that were actually
-recorded. That can introduce missing data at that stage.
+However, there are post-data collection events that can cause missing data too.
+Paper files might get lost or damaged after data collection before anyone enters
+them into an electronic data file. Another possibility is that your staff may
+accidentally skip entering one or more items that were actually recorded when
+entering data from paper forms into electronic files.
 
 Similarly, at the data storage and management stage before analyses begin,
 someone might make a mistake while working with a data file or a computer hard
-drive might fail. Finally, sometimes we make errors in during data analysis 
-that cause missing data. 
+drive might fail. Finally, sometimes we make errors when programming data 
+analyses that cause missing data, such as inaccurately recoding a variable. 
 
 Vigilance is warranted throughout the project lifecycle.
 :::
@@ -210,8 +209,8 @@ practitioner:
 Perhaps the broadest answer to why we should care about missing data is that 
 this is an ethics issue. Here I'm going to draw on the ethical guidelines for 
 a professional organization to which I belong. The American Statistical 
-Association's ethical guidelines include a section on professional integrity 
-that says an ethical statistical practitioner 
+Association's guidelines include a section on professional integrity that says 
+an ethical statistical practitioner: 
 
 ▶ "Uses methodology and data that are valid, relevant, and appropriate, without 
 favoritism or prejudice, and in a manner intended to produce valid, 
