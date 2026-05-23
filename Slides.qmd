@@ -232,33 +232,37 @@ The ethical quality of an analysis depends on the credibility of its
 assumptions [@Enders-RN8974]. 
 
 ::: {.incremental}
-* Analyzing data with missing values requires making assumptions, some of which 
+* Analyses with missing data must make assumptions, some of which 
   cannot be empirically tested. 
-* Rigor demands using methods that can plausibly yield unbiased estimates. Poor
-  assumptions lead to bias. 
-* Transparency requires reporting the extent of missing data, how we handled 
-  them, & defending our assumptions. 
+* Rigor demands using methods that can plausibly yield valid, unbiased 
+  estimates. 
+* Poor assumptions lead to bias & misleading conclusions.
+* Transparency requires reporting extent of missing data, assumptions, 
+  rationales, & how we adapted the analyses. 
   
 :::
 
 ::: {.notes}
-Craig Enders and Amanda Gottschall wrote a paper that articulates the 
-relationship between how we handle missing data and the ethical quality of a 
-study. They start from the premise that the ethical quality of an analysis 
-depends on the credibility of its assumptions.
+The relevance of those ASA guidelines to the handling of missing data become 
+clearer when we consider a paper by Craig Enders and Amanda Gottschall. They 
+articulated the relationship between how we handle missing data and the ethical 
+quality of a study. They start from the premise that the ethical quality of an 
+analysis depends on the credibility of its assumptions.
 
 ▶ They go on to point out that analyzing data with missing values requires 
-making assumptions, some of which cannot be empirically tested. We have to pay
-attention to which assumptions are reasonable and defensible. That will vary
-across studies. 
+making assumptions, some of which cannot be empirically tested. Which 
+assumptions are reasonable and defensible will vary across data sets and 
+studies. 
 
 ▶ Ultimately, scientific rigor and ethics demand using methods that can 
 plausibly yield unbiased estimates of the quantities we want to study.
-Conducting analyses built on poor assumptions about missing data leads to biased 
-and misleading results. And that would be unethical.
+
+▶ Conducting analyses built on poor assumptions about missing data leads to 
+biased, invalid, and misleading results. It is unethical to rely on them. 
 
 ▶ It follows then that transparency requires reporting things like the extent 
-of missing data, how we handled them, and defending our assumptions. 
+of missing data, our assumptions about them, supporting rationales, and how we 
+adapted our analyses to deal with the missing data. 
 :::
 
 
