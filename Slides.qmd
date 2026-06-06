@@ -410,6 +410,14 @@ we may be using inaccurate or misleading findings to inform public policy and
 important decisions.
 :::
 
+# Audience Questions (1) 
+Do you have questions about what missing data is and why it is important? 
+
+::: {.notes}
+Let's pause to see if there are any questions about the material I've covered 
+so far. 
+:::
+
 # How can we diagnose the missing data issues for a given study? 
 
 ::: {.notes}
@@ -903,6 +911,14 @@ either person-level non-response (refusal to participate), item or
 construct-level missingness, or person-period missingness, such as attrition or 
 intermittently skipping data collection events. Finding predictors of 
 missingness means that you have a MAR situation. 
+:::
+
+# Audience Questions (2) 
+Do you have questions about diagnosing missing data issues? 
+
+::: {.notes}
+Let's pause to see if there are any questions about diagnosing missing data 
+issues? 
 :::
 
 # What should we do about missing data?
