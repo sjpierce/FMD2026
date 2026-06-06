@@ -423,12 +423,60 @@ so far.
 ::: {.notes}
 So, I've laid some foundations by defining missing data and discussing why it 
 matters, but each study is unique. The nature and extent of the missing data 
-issues it faces will vary across studies. Now the question is "how can we 
-diagnose the missing data issues for a given study?" because we can't make good 
-choices about what to do about missing data problems until we thoroughly 
-understand them. It's hard to solve a problem before you've adequately described 
-it. I'm going to cover some concepts that pertain to describing the amounts, 
-patterns, and mechanisms of missing data. 
+issues you face will vary across studies. We can't make good choices about what
+to do about missing data until we thoroughly understand the nature and scope of
+the problem on a given study. That means the next logical question is "how can we 
+diagnose the missing data issues for a given study?" 
+
+I'm going to introduce a broad framework that will help you plan the diagnostic
+work, then cover some additional concepts that pertain to describing the
+amounts, patterns, and mechanisms of missing data.
+:::
+
+## TARMOS Framework [@Lee-RN8488]
+
+**T**reatment **A**nd **R**eporting of **M**issing data in **O**bservational 
+**S**tudies
+
+* Advocates for systematic, transparent methodology.
+* Recommends a structured approach.
+* Principles are applicable beyond observational studies.
+
+::: {.notes}
+You cannot plan a proper diagnosis process without first planning the analysis 
+you intend to run. 
+:::
+
+## TARMOS Step 1: Plan the Analysis
+
+* Identify the analysis model you would use if there were no missing data.
+* Decide how you will handle missing data. 
+    * Is a complete records analysis likely to be valid?
+    * Is MI likely to offer benefits over a complete records analysis?
+    * Is a sensitivity analysis required, and if so how it should be framed?
+
+::: {.notes}
+You cannot plan a proper diagnosis process without first planning the analysis 
+you intend to run. 
+:::
+
+## TARMOS Step 2: Conduct the Analysis
+
+* Examine whether data are suitable for planned analysis. 
+* Conduct analysis, acknowledge & justify deviations from the plan.
+
+::: {.notes}
+
+:::
+
+## TARMOS Step 3: Report the Analysis
+
+* Describe the missing data.
+* Describe how missing data were handled & justify the approach.
+* Report & interpret results.
+
+::: {.notes}
+
 :::
 
 ## Cattell's Data Box [@Cattell-RN8693] {.smaller}
@@ -1293,10 +1341,6 @@ estimation. No other method offers that option.
 MI is unbiased and yields accurate standard errors under both MCAR and MAR 
 mechanisms, and it can even handle MNAR data reasonably in some circumstances. 
 :::
-
-## TARMOS Framework
-
-Marianne suggested this read @Lee-RN8488 and add material about TARMOS. 
 
 ## Example of Effect of Missingness (STRATOS)
 
