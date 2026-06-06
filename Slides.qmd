@@ -60,8 +60,7 @@ library(piercer)    # for cvv_missingnes(), var_missingness()
 * What should we do about missing data?
 
 ::: {.notes}
-I've organized this talk around answering a few questions that may have already 
-occurred to you. They are: 
+I've organized this talk around answering a few simple questions. They are: 
 
 * What is missing data? 
 * Why do we end up with missing data? 
@@ -82,9 +81,9 @@ get. [@Fernández-García-RN4151]
 ::: {.notes}
 In the simplest terms, missing data are simply measurements that you want or
 intended to collect but did not get. While you can sometimes categorize what
-kind of missing data you have or identify why they are missing, but the heart of
-the problem is that not having all the desired data means you have to decide how 
-to adapt your plans for completing the study. 
+kind of missing data you have or identify why they are missing, the heart of the
+problem is that not having all the desired data means you have to decide how to
+adapt your plans for completing the study.
 
 ▶ Having missing data is a common issue afflicting research and evaluation 
 studies. Entirely avoiding it is difficult and rare.
@@ -135,7 +134,7 @@ battery dies, or your online survey app crashes. If you're using an
 organization's records or databases, those may be incomplete, difficult to
 search for relevant data, coded in unhelpful ways, or could have been lost or
 damaged or even destroyed according to some retention policy. In terms of
-events, data collection for one of my projects was disrupted by a an unusually 
+events, data collection for one of my projects was disrupted by an unusually 
 strong hurricane in Florida.
 :::
 
@@ -171,8 +170,8 @@ visit. That could leave you with missing data for them.
 However, there are post-data collection events that can cause missing data too.
 Paper files might get lost or damaged after data collection before anyone enters
 them into an electronic data file. Another possibility is that your staff may
-accidentally skip entering one or more items that were actually recorded when
-entering data from paper forms into electronic files.
+accidentally skip one or more items that were actually recorded when entering 
+data from paper forms into electronic files.
 
 Similarly, at the data storage and management stage before analyses begin,
 someone might make a mistake while working with a data file or a computer hard
@@ -255,7 +254,7 @@ assumptions [@Enders-RN8974].
 :::
 
 ::: {.notes}
-The relevance of those ASA guidelines to the handling of missing data become 
+The relevance of those ASA guidelines to the handling of missing data becomes 
 clearer when we consider a paper by Craig Enders and Amanda Gottschall. They 
 articulated the relationship between how we handle missing data and the ethical 
 quality of a study. They start from the premise that the ethical quality of an 
@@ -508,21 +507,19 @@ kable(LONG, format = "html", align = "c") %>%
   kable_styling(full_width = FALSE)
 ```
 
-
-
 :::{.notes}
 The 3-dimensional data cube concept is useful, but actual data files are often
 constrined to 2-dimensional structure with rows for people (cases) and columns
 for variables. We have to slice and rearrange the box to handle the time
 dimension sensibly. There are two common formats for representing longitudinal
 or repeated measures data. The long univariate format keeps all data about a
-given variable in a single column, so it each time point must become a distinct
-set of rows. Each person ends up with one row per time point.
+given variable in a single column, so each time point must become a distinct set
+of rows. Each person ends up with one row per time point.
 
-Here we need an explicit time variable so we can tell which row for each person
-corresponds to a specific time point. We have collected two variables X1 and X1 
-at each time point, and of course we have an ID variable to show which person 
-was observed. 
+In this example, we have three variables X1, X2, and X3, each measured at two 
+time points, for three people. In addition to the person-level ID variable, we 
+need an explicit time variable so we can tell which row for each person 
+corresponds to a specific time point.
 :::
 
 ## Data Structure: Wide
@@ -542,10 +539,15 @@ kable(WIDE, format = "html", align = "c") %>%
 
 :::{.notes}
 The wide multivariate format instead keeps all data about a single case in one 
-row, with each time point represented by a distinct set of variables. Here, we 
-have two variables for T1_X1 for X1 at time 1, and another column T2_X1 for the 
-same variable measured at a later time 2. I've added column grouping labels 
-above the variable names to clarify the structure. 
+row, with each time point represented by a distinct set of variables. This table 
+shows the same data you saw on the last slide, rearranged into wide format. 
+
+So, now we have one row per unique ID, but we now need six variables to 
+represent X1, X2, and X3 at the two time points. I added a time prefix to each 
+variable name, and grouped the variables by time point. The column grouping 
+labels above the variable names just clarify that structure. 
+:::
+
 :::
 
 ## Types of Missingness [@McKnight-RN1296; @Schafer-RN425]
@@ -640,7 +642,7 @@ Now I need to define a few terms.
 that could be observed. We can split it into two pieces, 
 * ▶  Y_obs which is the subset of Y that that ends up being observed and 
 * ▶  Y_miss is the subset that ends up missing. 
-* ▶  We can then define a repsonse matrix called R that has a set of 
+* ▶  We can then define a response matrix called R that has a set of 
   dummy-coded missingess indicators that use a 0 to denote which Y values are 
   observed and part of Y_obs, and a 1 for those that are missing and belong to 
   Y_miss instead. R has the same number of variables as Y.
