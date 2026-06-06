@@ -620,7 +620,53 @@ records:
 
 * Whether & when participants attended data each collection event
 * When & why participants exit the study 
+## CONSORT 2025 Statement [@Hopewell-RN9004]
 
+:::: {.columns}
+
+::: {.column width="40%"}
+* Requires disclosing how you handled MD. 
+* Flow charting sample size by stage of study:
+    * Uses tracking data.
+    * Reveals dropout.
+
+:::
+
+::: {.column width="60%"}
+
+```{dot}
+//| fig-width: 6
+//| fig-height: 5
+
+digraph CONSORT {
+rankdir="TB";
+
+node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+Assessed [label = "n, Assessed for eligibility"]
+Randomized [label = "n, Randomly assigned"]
+Assigned1 [label = "Arm 1 (Intervention)\nn, Assigned"]
+Assigned2 [label = "Arm 2 (Control)\nn, Assigned"]
+Dropped1 [label = "Dropped\nn, Discontinued arm (give reasons)\nn, Lost to follow-up (give reasons)"]
+Dropped2 [label = "Dropped\nn, Discontinued arm (give reasons)\nn, Lost to follow-up (give reasons)"]
+Analyzed1 [label = "Primary outcome analysis\nn, Included\nn, Excluded (give reasons)"]
+Analyzed2 [label = "Primary outcome analysis\nn, Included\nn, Excluded (give reasons)"]
+
+Assessed -> Randomized
+Randomized -> Assigned1 -> Dropped1 -> Analyzed1
+Randomized -> Assigned2 -> Dropped2 -> Analyzed2
+}
+```
+
+:::
+
+::::
+
+::: {.notes}
+The CONSORT 2025 statement requires disclosing missing data handling. 
+
+Reporting on the reasons why participants drop out, skip data collection events, 
+or have other missing data becomes much easier when you have a systematic 
+tracking system that records: 
 :::
 
 ## Patterns of Missing Data [@Schafer-RN425]
