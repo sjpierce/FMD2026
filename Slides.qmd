@@ -604,6 +604,19 @@ variable name, and grouped the variables by time point. The column grouping
 labels above the variable names just clarify that structure. 
 :::
 
+## Choosing Data Structure
+
+* Long & wide data sets are useful for different diagnostic tasks.
+* Pay attention to which structure you are using.
+* You may need *both* long & wide data sets.
+
+:::{.notes}
+Both the long and wide data structures are useful but assessing some kinds of
+missing data issues may be easier with one structure than with the other.
+Naturally, you should pay attention to which data structure you are using and
+think about whether it facilitates or hinders your diagnostic work. You may find
+that you actually need *both* long and wide data sets, so be prepared to 
+restructure your data from one format to the other.
 :::
 
 ## Types of Missingness [@McKnight-RN1296; @Schafer-RN425]
@@ -643,14 +656,6 @@ Report numbers & percentages of:
 * Missing values for each variable & construct
 * Reasons for attrition/dropout and other missing data
 
-:::: {.fragment}
-
-::: {.callout-tip title = "Use a Good Tracking System"}
-Track attendance at data collection events & participants' exit from the study.
-:::
-
-::::
-
 ::: {.notes}
 The dimensions of Cattell's data box suggests some obvious summaries of the 
 amount of missing data. For example, we probably want to examine and report the 
@@ -662,12 +667,27 @@ missing values for each variable, both overall and separately by time point.
 
 Finally, it can be really useful to report on the reasons why participants drop 
 out, skip data collection events, or have other missing data. 
+:::
 
-▶  All of these things get easier when you have a tracking system that 
-records: 
+## Tracking Systems
+Use a tracking system to organize & document data collection
 
-* Whether & when participants attended data each collection event
-* When & why participants exit the study 
+::: {.incremental}
+* Whether & when participants attend each data collection event 
+* When & why participants exit the study.
+
+:::
+
+::: {.notes}
+Reporting on the reasons why participants drop out, skip data collection events, 
+or have other missing data becomes much easier when you have a systematic 
+tracking system that records: 
+
+* ▶ Whether & when participants attended data each collection event.
+* ▶ When & why participants exit the study.
+
+:::
+
 ## CONSORT 2025 Statement [@Hopewell-RN9004]
 
 :::: {.columns}
@@ -1377,3 +1397,4 @@ Watch @Tilling-RN8960 and see what to mention? Marianne suggested this.
 :::
 
 # Discussion time! 
+
