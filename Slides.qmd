@@ -56,6 +56,7 @@ library(piercer)    # for cvv_missingnes(), var_missingness()
 * What is missing data? 
 * Why do we end up with missing data? 
 * Why should we care about missing data? 
+* How should we start addressing missing data issues? 
 * How can we diagnose the missing data issues for a given study? 
 * What should we do about missing data?
 
@@ -65,8 +66,10 @@ I've organized this talk around answering a few simple questions. They are:
 * What is missing data? 
 * Why do we end up with missing data? 
 * Why should we care about missing data? 
+* How should we start addressing missing data issues? 
 * How can we diagnose the missing data issues for a given study? 
 * What should we do about missing data?
+
 :::
 
 # What is missing data?
@@ -418,19 +421,14 @@ Let's pause to see if there are any questions about the material I've covered
 so far. 
 :::
 
-# How can we diagnose the missing data issues for a given study? 
+# How should we start addressing missing data issues? 
 
 ::: {.notes}
 So, I've laid some foundations by defining missing data and discussing why it 
-matters, but each study is unique. The nature and extent of the missing data 
-issues you face will vary across studies. We can't make good choices about what
-to do about missing data until we thoroughly understand the nature and scope of
-the problem on a given study. That means the next logical question is "how can we 
-diagnose the missing data issues for a given study?" 
-
-I'm going to introduce a broad framework that will help you plan the diagnostic
-work, then cover some additional concepts that pertain to describing the
-amounts, patterns, and mechanisms of missing data.
+matters. We know it poses measurement, internal validity, and generalizability 
+problems for our studies. Now the next logical question is "How should we start 
+addressing missing data issues?" To answer that, I'm going to introduce a
+framework that can guide your efforts to do that.
 :::
 
 ## TARMOS Framework [@Lee-RN8488]
@@ -439,34 +437,95 @@ amounts, patterns, and mechanisms of missing data.
 **S**tudies
 
 * Advocates for systematic, transparent methodology.
-* Recommends a structured approach.
+* Recommends a structured approach with 3 steps.
 * Principles are applicable beyond observational studies.
 
 ::: {.notes}
-You cannot plan a proper diagnosis process without first planning the analysis 
-you intend to run. 
+The Treatment And Reporting of Missing data in Observational Studies (TARMOS) 
+framework advocates for applying a systematic, transparent methodology for 
+handling missing data. It recommends taking a 3-step, structured approach to 
+that task. It is grounded in a few principles that I think are applicable both 
+to the observational research designs that were the focus of TARMOS and to other 
+research designs such as experimental and quasi-experimental studies. 
+
+Next, I'll briefly describe the steps in TARMOS, along with one small adjustment 
+I would make to the framework. 
 :::
 
 ## TARMOS Step 1: Plan the Analysis
 
-* Identify the analysis model you would use if there were no missing data.
+* Identify the analyses you would use if there were no missing data.
+    * Write a statistical analysis plan [@Cressman-RN8487]! 
 * Decide how you will handle missing data. 
     * Is a complete records analysis likely to be valid?
-    * Is MI likely to offer benefits over a complete records analysis?
-    * Is a sensitivity analysis required, and if so how it should be framed?
+    * Is multiple imputation likely to offer benefits over a complete records 
+      analysis?
+    * Is a sensitivity analysis required, and if so how should it be framed?
 
 ::: {.notes}
-You cannot plan a proper diagnosis process without first planning the analysis 
-you intend to run. 
+The first step in TARMOS encourages you to start by identifying the analysis 
+models you would use if there were no missing data at all. Here, it can be 
+useful to apply recommendations about writing good statistical analysis plans. 
+Well-chosen analyses will describe your sample, answer your research questions,
+and test your hypotheses while properly accounting for the research design and
+relevant covariates. A full specification of the required analyses will reveal
+the set of variables that *must be available* to achieve your scientific
+objectives. It is missing data on those *essential variables* that pose problems
+for you; missing data on *other variables* may be irrelevant to your study.
+
+TARMOS step 1 also calls for deciding how you will handle missing data. It asks 
+you to consider a few key questions, such as: 
+
+* Is a complete records analysis likely to be valid?
+* Is multiple imputation likely to offer benefits over a complete records 
+  analysis?
+* Is a sensitivity analysis required, and if so how should it be framed?
+
+Deciding how to handle missing data requires understanding both concepts from 
+the missing data literature and various methods that *could* be applied. 
+Some general options for the decision can certainly be identified during step 1
+but my opinion is that the actual choice ought to be made in step 2. 
 :::
 
 ## TARMOS Step 2: Conduct the Analysis
 
 * Examine whether data are suitable for planned analysis. 
-* Conduct analysis, acknowledge & justify deviations from the plan.
+    * Apply initial data analysis guidelines 
+      [@Baillie-RN8311; @Heinze-RN8641; @Huebner-RN3947; @Huebner-RN3997]. 
+    * Diagnose missing data issues 
+      [@Enders-RN8673; @Enders-RN8974; @McKnight-RN1296] *before* deciding how 
+      to handle them. 
+    * Update the statistical analysis plan.
+* Conduct substantive analysis, acknowledge & justify deviations from the plan.
 
 ::: {.notes}
+The second step in TARMOS is conducting analyses. The framework encourages you
+to begin by examining whether your data are suitable for the planned analysis. 
+There is a growing literature with guidelines about planning and conducting 
+initial data analyses that accomplish this purpose. One key message from that 
+literature is that the initial data analyses do *not* address the substantive 
+research questions and hypotheses. They focus on assessing whether it is 
+feasible to conduct the substantive analysis as originally planned or you will 
+instead have to adapt your analysis plan to deal with unexpected features of the 
+data.
 
+Here, I want to emphasize that a thorough diagnosis of the missing data issues
+present in your data should be part of your initial data analysis. Those results
+give you the rest of the information you need to make good decisions about
+handling missing data in your substantive analyses. If you are lucky, there
+won't be any missing data at all and you can just implement your statistical
+analysis plan as-is. However, the missing data diagnostics in your initial data
+analyses may also show you that the planned analysis will not yield trustworthy
+answers unless you modify it to handle the missing data sensibly.
+
+So my take is that TARMOS should have recommended making the decision 
+about how to handle missing data in the middle of step 2. 
+*Update the analysis plan after reviewing the missing data diagnostics!* 
+
+After that, finish TARMOS step 2 by conducting your substantive analysis. It is 
+important to acknowledge and justify any deviations from the original analysis 
+plan. The initial data analyses should provide evidence for why some of those
+changes were necessary. 
 :::
 
 ## TARMOS Step 3: Report the Analysis
@@ -476,7 +535,27 @@ you intend to run.
 * Report & interpret results.
 
 ::: {.notes}
+The third and final step in TARMOS is reporting your analysis. You paper or
+report should describe the missing data issues you detected in Step 2, how you
+handled them, and why you selected that approach. Obviously, you should then
+include and interpret the results of your analyses and any sensitivity analyses 
+or robustness checks that you conducted.
 
+So, TARMOS can be distilled down to three words: plan, conduct, and report. 
+:::
+
+# How can we diagnose the missing data issues for a given study? 
+
+::: {.notes}
+So, I've laid some foundations by outlining the TARMOS framework, but each study 
+is unique. The nature and extent of the missing data issues you face will vary
+across studies. We can't make good choices about what to do about missing data
+until we thoroughly understand the nature and scope of the problem on a given
+study. That means the next logical question is "how can we diagnose the missing
+data issues for a given study?"
+
+Next, I'm going to cover some additional concepts that pertain to describing the
+amounts, patterns, and mechanisms of missing data.
 :::
 
 ## Cattell's Data Box [@Cattell-RN8693] {.smaller}
@@ -1397,4 +1476,9 @@ Watch @Tilling-RN8960 and see what to mention? Marianne suggested this.
 :::
 
 # Discussion time! 
+What questions do you have about missing data issues? 
 
+::: {.notes}
+So that was a short introduction to fundamental issues with missing data. We now 
+have a little remaining time for questions and discussion. 
+:::
