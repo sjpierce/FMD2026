@@ -625,6 +625,36 @@ patterns in where and why those holes are located relative to the data you want
 to analyze. 
 :::
 
+## Slicing & Rearranging the Data Cube
+
+```{dot}
+//| fig-width: 9
+//| fig-height: 5
+
+digraph CutCube {
+rankdir="TB";
+
+node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+Cube [label = "Data Cube\nP x V x T"]
+Slices [label = "T Slices\n P x V"]
+Long [label = "Long Univariate Format\nTime → Extra Rows\n1 case per person-period"]
+Wide [label = "Wide Multivariate Format\nTime → Extra Columns\n1 case per person"]
+Cube -> Slices [label = "Cut By Time"]
+Slices -> Long [label = "Stack"]
+Slices -> Wide [label = "Spread"]
+}
+```
+
+::: {.notes}
+The 3-dimensional data cube concept is useful, but actual data files are often
+constrained to a 2-dimensional matrix with rows for cases and columns for 
+variables. We have to slice and rearrange the box to handle the time dimension
+sensibly. There are two common formats for representing longitudinal or repeated
+measures data. The long univariate format keeps all data about a given variable
+in a single column, so each time point must become a distinct set of rows. Each
+person ends up with one row per time point.
+::: 
+
 ## Data Structure: Long
 
 ```{r}
