@@ -794,6 +794,82 @@ event but returning for subsequent events, or it may be a result of dropout or
 attrition that affects all remaining time points.
 :::
 
+## Example Data Set: Size & Missingness Overview
+
+```{r}
+#| label: tbl-CVV-Missing
+#| tbl-cap: "Missingness Overview for Dutch Boys Growth Study Data [@Fredriks-RN8696]"
+#| results: asis
+
+FN <- paste("<small>", 
+            "Cross-sectional data (wide multivariate format).",
+            "</small>")
+  
+cvv_missingness(boys) %>% 
+  kable(format = "html", align = "r", digits = 1,
+        col.names = c("Subset", rep(c("n", "%"), times = 3))) %>% 
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato") %>% 
+  row_spec(row = 3, italic = TRUE) %>% 
+  add_header_above(header = c(" " = 1, "Cases" = 2, "Variables" = 2, "Values" = 2)) %>% 
+  footnote(general = FN, general_title = "<small>Note: </small>", 
+           footnote_as_chunk = TRUE, escape = F, threeparttable = TRUE) %>% 
+  cat()
+```
+
+::: {.notes}
+Here I'm showing a table with a missingness overview for data from a study of 
+growth among Dutch boys. This is cross-sectional data, which is effectively in 
+a wide multivariate format. That means each boy is represented by a single case.
+The bottom row shows the size of the dataset: We have 748 boys and measurements 
+for 9 variables, yielding a total of 6732 possible values. 
+
+This table shows us that 70% of the cases have incomplete cases, meaning those 
+boys each have at least one missing value on their row of data. We can also see
+that 8 of the 9 variables have incomplete data, meaning at least one boy has 
+missing data in that column. Finally, the Values columns show us that about 24%
+of all the possible values in the data set are missing. 
+
+This sort of overview provides crucial information for your diagnostics. For 
+example, if the Incomplete row were to contain only zeroes, you would 
+immediately know there is no missing data and no further diagnostics are 
+required. 
+
+Some statistical software packages have functions that make it very easy to 
+get this sort of overview. 
+
+If you have longitudinal data, I would start 
+:::
+
+## Comparing MD Overviews for Long vs Wide Data
+
+```{r}
+#| label: tbl-WIDEvsLONG
+#| tbl-cap: Meaning of Incomplete Cases and Variables By Data Set Format
+
+LvW <- data.frame(format = c("Wide", "Long"), 
+                  cases = c("Persons with any MD (across variables & times)", 
+                            "Person-periods with any MD at specific times (across variables)"),
+                  variables = c("Variables with any MD at specific times (across persons)", 
+                                "Variables with any MD (across persons & times)"))
+
+kable(LvW, format = "html", align = "c", 
+      col.names = c("Format", 
+                    paste("Incomplete", c("Cases", "Variables")))) %>% 
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato") 
+```
+
+::: {.notes}
+If you have longitudinal data, the meaning of incomplete cases and incomplete 
+variables depends on whether you are summarizing a wide dataset or a long one. 
+This table shows some key points about how to interpret the kind of missingness 
+overview I showed you on the last slide. 
+
+I recommend that you run such overviews for both long and wide versions of 
+longitudinal datasets. 
+:::
+
 ## Describing the Amount of MD [@McKnight-RN1296; @van-Buuren-RN3962]
 
 Report numbers & percentages of: 
