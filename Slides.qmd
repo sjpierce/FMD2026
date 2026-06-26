@@ -555,7 +555,8 @@ study. That means the next logical question is "how can we diagnose the missing
 data issues for a given study?"
 
 Next, I'm going to cover some additional concepts that pertain to describing the
-amounts, patterns, and mechanisms of missing data.
+amounts, patterns, and mechanisms of missing data. It helps to start by thinking 
+about data structures that affect how we organize and use data. 
 :::
 
 ## Cattell's Data Box [@Cattell-RN8693] {.smaller}
