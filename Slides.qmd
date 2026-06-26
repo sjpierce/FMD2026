@@ -870,6 +870,66 @@ I recommend that you run such overviews for both long and wide versions of
 longitudinal datasets. 
 :::
 
+## Example Data Set: Variable-Level Missingness 
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+```{r}
+#| label: tbl-Var-Missing
+#| tbl-cap: "Item/Construct Missingness for Dutch Boys Growth Study Data [@Fredriks-RN8696]"
+#| results: asis
+
+FN <- paste("<small>", 
+            "Cross-sectional data (wide multivariate format).",
+            "</small>")
+  
+var_missingness(boys) %>% 
+  select(-Position, -N_Total) %>% 
+  kable(format = "html", align = "r", digits = 1,
+        col.names = c("Variable", rep(c("n", "%"), times = 2))) %>% 
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato", 
+                font_size = 25) %>% 
+  row_spec(row = 2:3, italic = TRUE) %>% 
+  row_spec(row = 4, bold = TRUE) %>% 
+  add_header_above(header = c(" ", "Observed" = 2, "Missing" = 2)) %>% 
+  footnote(general = FN, general_title = "<small>Note: </small>", 
+           footnote_as_chunk = TRUE, escape = F, threeparttable = TRUE) %>% 
+  cat()
+```
+
+::::
+
+:::: {.column width="50%"}
+<br><br> <!-- Add line breaks to control layout-->
+
+::: {.incremental}
+* Age is a 1-item construct. 
+* Body mass index is a **2-item construct**: 
+    * $bmi = wgt/hgt^2$.
+    * Both *items* are required.
+:::
+::::
+:::::
+
+:::{.notes}
+You should also examine variable-level missingness. A variable may be a 
+single-item construct (like age in this dataset), 
+
+or it may be an item used to 
+define 
+
+Here, age is a single-item 
+construct
+single-item construct
+
+can be either 
+an item or a construct. 
+:::
+
+
 ## Describing the Amount of MD [@McKnight-RN1296; @van-Buuren-RN3962]
 
 Report numbers & percentages of: 
