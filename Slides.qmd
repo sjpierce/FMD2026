@@ -657,6 +657,10 @@ person ends up with one row per time point.
 
 ## Data Structure: Long
 
+::::: {.columns}
+
+:::: {.column width="50%"}
+
 ```{r}
 #| label: tbl-LONG
 #| tbl-cap: Long Univariate Format
@@ -670,22 +674,38 @@ LONG <- expand.grid(ID = 1:3, Time = 1:2) %>%
   arrange(ID, Time)
 
 kable(LONG, format = "html", align = "c") %>% 
-  kable_styling(full_width = FALSE)
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato") 
 ```
 
-:::{.notes}
-The 3-dimensional data cube concept is useful, but actual data files are often
-constrined to 2-dimensional structure with rows for people (cases) and columns
-for variables. We have to slice and rearrange the box to handle the time
-dimension sensibly. There are two common formats for representing longitudinal
-or repeated measures data. The long univariate format keeps all data about a
-given variable in a single column, so each time point must become a distinct set
-of rows. Each person ends up with one row per time point.
+::::
 
-In this example, we have three variables X1, X2, and X3, each measured at two 
-time points, for three people. In addition to the person-level ID variable, we 
-need an explicit time variable so we can tell which row for each person 
-corresponds to a specific time point.
+:::: {.column width="10%"}
+::::
+
+:::: {.column width="40%"}
+::: {style="font-size: 0.7em;"}
+
+<br><br><br> <!-- Add line breaks to control layout-->
+
+Cube: $P = 3, V = 3, T = 2$, $N_{cases} = P \times T = 6$.
+
+* Including ID & Time: $V = 5$, $N_{values} = P \times V \times T = 30$.
+* Excluding ID & Time: $V = 3$, $N_{values} = P \times V \times T = 18$.
+    
+:::
+::::
+:::::
+
+:::{.notes}
+Suppose our data cube has measurements for P = 3 people, on three variables (X1,
+X2, and X3), each measured at two time points. That implies a total of 18
+values. This table is the result of translating that into a long univariate
+format. We have to add two structural variables (ID and Time) that should never
+have any missing data and are used to uniquely identify a row of das belo nging
+to a specific person at a specific time point. So we end up with a total of 6
+cases and 5 variables, for a total of 30 possible data values, of which 18 are
+the contents of the original data cube.
 :::
 
 ## Data Structure: Wide
@@ -699,19 +719,29 @@ WIDE <- LONG %>%
               names_glue = "T{Time}_{.value}", names_vary = "slowest")
 
 kable(WIDE, format = "html", align = "c") %>% 
-  kable_styling(full_width = FALSE) %>% 
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato") %>% 
   add_header_above(header = c(" ", "Time 1" = 3, "Time 2" = 3))
 ```
+
+::: {style="font-size: 0.7em;"}
+Cube: $P = 3, V = 3 , T = 2$. $N_{cases} = P = 3$.
+
+* Including ID: $V = 7$, $N_{values} = P \times V = 21$.
+* Excluding ID: $V = 6$, $N_{values} = P \times V = 18$.
+
+:::
 
 :::{.notes}
 The wide multivariate format instead keeps all data about a single case in one 
 row, with each time point represented by a distinct set of variables. This table 
 shows the same data you saw on the last slide, rearranged into wide format. 
 
-So, now we have one row per unique ID, but we now need six variables to 
-represent X1, X2, and X3 at the two time points. I added a time prefix to each 
-variable name, and grouped the variables by time point. The column grouping 
-labels above the variable names just clarify that structure. 
+So, now we have one row per unique ID, but we need six variables to represent 
+X1, X2, and X3 at the two time points. I added a time prefix to each variable 
+name, and grouped the variables by time point. The column grouping labels above
+the variable names just clarify that structure. We now have a total of 21 
+values, of which 18 are the contents of the original cube. 
 :::
 
 ## Choosing Data Structure
