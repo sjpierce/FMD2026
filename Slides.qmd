@@ -749,6 +749,7 @@ values, of which 18 are the contents of the original cube.
 * Long & wide data sets are useful for different diagnostic tasks.
 * Pay attention to which structure you are using.
 * You may need *both* long & wide data sets.
+* Use the *relevant subset* of cases & variables in diagnostics. 
 
 :::{.notes}
 Both the long and wide data structures are useful but assessing some kinds of
@@ -757,6 +758,12 @@ Naturally, you should pay attention to which data structure you are using and
 think about whether it facilitates or hinders your diagnostic work. You may find
 that you actually need *both* long and wide data sets, so be prepared to 
 restructure your data from one format to the other.
+
+In any case, review your analysis plan to identify the subsets of cases and 
+variables that are relevant to your planned analyses. Those must be included in
+the diagnostic analyses, but we often have more data than is strictly required 
+for a given substantive analysis. Create smaller data sets for use in the 
+diagnostic analyses. 
 :::
 
 ## Types of Missingness [@McKnight-RN1296; @Schafer-RN425]
