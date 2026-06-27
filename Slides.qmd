@@ -188,8 +188,8 @@ Vigilance is warranted throughout the project lifecycle.
 
 ::: {.notes}
 So, I've defined missing data and identified some of the ways we can end up with
-it. But why should we care about missing data? That's the crucial question I'll 
-answer next. 
+it. But why should we care about it? That's the crucial question I'll answer 
+next. 
 :::
 
 ## Ethical Guidelines {.smaller}
@@ -441,12 +441,12 @@ framework that can guide your efforts to do that.
 * Principles are applicable beyond observational studies.
 
 ::: {.notes}
-The Treatment And Reporting of Missing data in Observational Studies (TARMOS) 
-framework advocates for applying a systematic, transparent methodology for 
-handling missing data. It recommends taking a 3-step, structured approach to 
-that task. It is grounded in a few principles that I think are applicable both 
-to the observational research designs that were the focus of TARMOS and to other 
-research designs such as experimental and quasi-experimental studies. 
+The Treatment And Reporting of Missing data in Observational Studies (TARMOS)
+framework advocates for applying a systematic, transparent methodology for
+handling missing data. It recommends taking a 3-step approach to that task. It
+is grounded in a few principles that I think are applicable both to the
+observational research designs that were the focus of TARMOS and to other
+research designs such as experimental and quasi-experimental studies.
 
 Next, I'll briefly describe the steps in TARMOS, along with one small adjustment 
 I would make to the framework. 
@@ -468,10 +468,10 @@ models you would use if there were no missing data at all. Here, it can be
 useful to apply recommendations about writing good statistical analysis plans. 
 Well-chosen analyses will describe your sample, answer your research questions,
 and test your hypotheses while properly accounting for the research design and
-relevant covariates. A full specification of the required analyses will reveal
-the set of variables that *must be available* to achieve your scientific
-objectives. It is missing data on those *essential variables* that pose problems
-for you; missing data on *other variables* may be irrelevant to your study.
+relevant covariates. A full specification of required analyses reveals the set 
+of variables that *must be available* to achieve your scientific objectives. 
+Missing data on those *essential variables* pose problems; missing data on 
+*other variables* may be irrelevant to your study.
 
 TARMOS step 1 also calls for deciding how you will handle missing data. It asks 
 you to consider a few key questions, such as: 
@@ -481,10 +481,10 @@ you to consider a few key questions, such as:
   analysis?
 * Is a sensitivity analysis required, and if so how should it be framed?
 
-Deciding how to handle missing data requires understanding both concepts from 
-the missing data literature and various methods that *could* be applied. 
-Some general options for the decision can certainly be identified during step 1
-but my opinion is that the actual choice ought to be made in step 2. 
+Understanding both concepts from the missing data literature and various methods
+that *could* be applied facilitates making decisions. You can identify some 
+general options during step 1 but my opinion is that the actual choice should be 
+made in step 2.
 :::
 
 ## TARMOS Step 2: Conduct the Analysis
@@ -500,23 +500,22 @@ but my opinion is that the actual choice ought to be made in step 2.
 
 ::: {.notes}
 The second step in TARMOS is conducting analyses. The framework encourages you
-to begin by examining whether your data are suitable for the planned analysis. 
-There is a growing literature with guidelines about planning and conducting 
-initial data analyses that accomplish this purpose. One key message from that 
-literature is that the initial data analyses do *not* address the substantive 
-research questions and hypotheses. They focus on assessing whether it is 
-feasible to conduct the substantive analysis as originally planned or you will 
-instead have to adapt your analysis plan to deal with unexpected features of the 
-data.
+to examine whether your data are suitable for the planned analysis. There is a
+growing literature with guidelines about planning and conducting initial data
+analyses that accomplish this purpose. One key message is that the initial data
+analyses *do not address the substantive research questions and hypotheses*.
+They focus on assessing whether it is feasible to conduct the substantive
+analysis as originally planned or you will instead have to adapt your analysis
+plan to deal with unexpected features of the data.
 
 Here, I want to emphasize that a thorough diagnosis of the missing data issues
-present in your data should be part of your initial data analysis. Those results
-give you the rest of the information you need to make good decisions about
-handling missing data in your substantive analyses. If you are lucky, there
-won't be any missing data at all and you can just implement your statistical
-analysis plan as-is. However, the missing data diagnostics in your initial data
-analyses may also show you that the planned analysis will not yield trustworthy
-answers unless you modify it to handle the missing data sensibly.
+in your data should be part of your initial data analysis. Those results give
+you the rest of the information you need to make good decisions about handling
+missing data in your substantive analyses. If you are lucky, there won't be any
+missing data at all and you can just implement your statistical analysis plan
+as-is. However, the diagnostic results may show you that the planned analysis
+will not yield trustworthy answers unless you modify it to handle the missing
+data sensibly.
 
 So my take is that TARMOS should have recommended making the decision 
 about how to handle missing data in the middle of step 2. 
@@ -524,8 +523,8 @@ about how to handle missing data in the middle of step 2.
 
 After that, finish TARMOS step 2 by conducting your substantive analysis. It is 
 important to acknowledge and justify any deviations from the original analysis 
-plan. The initial data analyses should provide evidence for why some of those
-changes were necessary. 
+plan. The initial data analyses should provide evidence for why those changes 
+were necessary. 
 :::
 
 ## TARMOS Step 3: Report the Analysis
@@ -535,11 +534,11 @@ changes were necessary.
 * Report & interpret results.
 
 ::: {.notes}
-The third and final step in TARMOS is reporting your analysis. You paper or
-report should describe the missing data issues you detected in Step 2, how you
-handled them, and why you selected that approach. Obviously, you should then
-include and interpret the results of your analyses and any sensitivity analyses 
-or robustness checks that you conducted.
+The third and final step in TARMOS is reporting your analysis. Your paper should
+describe the missing data issues you detected in Step 2, how you handled them,
+and why you selected that approach. Obviously, you should then include and
+interpret the results of your analyses and any sensitivity analyses or
+robustness checks that you conducted.
 
 So, TARMOS can be distilled down to three words: plan, conduct, and report. 
 :::
@@ -547,16 +546,16 @@ So, TARMOS can be distilled down to three words: plan, conduct, and report.
 # How can we diagnose the missing data issues for a given study? 
 
 ::: {.notes}
-So, I've laid some foundations by outlining the TARMOS framework, but each study 
+So, I've laid some foundations by outlining the TARMOS framework, but each study
 is unique. The nature and extent of the missing data issues you face will vary
 across studies. We can't make good choices about what to do about missing data
-until we thoroughly understand the nature and scope of the problem on a given
-study. That means the next logical question is "how can we diagnose the missing
-data issues for a given study?"
+until we thoroughly understand the problems on a given study. The next logical
+question is "how can we diagnose the missing data issues for a given study?"
 
-Next, I'm going to cover some additional concepts that pertain to describing the
-amounts, patterns, and mechanisms of missing data. It helps to start by thinking 
-about data structures that affect how we organize and use data. 
+To answer that, I'm going to cover some additional concepts that pertain to
+describing the amounts, patterns, and mechanisms of missing data. It helps to
+start by thinking about data structures that affect how we organize and use
+data.
 :::
 
 ## Cattell's Data Box [@Cattell-RN8693] {.smaller}
@@ -607,14 +606,14 @@ rglwidget()
 ::: {.notes}
 Raymond Cattell described data as forming a 3-dimensional box or cube, with the
 dimensions being persons, variables, and occasions (or times). This is useful
-for thinking about the total volume of data we aim to collect. At least for a
-simple longitudinal study where we collect the same instruments for each person
-at each time point, we can just multiply the number of desired participants by
-the number of variables by the number of time points to get the number of
-desired data values, which is the volume of the cube. Different slices through
-the cube represent specific subsets of data. The top layer would be all the data
-for a given person (all variables at all time points). The left-most vertical
-slice would be all the data for a specific variable across all persons and time
+for thinking about the total volume of data we aim to collect. For a simple
+longitudinal study where we collect the same instruments for each person at each
+time point, we can just multiply the number of desired participants by the
+number of variables by the number of time points to get the number of desired
+data values. That's the volume of the cube. Different slices through the cube
+represent specific subsets of data. The top layer would be all the data for a
+given person (all variables at all time points). The left-most vertical slice
+would be all the data for a specific variable across all persons and time
 points. The front face of the cube would be time 1 data on all variables for all
 persons. We could further refine this idea by recognizing that constructs are
 often measured by groups of adjacent variables (items).
@@ -650,9 +649,17 @@ The 3-dimensional data cube concept is useful, but actual data files are often
 constrained to a 2-dimensional matrix with rows for cases and columns for 
 variables. We have to slice and rearrange the box to handle the time dimension
 sensibly. There are two common formats for representing longitudinal or repeated
-measures data. The long univariate format keeps all data about a given variable
+measures data. 
+
+The long univariate format keeps all data about a given variable
 in a single column, so each time point must become a distinct set of rows. Each
-person ends up with one row per time point.
+person ends up with one row per time point because we are vertically stacking
+the time slices.
+
+The wide multivariate format keeps all data about a given person in a single
+row, so each time point must become an additional set of columns. We are
+spreading the time slices out horizontally and renaming variables as needed
+along the way.
 ::: 
 
 ## Data Structure: Long
@@ -702,10 +709,10 @@ Suppose our data cube has measurements for P = 3 people, on three variables (X1,
 X2, and X3), each measured at two time points. That implies a total of 18
 values. This table is the result of translating that into a long univariate
 format. We have to add two structural variables (ID and Time) that should never
-have any missing data and are used to uniquely identify a row of das belo nging
-to a specific person at a specific time point. So we end up with a total of 6
-cases and 5 variables, for a total of 30 possible data values, of which 18 are
-the contents of the original data cube.
+have any missing data and are used to uniquely identify a row of data belonging
+to a specific person at a specific time point. We end up with 6 cases and 5 
+variables, for a total of 30 possible data values, of which 18 are the contents 
+of the original data cube.
 :::
 
 ## Data Structure: Wide
@@ -733,15 +740,12 @@ Cube: $P = 3, V = 3 , T = 2$. $N_{cases} = P = 3$.
 :::
 
 :::{.notes}
-The wide multivariate format instead keeps all data about a single case in one 
-row, with each time point represented by a distinct set of variables. This table 
-shows the same data you saw on the last slide, rearranged into wide format. 
-
-So, now we have one row per unique ID, but we need six variables to represent 
-X1, X2, and X3 at the two time points. I added a time prefix to each variable 
-name, and grouped the variables by time point. The column grouping labels above
-the variable names just clarify that structure. We now have a total of 21 
-values, of which 18 are the contents of the original cube. 
+This table shows the same data you saw on the last slide, rearranged into wide
+format. So, now we have one row per unique ID, but we need six variables to
+represent X1, X2, and X3 at the two time points. I added a time prefix to each
+variable name, and grouped the variables by time point. The column grouping
+labels above the variable names just clarify that structure. We now have a total
+of 21 values, of which 18 are the contents of the original cube.
 :::
 
 ## Choosing Data Structure
