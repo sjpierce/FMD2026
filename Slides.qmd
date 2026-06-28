@@ -72,7 +72,11 @@ I've organized this talk around answering a few simple questions. They are:
 
 :::
 
-# What is missing data?
+# What is missing data? {background-image="graphics/Woman_Raising_Hand.jpg" fig-alt="Photo of a woman raising her hand to ask a question."  background-size="contain" background-position="right" background-repeat="no-repeat"}
+
+::::: {.columns}
+
+:::: {.column width="45%"}
 Missing data (MD) are measurements you want or intended to collect but did not 
 get. [@Fernández-García-RN4151]
 
@@ -80,6 +84,9 @@ get. [@Fernández-García-RN4151]
 * Having MD is *common* in research studies.
 * If you do much research, you *will* run into MD.
 :::
+
+::::
+:::::
 
 ::: {.notes}
 In the simplest terms, missing data are simply measurements that you want or
@@ -184,7 +191,7 @@ analyses that cause missing data, such as inaccurately recoding a variable.
 Vigilance is warranted throughout the project lifecycle.
 :::
 
-# Why should we care about missing data? 
+# Why should we care about missing data?  {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;"  background-image="graphics/Hands_Raised.jpg" fig-alt="Photo of 10 hands raised, as if many people have questions."  background-size="contain" background-position="bottom" background-repeat="no-repeat"}
 
 ::: {.notes}
 So, I've defined missing data and identified some of the ways we can end up with
@@ -421,7 +428,7 @@ Let's pause to see if there are any questions about the material I've covered
 so far. 
 :::
 
-# How should we start addressing missing data issues? 
+# How should we start addressing missing data issues? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-cristian-rojas-8853388.jpg" fig-alt="Photo of a woman and a man discussing a project."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
 
 ::: {.notes}
 So, I've laid some foundations by defining missing data and discussing why it 
@@ -543,7 +550,7 @@ robustness checks that you conducted.
 So, TARMOS can be distilled down to three words: plan, conduct, and report. 
 :::
 
-# How can we diagnose the missing data issues for a given study? 
+# How can we diagnose the missing data issues for a given study?  {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-fauxels-3184634.jpg" fig-alt="Photo of a team of several people in business suits sitting at a table discussing a report."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
 
 ::: {.notes}
 So, I've laid some foundations by outlining the TARMOS framework, but each study
@@ -1322,7 +1329,7 @@ Let's pause to see if there are any questions about diagnosing missing data
 issues? 
 :::
 
-# What should we do about missing data?
+# What should we do about missing data? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-kampus-8463151.jpg" fig-alt="Photo of four people in a meeting."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
 
 :::{.notes}
 *Timing note: ~ 30 min in by this slide.*
