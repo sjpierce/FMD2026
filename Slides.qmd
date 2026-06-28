@@ -845,11 +845,6 @@ This sort of overview provides crucial information for your diagnostics. For
 example, if the Incomplete row were to contain only zeroes, you would 
 immediately know there is no missing data and no further diagnostics are 
 required. 
-
-Some statistical software packages have functions that make it very easy to 
-get this sort of overview. 
-
-If you have longitudinal data, I would start 
 :::
 
 ## Comparing MD Overviews for Long vs Wide Data
