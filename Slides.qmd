@@ -115,9 +115,9 @@ Data collection doesn't always go according to plan...
 data.frame(Human = c("Participant behavior", "Researcher errors", 
                      "Partner behavior"),
            Other = c("Equipment failures", "Records/Databases", 
-                     "Unusual events")) %>%  
-  kable(., format = "html", 
-        col.names = c("Human Factors", "Other Factors")) %>% 
+                     "Unusual events")) |>   
+  kable(format = "html", 
+        col.names = c("Human Factors", "Other Factors")) |> 
   kable_classic(full_width = FALSE, lightable_options = c("hover"), 
                 html_font = "Lato")
 ```
@@ -579,8 +579,8 @@ data.
 
 options(rgl.useNULL=TRUE)
 open3d(silent = TRUE)
-cube3d(scaleMatrix(5,5,5), col = "#C3FFEC", quads = 5) %>% 
-  translate3d(1, 1, 1) %>% 
+cube3d(scaleMatrix(5,5,5), col = "#C3FFEC", quads = 5) |> 
+  translate3d(1, 1, 1) |> 
   shade3d()
 
 axis3d(edge = 'x--', labels = c("1", "2", ".", ".", ".", "V"))
@@ -681,13 +681,13 @@ along the way.
 
 set.seed(24687)
 
-LONG <- expand.grid(ID = 1:3, Time = 1:2) %>% 
+LONG <- expand.grid(ID = 1:3, Time = 1:2) |>  
   mutate(X1 = sample(x = 11:33, size = 6, replace = TRUE), 
          X2 = sample(x = 1:7, size = 6, replace = TRUE),
-         X3 = sample(x = letters[1:3], size = 6, replace = TRUE)) %>% 
+         X3 = sample(x = letters[1:3], size = 6, replace = TRUE)) |>  
   arrange(ID, Time)
 
-kable(LONG, format = "html", align = "c") %>% 
+kable(LONG, format = "html", align = "c") |> 
   kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
                 lightable_options = c("hover"), html_font = "Lato") 
 ```
@@ -728,13 +728,13 @@ of the original data cube.
 #| label: tbl-WIDE
 #| tbl-cap: Wide Multivariate Format
 
-WIDE <- LONG %>% 
+WIDE <- LONG |> 
   pivot_wider(names_from = Time, values_from = c(X1, X2, X3), 
               names_glue = "T{Time}_{.value}", names_vary = "slowest")
 
-kable(WIDE, format = "html", align = "c") %>% 
+kable(WIDE, format = "html", align = "c") |> 
   kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
-                lightable_options = c("hover"), html_font = "Lato") %>% 
+                lightable_options = c("hover"), html_font = "Lato") |> 
   add_header_above(header = c(" ", "Time 1" = 3, "Time 2" = 3))
 ```
 
@@ -816,15 +816,16 @@ FN <- paste("<small>",
             "Cross-sectional data (wide multivariate format).",
             "</small>")
   
-cvv_missingness(boys) %>% 
+cvv_missingness(boys) |> 
   kable(format = "html", align = "r", digits = 1,
-        col.names = c("Subset", rep(c("n", "%"), times = 3))) %>% 
+        col.names = c("Subset", rep(c("n", "%"), times = 3))) |> 
   kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
-                lightable_options = c("hover"), html_font = "Lato") %>% 
-  row_spec(row = 3, italic = TRUE) %>% 
-  add_header_above(header = c(" " = 1, "Cases" = 2, "Variables" = 2, "Values" = 2)) %>% 
+                lightable_options = c("hover"), html_font = "Lato") |>
+  row_spec(row = 3, italic = TRUE) |> 
+  add_header_above(header = c(" " = 1, "Cases" = 2, "Variables" = 2, 
+                              "Values" = 2)) |> 
   footnote(general = FN, general_title = "<small>Note: </small>", 
-           footnote_as_chunk = TRUE, escape = F, threeparttable = TRUE) %>% 
+           footnote_as_chunk = TRUE, escape = F, threeparttable = TRUE) |> 
   cat()
 ```
 
@@ -861,7 +862,7 @@ LvW <- data.frame(format = c("Wide", "Long"),
 
 kable(LvW, format = "html", align = "c", 
       col.names = c("Format", 
-                    paste("Incomplete", c("Cases", "Variables")))) %>% 
+                    paste("Incomplete", c("Cases", "Variables")))) |> 
   kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
                 lightable_options = c("hover"), html_font = "Lato") 
 ```
@@ -891,18 +892,18 @@ FN <- paste("<small>",
             "Cross-sectional data (wide multivariate format).",
             "</small>")
   
-var_missingness(boys) %>% 
-  select(-Position, -N_Total) %>% 
+var_missingness(boys) |> 
+  select(-Position, -N_Total) |> 
   kable(format = "html", align = "r", digits = 1,
-        col.names = c("Variable", rep(c("n", "%"), times = 2))) %>% 
+        col.names = c("Variable", rep(c("n", "%"), times = 2))) |> 
   kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
                 lightable_options = c("hover"), html_font = "Lato", 
-                font_size = 25) %>% 
-  row_spec(row = 2:3, italic = TRUE) %>% 
-  row_spec(row = 4, bold = TRUE) %>% 
-  add_header_above(header = c(" ", "Observed" = 2, "Missing" = 2)) %>% 
+                font_size = 25) |> 
+  row_spec(row = 2:3, italic = TRUE) |> 
+  row_spec(row = 4, bold = TRUE) |> 
+  add_header_above(header = c(" ", "Observed" = 2, "Missing" = 2)) |> 
   footnote(general = FN, general_title = "<small>Note: </small>", 
-           footnote_as_chunk = TRUE, escape = F, threeparttable = TRUE) %>% 
+           footnote_as_chunk = TRUE, escape = F, threeparttable = TRUE) |> 
   cat()
 ```
 
@@ -1499,12 +1500,11 @@ data.frame(Deletion = c("Listwise deletion", "Pairwise deletion",
                         " "),
            Single = c("Mean Substitution", "Hot-Deck Imputation", 
                       "Regression Imputation", 
-                      "Last Observation Carried Forward")) %>% 
-  kable(., format = "html", 
-        col.names = c("Data Deletion", 
-                      "Single Imputation")) %>% 
+                      "Last Observation Carried Forward")) |> 
+  kable(format = "html", 
+        col.names = c("Data Deletion", "Single Imputation")) |> 
   kable_classic(full_width = FALSE, lightable_options = c("hover"), 
-                html_font = "Lato") %>% 
+                html_font = "Lato") |> 
   column_spec(1:2, width = "4.5in")
 ```
 
