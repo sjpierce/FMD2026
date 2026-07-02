@@ -992,18 +992,23 @@ percentages of
 Use a tracking system to organize & document data collection
 
 ::: {.incremental}
-* Whether & when participants attend each data collection event 
-* When & why participants exit the study.
+* Whether & when participants attend each data collection event.
+* When, how, & why participants exit the study.
 
 :::
 
 ::: {.notes}
-Reporting on the reasons why participants drop out, skip data collection events, 
-or have other missing data becomes much easier when you have a systematic 
-tracking system that records: 
+I strongly recommend designing and using a tracking system that organizes and 
+documents your data collection activities. It should aim to record things like: 
 
 * ▶ Whether & when participants attended data each collection event.
-* ▶ When & why participants exit the study.
+* ▶ When, how, & why participants exit the study, whether that's because they 
+  completed everything as planned, or because they withdrew partway through, 
+  you lost contact, or perhaps even became ineligible for further participation
+  because of a change in personal circumstances. 
+
+Such a tracking system provides you with data you can analyze to get crucial 
+insights into missing data issues. 
 
 :::
 
@@ -1049,11 +1054,20 @@ Randomized -> Assigned2 -> Dropped2 -> Analyzed2
 ::::
 
 ::: {.notes}
-The CONSORT 2025 statement requires disclosing missing data handling. 
+The Consolidated Standards of Reporting Trials (or CONSORT) 2025 statement is a 
+set of reporting guidelines specific to studies designed as randomized 
+controlled trials. A number of journals require authors to show they have met 
+the CONSORT checklist requirements when submitting papers for such studies. 
 
-Reporting on the reasons why participants drop out, skip data collection events, 
-or have other missing data becomes much easier when you have a systematic 
-tracking system that records: 
+Among other things, these standards require disclosing how you handled missing
+data. They include creating a flow chart like this one that shows how your
+sample size changes across stages of the study from assessing eligibility all
+the way to analyzing your outcomes. This is particularly useful for identifying
+when and why participants drop out. Obviously, dropping out early is a major 
+cause of missing data in longitudinal studies. 
+
+So the lesson here is that designing your tracking system to collect the data 
+required to fill out a CONSORT chart is a prudent investment. 
 :::
 
 ## Patterns of Missing Data [@Schafer-RN425]
