@@ -888,7 +888,7 @@ existing functions that make it easy to get these summaries. Other common
 software packages like Stata and SAS may also have functions for this. 
 :::
 
-## Example Data Set: Variable-Level Missingness 
+## Example Data: Variable-Level Missingness 
 
 ::::: {.columns}
 
@@ -933,18 +933,30 @@ var_missingness(boys) |>
 :::::
 
 :::{.notes}
-You should also examine variable-level missingness. A variable may be a 
-single-item construct (like age in this dataset), 
+The missing data overview tells you how many variables have missing data, but 
+obscures how much missing data there is for each variables. That's why you 
+should also examine variable-level missingness. This table shows one for the 
+example cross-sectional dataset I used a couple slides ago. This can reveal both 
+item and construct missingness. A variable may represent an item, a construct, 
+or both. 
 
-or it may be an item used to 
-define 
+* ▶ Here age is a single-item construct 
+* ▶ and body mass index is a 2-item construct 
+* ▶ defined by .as the ratio of weight divided by height squared. 
+* ▶ Both variables are required to compute bmi, so bmi will be missing 
+  whenever either weight or height is missing. 
 
-Here, age is a single-item 
-construct
-single-item construct
+Age is the only variable with no missing data; bmi has more missing data than
+either of its required items but overall still has a low rate of missingness. In
+contrast, we see that the variables gen, phb, and tv--which are all measures of
+pubertal development--have very high rates of missingness. The importance of 
+handling missing data well increases with the rate of missingness for variables 
+required by your planned analyses.  
 
-can be either 
-an item or a construct. 
+Consider running a variable-level missingness summary like this for both long
+and wide format datasets if you have longitudinal data. That may be especially
+important if your planned analysis will only use a subset of the available time
+points.
 :::
 
 
