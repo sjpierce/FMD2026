@@ -1142,6 +1142,37 @@ either height or weight is missing. That's because BMI is a measure derived from
 both height and weight. That's construct missingness caused by item-missingness. 
 :::
 
+## Using MD Pattern Plots
+
+Look for patterns that: 
+
+:::{.incremental}
+
+* Are common (i.e., high frequency).
+* Have large numbers of missing values.
+* Relate item missingness to construct missingness.
+* Show entire data collection events being skipped.
+* Show intermittent attendance or dropout. 
+
+:::
+
+:::{.notes}
+As with the missing data overview and variable-level missingness summaries, you
+may want to use missing data pattern plots on both long and wide versions of
+your data. Both overall and time-specific versions may be useful. These plots,
+especially in conjunction with data from a good tracking system, can help you
+discover things you can use later in handling missing data problems. It takes
+some creativity and thought to use them well, but some things you might look for
+include patterns that:
+
+* ▶  Are common (i.e., they occur with high frequency).
+* ▶  Have large numbers of missing values.
+* ▶  Relate item missingness to construct missingness.
+* ▶  Show entire data collection events being skipped.
+* ▶  Show intermittent attendance or dropout. 
+
+:::
+
 ## Rubin's Mechanisms of Missingness [@Rubin-RN8695]
 
 * Missing completely at random (MCAR)
