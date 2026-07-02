@@ -805,7 +805,7 @@ event but returning for subsequent events, or it may be a result of dropout or
 attrition that affects all remaining time points.
 :::
 
-## Example Data Set: Size & Missingness Overview
+## Example Data: Size & Missingness Overview
 
 ```{r}
 #| label: tbl-CVV-Missing
@@ -856,7 +856,7 @@ required.
 
 LvW <- data.frame(format = c("Wide", "Long"), 
                   cases = c("Persons with any MD (across variables & times)", 
-                            "Person-periods with any MD at specific times (across variables)"),
+                            "Persons with any MD at specific times (across variables)"),
                   variables = c("Variables with any MD at specific times (across persons)", 
                                 "Variables with any MD (across persons & times)"))
 
@@ -870,11 +870,22 @@ kable(LvW, format = "html", align = "c",
 ::: {.notes}
 If you have longitudinal data, the meaning of incomplete cases and incomplete 
 variables depends on whether you are summarizing a wide dataset or a long one. 
-This table shows some key points about how to interpret the kind of missingness 
-overview I showed you on the last slide. 
+This table shows some key points about how to interpret the missingness overview 
+I showed you on the last slide. Notice that:
 
-I recommend that you run such overviews for both long and wide versions of 
-longitudinal datasets. 
+* For wide formats, incomplete cases are persons with any missing data at all 
+  across both all variables and all times, while the incomplete variables are 
+  time-specific. 
+* Meanwhile, for long formats, incomplete cases are persons with any missing 
+  data at specific times but across all variables.  That means it is identifying 
+  person-periods with missing data. Incomplete variables in long format data 
+  sets are those with any missing data at all across all persons and times. 
+
+Running these overviews for both long and wide versions of longitudinal datasets 
+because that rapidly reveals key information about the amount of missing data. 
+It is often also quite easy to do. I know that software like SPSS and R have 
+existing functions that make it easy to get these summaries. Other common 
+software packages like Stata and SAS may also have functions for this. 
 :::
 
 ## Example Data Set: Variable-Level Missingness 
