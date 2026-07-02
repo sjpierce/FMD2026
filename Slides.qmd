@@ -964,22 +964,28 @@ points.
 
 Report numbers & percentages of: 
 
-* Participants w/ *any data* at each time point (retention/attrition)
-* Complete vs. incomplete cases (overall & by time point)
-* Missing values for each variable & construct
-* Reasons for attrition/dropout and other missing data
+:::{.incremental}
+* Incomplete cases, variables, & values (overall & by time).
+* Missing values per variable/construct (overall & by time).
+* Participants w/ *any observed data* at each time point (retention/attendance).
+* Reasons for dropout and other types of missing data. 
+
+:::
 
 ::: {.notes}
-The dimensions of Cattell's data box suggests some obvious summaries of the 
-amount of missing data. For example, we probably want to examine and report the 
-number and percentage of participants in the study who have *any data* at each 
-time point and use that to examine retention or attrition rates. Then we can go 
-further and report the number of complete vs. incomplete cases, both overall and
-separately by time point. Then, we can compute the numbers and percentages of 
-missing values for each variable, both overall and separately by time point. 
+To comply with TARMOS step 3, research products such as manuscripts include some 
+obvious summaries of the amount of missing data, such as the numbers and 
+percentages of 
 
-Finally, it can be really useful to report on the reasons why participants drop 
-out, skip data collection events, or have other missing data. 
+* ▶ Incomplete cases, variables, and values, like the overviews I 
+  showed earlier, both overall and by time point.
+* ▶ Missing values for each variable and construct, both overall and by time 
+  point.
+* ▶ Participants with *any observed data* at each time point. That helps you 
+  examine retention & attendance rates in longitudinal studies. 
+* ▶ Reasons for reasons why participants drop out, skip data collection events, 
+  or have other missing data. 
+  
 :::
 
 ## Tracking Systems
