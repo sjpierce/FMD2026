@@ -1083,13 +1083,13 @@ required to fill out a CONSORT chart is a prudent investment.
   
 :::
 
-::: {.fragment}
+:::: {.fragment}
 
 ::: {.callout-tip}
 We can aggregrate and visualize **R** to describe patterns of missingness!
 :::
 
-:::
+::::
 
 ::: {.notes}
 The amount of missing data is crucial, but the patterns of which data values are 
@@ -1176,9 +1176,13 @@ include patterns that:
 
 ## Rubin's Mechanisms of Missingness [@Rubin-RN8695]
 
+:::{.incremental}
+
 * Missing completely at random (MCAR)
 * Missing at random (MAR)
 * Missing not at random (MNAR)
+
+:::
 
 ::: {.fragment}
 
@@ -1334,6 +1338,7 @@ Classifying large datasets according to Rubin's mechanisms is *messy*.
 * Subsets of the data may fit into different mechanisms
 * Classify mechanisms for meaningful subsets of data defined by dimensions of 
   the data box (persons, variables, times) [@McKnight-RN1296] 
+* Consider structured approaches to diagnosing mechanisms [@Weberpals-RN8957].
 :::
 
 :::{.notes}
@@ -1351,14 +1356,14 @@ feel overwhelming.
 
 :::
 
-##
-
-
 ## Predictors of Missingness in Longitudinal Studies
 
+::: {.incremental}
 * Study arms and/or sites
 * Baseline/pretest values of outcome variables 
 * Other covariates (demographics)
+
+:::
 
 ::: {.fragment}
 
@@ -1444,8 +1449,10 @@ problems.
 
 ## Prevention: Data Collection Frequency & Timing [@McKnight-RN1296] 
 
+:::{.incremental}
 * Frequent data collection with short intervals between events is burdensome
 * Collect longitudinal data at sensible times given expected temporal patterns
+:::
 
 :::{.notes}
 First, let's consider fine-tuning data collection logistics. 
@@ -1467,9 +1474,12 @@ rapid change and less often when expect relative stability or slower change.
 
 Every variable is an opportunity for missing data. 
 
+:::{.incremental}
 * Only collect variables that you need
 * Choose instruments wisely (short, reliable, valid, & relevant)
 * Consider collecting multiple measures of key constructs
+
+:::
 
 :::{.notes}
 Remember that every variable you try to collect adds to participant burden. 
@@ -1493,10 +1503,13 @@ missing information when modeling incomplete datasets.
 
 ## Prevention: Dropout [@de-Leeuw-RN8682; @Laurie-RN8257; @McKnight-RN1296; @Wisniewski-RN2978] 
 
+:::{.incremental}
 * Establish relationships 
 * Maintain contact with participants 
 * Offer adequate incentives
 * Make participation convenient
+
+:::
 
 :::{.notes}
 *Timing should be ~33-34 min by here.*
@@ -1528,10 +1541,13 @@ better engage participants in their primary language.
 
 ## Prevention: Data Collection Methods
 
+:::{.incremental}
 * Develop detailed protocols
 * Train data collection & entry staff 
 * Pay attention to instrument design 
 * Test equipment & instruments
+
+:::
 
 :::{.notes}
 ▶ Because data collection is essential to most projects, we need to develop
