@@ -1729,16 +1729,6 @@ MI is unbiased and yields accurate standard errors under both MCAR and MAR
 mechanisms, and it can even handle MNAR data reasonably in some circumstances. 
 :::
 
-## Example of Effect of Missingness (STRATOS)
-
-Marianne suggested read Supplemental Materials section B5 example in 
-@Heinze-RN8641 and consider discussing it. 
-
-## Causal analyses
-
-Watch @Tilling-RN8960 and see what to mention? Marianne suggested this.
-
-
 ## Where to Learn More
 
 * Short overviews [@El-Masri-RN8683; @Fernández-García-RN4151; @Graham-RN1615; @Little-RN8684; @Newman-RN8223;  @Schafer-RN425] 
@@ -1770,3 +1760,28 @@ What questions do you have about missing data issues?
 So that was a short introduction to fundamental issues with missing data. We now 
 have a little remaining time for questions and discussion. 
 :::
+
+
+## Use Decision Tree Models [@Tierney-RN8958]
+
+One innovative suggestion I've seen is using decision tree models to discover 
+predictors of missingness. 
+
+Classification and regresstion tree (CART)
+Boosted Regression Tree (BRT)
+
+
+## Structural Missing Data Investigations [@Weberpals-RN8957]
+
+Paper about smdi package for R has some good ideas. 
+
+## Example of Effect of Missingness (STRATOS)
+
+Marianne suggested read Supplemental Materials section B5 example in 
+@Heinze-RN8641 and consider discussing it. 
+
+## Causal analyses
+
+Watch @Tilling-RN8960 and see what to mention? Marianne suggested this.
+
+
