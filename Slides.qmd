@@ -1675,7 +1675,7 @@ the same results when applied well.
 ## Treatment: FIML [@Enders-RN8673; @McKnight-RN1296]
 
 FIML estimates parameters by combining observed data, relationships among 
-observed variables, and assumptions about distributions. 
+observed variables, & distribution assumptions. 
 
 * Seeks parameter estimates that best fit the data
 * Uses all available data without imputing any values
@@ -1754,6 +1754,8 @@ mechanisms, and it can even handle MNAR data reasonably in some circumstances.
     * Longitudinal studies [@Laurie-RN8257]
     * Surveys [@de-Leeuw-RN8682]
 * Dealing with item-level missingness in scale scores [@Graham-RN1615; @Newman-RN8223]
+* Diagnostics with smdi package for R [@Weberpals-RN8957]
+* Applying CART/BRT models [@Tierney-RN8958]
 
 :::{.notes}
 :::
