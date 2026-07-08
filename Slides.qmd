@@ -19,8 +19,9 @@ title-slide-attributes:
   complete with speaker notes, reference list, and links to resources, will be 
   available from that link.
   
-  [In speaker notes, the symbol ▶ marks when to press the spacebar or click the 
-  right arrow to reveal the next animated element on a slide.]"
+  [*Display at 1280 x 720 resolution*. In speaker notes, the symbol ▶ marks  
+  when to press the spacebar or click the right arrow to reveal the next 
+  animated element on a slide.]"
 csl: apa-numeric-superscript-brackets.csl
 bibliography: references.bib
 format: 
@@ -60,7 +61,8 @@ library(piercer)    # for cvv_missingnes(), var_missingness()
 * How can we diagnose the missing data issues for a given study? 
 * What should we do about missing data?
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
 I've organized this talk around answering a few simple questions. They are: 
 
 * What is missing data? 
@@ -71,6 +73,7 @@ I've organized this talk around answering a few simple questions. They are:
 * What should we do about missing data?
 
 :::
+::::
 
 # What is missing data? {background-image="graphics/Woman_Raising_Hand.jpg" fig-alt="Photo of a woman raising her hand to ask a question."  background-size="contain" background-position="right" background-repeat="no-repeat"}
 
@@ -78,17 +81,20 @@ I've organized this talk around answering a few simple questions. They are:
 
 :::: {.column width="45%"}
 Missing data (MD) are measurements you want or intended to collect but did not 
-get. [@Fernández-García-RN4151]
+get [@Fernández-García-RN4151]
 
 ::: {.incremental}
-* Having MD is *common* in research studies.
-* If you do much research, you *will* run into MD.
+* Having MD is *common* in research studies
+* If you do much research, you *will* run into MD
 :::
 
 ::::
 :::::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 1-2 min by here.*
+
 In the simplest terms, missing data are simply measurements that you want or
 intended to collect but did not get. While you can sometimes categorize what
 kind of missing data you have or identify why they are missing, the heart of the
@@ -102,6 +108,7 @@ studies. Entirely avoiding it is difficult and rare.
 missing data. Therefore, it's worth learning about the issues surrounding 
 missing data and the consequences of how we deal with them.
 :::
+::::
 
 # Why do we end up with missing data? 
 Data collection doesn't always go according to plan...
@@ -123,7 +130,10 @@ data.frame(Human = c("Participant behavior", "Researcher errors",
 ```
 :::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 2-3 min by here.*
+
 Why do we end up with missing data? Like many things in life, data collection
 does not always go according to plan. ▶ 
 
@@ -147,6 +157,7 @@ damaged or even destroyed according to some retention policy. In terms of
 events, data collection for one of my projects was disrupted by an unusually 
 strong hurricane in Florida.
 :::
+::::
 
 # Missing Data & Project Lifecycle
 
@@ -167,7 +178,10 @@ Plan -> Collect -> Enter -> Manage -> Analyze
 }
 ```
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 4 min by here.*
+
 Missing data result from events at various points in a project's lifecycle and 
 that may affect your options to handle the problem. At the planning stage, one 
 could leave out an item by accident while designing an instrument. 
@@ -190,14 +204,19 @@ analyses that cause missing data, such as inaccurately recoding a variable.
 
 Vigilance is warranted throughout the project lifecycle.
 :::
+::::
 
 # Why should we care about missing data?  {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;"  background-image="graphics/Hands_Raised.jpg" fig-alt="Photo of 10 hands raised, as if many people have questions."  background-size="contain" background-position="bottom" background-repeat="no-repeat"}
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 5-6 min by here.*
+
 So, I've defined missing data and identified some of the ways we can end up with
 it. But why should we care about it? That's the crucial question I'll answer 
 next. 
 :::
+::::
 
 ## Ethical Guidelines {.smaller}
 Handling missing data well is an ethics issue. An ethical statistical 
@@ -226,7 +245,10 @@ practitioner: [@ASACPE-RN8343]
 
 ::::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 5-6 min by here.*
+
 Perhaps the broadest answer to why we should care about missing data is that 
 this is an ethics issue. Here I'm going to draw on the ethical guidelines for 
 a professional organization to which I belong. The American Statistical 
@@ -247,23 +269,27 @@ missing data handling."
 Other professional societies also have ethics codes that would also touch on 
 these ideas about integrity. 
 :::
+::::
 
 ## Research Ethics
 The ethical quality of an analysis depends on the credibility of its 
-assumptions [@Enders-RN8974]. 
+assumptions [@Enders-RN8974] 
 
 ::: {.incremental}
 * Analyses with missing data must make assumptions, some of which 
-  cannot be empirically tested. 
+  cannot be empirically tested
 * Rigor demands using methods that can plausibly yield valid, unbiased 
-  estimates. 
-* Poor assumptions lead to bias & misleading conclusions.
+  estimates
+* Poor assumptions lead to bias & misleading conclusions
 * Transparency requires reporting extent of missing data, assumptions, 
-  rationales, & how we adapted the analyses. 
+  rationales, & how we adapted the analyses
   
 :::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 7 min by here.*
+
 The relevance of those ASA guidelines to the handling of missing data becomes 
 clearer when we consider a paper by Craig Enders and Amanda Gottschall. They 
 articulated the relationship between how we handle missing data and the ethical 
@@ -285,19 +311,23 @@ biased, invalid, and misleading results. It is unethical to rely on them.
 of missing data, our assumptions about them, supporting rationales, and how we 
 adapted our analyses to deal with the missing data. 
 :::
+::::
 
 
 ## Scientific Activities 
-There are 3 major scientific activities that can be affected by missing data. 
+There are 3 major scientific activities that can be affected by missing data 
 [@McKnight-RN1296]
 
 ::: {.incremental}
-* Making structured observations of constructs.
-* Using observations to draw inferences about relationships between constructs.
-* Generalizing the results to populations beyond the collected sample.
+* Making structured observations of constructs
+* Using observations to draw inferences about relationships between constructs
+* Generalizing results to populations beyond the collected sample
 ::: 
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 8-9 min by here.*
+
 Broadly speaking, scientific work consists of three major activities, each of
 which has associated methodology concerns. 
 
@@ -313,6 +343,7 @@ our results.
 
 Let's explore each of those ideas in more detail.
 :::
+::::
 
 ## Consequences for Measurement [@McKnight-RN1296]
 
@@ -321,7 +352,10 @@ Let's explore each of those ideas in more detail.
 * Bias from poor content coverage
 * Construct validity
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 9-10 min by here.*
+
 Missing data can affect the availability of a construct for your analyses. 
 The extreme case would be a construct measured by a single variable.
 If that's missing, then the entire construct is missing for that individual 
@@ -339,6 +373,7 @@ You may get a biased estimate of the construct due to poorer content coverage if
 they are missing. Construct validity depends on both reliability and content 
 coverage, so missing data is a threat to construct validity.
 :::
+::::
 
 ## Consequences for Internal Validity [@Fernández-García-RN4151; @McKnight-RN1296]
 
@@ -347,7 +382,10 @@ coverage, so missing data is a threat to construct validity.
 * Power and precision 
 * Inaccurate model assumptions
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.8rem;"}
+*Timing: ~ 11 min by here.*
+
 Missing data is a threat to a study's internal validity for several reasons.
 Selection bias can result from systematic differences between subgroups of
 participants on constructs relevant to the study conclusions. For example, those
@@ -384,6 +422,7 @@ robust than others, but making inaccurate modeling assumptions risks running
 analyses that will yield misleading conclusions. That's another threat to 
 internal validity. 
 :::
+::::
 
 ## Consequences for Generalizability [@Fernández-García-RN4151; @McKnight-RN1296]
 
@@ -392,7 +431,10 @@ A representative sample is crucial to generalizing to the intended population!
 * Theory development & cumulative knowledge
 * Policy & decision-making
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 14 min by here.*
+
 We draw samples to study populations when it isn't feasible to collect the data
 we want from the entire population. The key to getting inferences that properly
 generalize from a sample to the intended population is getting a representative
@@ -419,11 +461,14 @@ Finally, the big picture here is that when missing data impair generalizability,
 we may be using inaccurate or misleading findings to inform public policy and 
 important decisions.
 :::
+::::
 
 # Audience Questions (1) 
 Do you have questions about what missing data is and why it is important? 
 
 ::: {.notes}
+*Timing: ~ 16 min by here. Continue by 21 min.*
+
 Let's pause to see if there are any questions about the material I've covered 
 so far. 
 :::
@@ -431,6 +476,8 @@ so far.
 # How should we start addressing missing data issues? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-cristian-rojas-8853388.jpg" fig-alt="Photo of a woman and a man discussing a project."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
 
 ::: {.notes}
+*Timing: ~ 21 min in by here.*
+
 So, I've laid some foundations by defining missing data and discussing why it 
 matters. We know it poses measurement, internal validity, and generalizability 
 problems for our studies. Now the next logical question is "How should we start 
@@ -443,11 +490,14 @@ framework that can guide your efforts to do that.
 **T**reatment **A**nd **R**eporting of **M**issing data in **O**bservational 
 **S**tudies
 
-* Advocates for systematic, transparent methodology.
-* Recommends a structured approach with 3 steps.
-* Principles are applicable beyond observational studies.
+* Advocates for systematic, transparent methodology
+* Recommends a structured approach with 3 steps
+* Principles are applicable beyond observational studies
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 21-22 min by here.*
+
 The Treatment And Reporting of Missing data in Observational Studies (TARMOS)
 framework advocates for applying a systematic, transparent methodology for
 handling missing data. It recommends taking a 3-step approach to that task. It
@@ -458,18 +508,22 @@ research designs such as experimental and quasi-experimental studies.
 Next, I'll briefly describe the steps in TARMOS, along with one small adjustment 
 I would make to the framework. 
 :::
+::::
 
 ## TARMOS Step 1: Plan the Analysis
 
-* Identify the analyses you would use if there were no missing data.
-    * Write a statistical analysis plan [@Cressman-RN8487]! 
-* Decide how you will handle missing data. 
+* Identify the analyses you would use if there were no missing data
+    * Write a statistical analysis plan [@Cressman-RN8487]
+* Decide how you will handle missing data 
     * Is a complete records analysis likely to be valid?
     * Is multiple imputation likely to offer benefits over a complete records 
       analysis?
     * Is a sensitivity analysis required, and if so how should it be framed?
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 22-23 min by here.*
+
 The first step in TARMOS encourages you to start by identifying the analysis 
 models you would use if there were no missing data at all. Here, it can be 
 useful to apply recommendations about writing good statistical analysis plans. 
@@ -493,19 +547,23 @@ that *could* be applied facilitates making decisions. You can identify some
 general options during step 1 but my opinion is that the actual choice should be 
 made in step 2.
 :::
+::::
 
 ## TARMOS Step 2: Conduct the Analysis
 
-* Examine whether data are suitable for planned analysis. 
+* Examine whether data are suitable for planned analysis
     * Apply initial data analysis guidelines 
-      [@Baillie-RN8311; @Heinze-RN8641; @Huebner-RN3947; @Huebner-RN3997]. 
+      [@Baillie-RN8311; @Heinze-RN8641; @Huebner-RN3947; @Huebner-RN3997]
     * Diagnose missing data issues 
       [@Enders-RN8673; @Enders-RN8974; @McKnight-RN1296] *before* deciding how 
-      to handle them. 
-    * Update the statistical analysis plan.
-* Conduct substantive analysis, acknowledge & justify deviations from the plan.
+      to handle them
+    * Update the statistical analysis plan
+* Conduct substantive analysis, acknowledge & justify deviations from the plan
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.8rem;"}
+*Timing: ~ 24-25 min by here.*
+
 The second step in TARMOS is conducting analyses. The framework encourages you
 to examine whether your data are suitable for the planned analysis. There is a
 growing literature with guidelines about planning and conducting initial data
@@ -533,14 +591,18 @@ important to acknowledge and justify any deviations from the original analysis
 plan. The initial data analyses should provide evidence for why those changes 
 were necessary. 
 :::
+::::
 
 ## TARMOS Step 3: Report the Analysis
 
-* Describe the missing data.
-* Describe how missing data were handled & justify the approach.
-* Report & interpret results.
+* Describe the missing data
+* Describe how missing data were handled & justify the approach
+* Report & interpret results
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 26-27 min by here.*
+
 The third and final step in TARMOS is reporting your analysis. Your paper should
 describe the missing data issues you detected in Step 2, how you handled them,
 and why you selected that approach. Obviously, you should then include and
@@ -549,10 +611,14 @@ robustness checks that you conducted.
 
 So, TARMOS can be distilled down to three words: plan, conduct, and report. 
 :::
+::::
 
 # How can we diagnose the missing data issues for a given study?  {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-fauxels-3184634.jpg" fig-alt="Photo of a team of several people in business suits sitting at a table discussing a report."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 27-28 min by here.*
+
 So, I've laid some foundations by outlining the TARMOS framework, but each study
 is unique. The nature and extent of the missing data issues you face will vary
 across studies. We can't make good choices about what to do about missing data
@@ -564,6 +630,7 @@ describing the amounts, patterns, and mechanisms of missing data. It helps to
 start by thinking about data structures that affect how we organize and use
 data.
 :::
+::::
 
 ## Cattell's Data Box [@Cattell-RN8693] {.smaller}
 
@@ -602,15 +669,18 @@ rglwidget()
 ::: {.column width="50%"}
 <br> *How much data is there? Data volume is* $N_{values} = P \times V \times T$
 
-* Slices through the cube represent subsets of data. 
-* Constructs are often measured by groups of adjacent variables (items).  
+* Slices through the cube represent subsets of data
+* Constructs are often measured by groups of adjacent variables (items)
 * Missing data puts holes in your cube!
 
 :::
 
 ::::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 28-29 min by here.*
+
 Raymond Cattell described data as forming a 3-dimensional box or cube, with the
 dimensions being persons, variables, and occasions (or times). This is useful
 for thinking about the total volume of data we aim to collect. For a simple
@@ -630,6 +700,7 @@ cheese. The impact of that depends on how much data volume is lost and any
 patterns in where and why those holes are located relative to the data you want 
 to analyze. 
 :::
+::::
 
 ## Slicing & Rearranging the Data Cube
 
@@ -645,13 +716,18 @@ Cube [label = "Data Cube\nP x V x T"]
 Slices [label = "T Slices\n P x V"]
 Long [label = "Long Univariate Format\nTime → Extra Rows\n1 case per person-period"]
 Wide [label = "Wide Multivariate Format\nTime → Extra Columns\n1 case per person"]
+
+edge [fontname="Lato"]
 Cube -> Slices [label = "Cut By Time"]
 Slices -> Long [label = "Stack"]
 Slices -> Wide [label = "Spread"]
 }
 ```
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 29-31 min by here.*
+
 The 3-dimensional data cube concept is useful, but actual data files are often
 constrained to a 2-dimensional matrix with rows for cases and columns for 
 variables. We have to slice and rearrange the box to handle the time dimension
@@ -668,6 +744,7 @@ row, so each time point must become an additional set of columns. We are
 spreading the time slices out horizontally and renaming variables as needed
 along the way.
 ::: 
+::::
 
 ## Data Structure: Long
 
@@ -702,16 +779,19 @@ kable(LONG, format = "html", align = "c") |>
 
 <br><br><br> <!-- Add line breaks to control layout-->
 
-Cube: $P = 3, V = 3, T = 2$, $N_{cases} = P \times T = 6$.
+Cube: $P = 3, V = 3, T = 2$, $N_{cases} = P \times T = 6$
 
-* Including ID & Time: $V = 5$, $N_{values} = P \times V \times T = 30$.
-* Excluding ID & Time: $V = 3$, $N_{values} = P \times V \times T = 18$.
+* Including ID & Time: $V = 5$, $N_{values} = P \times V \times T = 30$
+* Excluding ID & Time: $V = 3$, $N_{values} = P \times V \times T = 18$
     
 :::
 ::::
 :::::
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 31-33 min by here.*
+
 Suppose our data cube has measurements for P = 3 people, on three variables (X1,
 X2, and X3), each measured at two time points. That implies a total of 18
 values. This table is the result of translating that into a long univariate
@@ -721,6 +801,7 @@ to a specific person at a specific time point. We end up with 6 cases and 5
 variables, for a total of 30 possible data values, of which 18 are the contents 
 of the original data cube.
 :::
+::::
 
 ## Data Structure: Wide
 
@@ -739,14 +820,17 @@ kable(WIDE, format = "html", align = "c") |>
 ```
 
 ::: {style="font-size: 0.7em;"}
-Cube: $P = 3, V = 3 , T = 2$. $N_{cases} = P = 3$.
+Cube: $P = 3, V = 3 , T = 2$. $N_{cases} = P = 3$
 
-* Including ID: $V = 7$, $N_{values} = P \times V = 21$.
-* Excluding ID: $V = 6$, $N_{values} = P \times V = 18$.
+* Including ID: $V = 7$, $N_{values} = P \times V = 21$
+* Excluding ID: $V = 6$, $N_{values} = P \times V = 18$
 
 :::
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 32-34 min by here.*
+
 This table shows the same data you saw on the last slide, rearranged into wide
 format. So, now we have one row per unique ID, but we need six variables to
 represent X1, X2, and X3 at the two time points. I added a time prefix to each
@@ -754,15 +838,19 @@ variable name, and grouped the variables by time point. The column grouping
 labels above the variable names just clarify that structure. We now have a total
 of 21 values, of which 18 are the contents of the original cube.
 :::
+::::
 
 ## Choosing Data Structure
 
-* Long & wide data sets are useful for different diagnostic tasks.
-* Pay attention to which structure you are using.
-* You may need *both* long & wide data sets.
-* Use the *relevant subset* of cases & variables in diagnostics. 
+* Long & wide data sets are useful for different diagnostic tasks
+* Pay attention to which structure you are using
+* You may need *both* long & wide data sets
+* Use the *relevant subset* of cases & variables in diagnostics
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 32-34 min by here.*
+
 Both the long and wide data structures are useful but assessing some kinds of
 missing data issues may be easier with one structure than with the other.
 Naturally, you should pay attention to which data structure you are using and
@@ -776,6 +864,7 @@ the diagnostic analyses, but we often have more data than is strictly required
 for a given substantive analysis. Create smaller data sets for use in the 
 diagnostic analyses. 
 :::
+::::
 
 ## Types of Missingness [@McKnight-RN1296; @Schafer-RN425]
 
@@ -784,7 +873,10 @@ diagnostic analyses.
 * Person level (unit non-response)
 * Person-period level (wave nonresponse; intermittent vs. dropout)
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 34-36 min by here.*
+
 There are a variety of types of missingness to consider as we begin describing 
 a given data set. One place to start involves examining different parts of the
 data cube. For example, item-level missingness pertains to an individual 
@@ -804,6 +896,7 @@ person-period missingness could be intermittent, with a participant skipping one
 event but returning for subsequent events, or it may be a result of dropout or
 attrition that affects all remaining time points.
 :::
+::::
 
 ## Example Data: Size & Missingness Overview
 
@@ -829,7 +922,10 @@ cvv_missingness(boys) |>
   cat()
 ```
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 36-38 min by here.*
+
 Here I'm showing a table with a missingness overview for data from a study of 
 growth among Dutch boys. This is cross-sectional data, which is effectively in 
 a wide multivariate format. That means each boy is represented by a single case.
@@ -847,6 +943,7 @@ This sort of overview provides crucial diagnostic information. For example, if
 the Incomplete row were to contain only zeroes, you would immediately know there
 is no missing data and no further diagnostics are required.
 :::
+::::
 
 ## Comparing MD Overviews for Long vs Wide Data
 
@@ -867,7 +964,10 @@ kable(LvW, format = "html", align = "c",
                 lightable_options = c("hover"), html_font = "Lato") 
 ```
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 37-39 min by here.*
+
 If you have longitudinal data, the meaning of incomplete cases and incomplete 
 variables depends on whether you are summarizing a wide dataset or a long one. 
 This table shows some key points about interpreting the type of missingness 
@@ -886,6 +986,7 @@ datasets reveals additional insights about the amount of missing data. It is
 easy to do. Some statistical software packages have really nice features for
 producing these summaries and other missing data diagnostics.
 :::
+::::
 
 ## Example Data: Variable-Level Missingness 
 
@@ -923,23 +1024,24 @@ var_missingness(boys) |>
 <br><br> <!-- Add line breaks to control layout-->
 
 ::: {.incremental}
-* Age is a 1-item construct. 
+* Age is a 1-item construct
 * Body mass index is a **2-item construct**: 
-    * $bmi = wgt/hgt^2$.
-    * Both *items* are required.
+    * $bmi = wgt/hgt^2$
+    * Both *items* are required
 :::
 ::::
 :::::
 
 ::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 39-41 min by here.*
 
-:::{style="font-size: 1.5rem;"}
-The missingness overviews tell you how many variables have missing data, but 
-obscures which variables have it and how how much is for each on. That's why you 
-should also examine variable-level missingness. This table shows one for the 
-example cross-sectional dataset I used a couple slides ago. This can reveal both 
-item and construct missingness. A variable may represent an item, a construct, 
-or both. 
+The missingness overviews tell you how many variables have missing data, but not
+which variables have it or how much is missing for each one. That's why you
+should also examine a table of variable-level missingness statistics. This table
+shows one for the example dataset I used a couple slides ago. This can reveal
+both item and construct missingness. A variable may represent an item, a
+construct, or both.
 
 * ▶ Here age is a single-item construct that has no missing data
 * ▶ and body mass index is a 2-item construct defined by 
@@ -965,17 +1067,20 @@ points.
 Report numbers & percentages of: 
 
 :::{.incremental}
-* Incomplete cases, variables, & values (overall & by time).
-* Missing values per variable/construct (overall & by time).
-* Participants w/ *any observed data* at each time point (retention/attendance).
-* Reasons for dropout and other types of missing data. 
+* Incomplete cases, variables, & values (overall & by time)
+* Missing values per variable/construct (overall & by time)
+* Participants w/ *any observed data* at each time point (retention/attendance)
+* Reasons for dropout and other types of missing data
 
 :::
 
-::: {.notes}
-To comply with TARMOS step 3, research products such as manuscripts include some 
-obvious summaries of the amount of missing data, such as the numbers and 
-percentages of 
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 41-43 min by here.*
+
+To comply with TARMOS step 3, research products such as manuscripts should
+include some obvious summaries of the amount of missing data, such as the
+numbers and percentages of:
 
 * ▶ Incomplete cases, variables, and values, like the overviews I 
   showed earlier, both overall and by time point.
@@ -983,21 +1088,25 @@ percentages of
   point.
 * ▶ Participants with *any observed data* at each time point. That helps you 
   examine retention & attendance rates in longitudinal studies. 
-* ▶ Reasons for reasons why participants drop out, skip data collection events, 
+* ▶ Reasons for why participants drop out, skip data collection events, 
   or have other missing data. 
   
 :::
+::::
 
 ## Tracking Systems
 Use a tracking system to organize & document data collection
 
 ::: {.incremental}
-* Whether & when participants attend each data collection event.
-* When, how, & why participants exit the study.
+* Whether & when participants attend each data collection event
+* When, how, & why participants exit the study
 
 :::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 42-44 min by here.*
+
 I strongly recommend designing and using a tracking system that organizes and 
 documents your data collection activities. It should aim to record things like: 
 
@@ -1011,16 +1120,17 @@ Such a tracking system provides you with data you can analyze to get crucial
 insights into missing data issues. 
 
 :::
+::::
 
 ## CONSORT 2025 Statement [@Hopewell-RN9004]
 
 :::: {.columns}
 
 ::: {.column width="40%"}
-* Requires disclosing how you handled MD. 
+* Requires disclosing how you handled MD
 * Flow charting sample size by stage of study:
-    * Uses tracking data.
-    * Reveals dropout.
+    * Uses tracking data
+    * Reveals dropout
 
 :::
 
@@ -1053,7 +1163,10 @@ Randomized -> Assigned2 -> Dropped2 -> Analyzed2
 
 ::::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 43-45 min by here.*
+
 The Consolidated Standards of Reporting Trials (or CONSORT) 2025 statement is a 
 set of reporting guidelines specific to studies designed as randomized 
 controlled trials. A number of journals require authors to show they have met 
@@ -1069,6 +1182,7 @@ cause of missing data in longitudinal studies.
 So the lesson here is that designing your tracking system to collect the data 
 required to fill out a CONSORT chart is a prudent investment. 
 :::
+::::
 
 ## Patterns of Missing Data [@Schafer-RN425]
 
@@ -1091,7 +1205,10 @@ We can aggregrate and visualize **R** to describe patterns of missingness!
 
 ::::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 44-46 min by here.*
+
 The amount of missing data is crucial, but the patterns of which data values are 
 missing are also important diagnostic tools. Now I need to define a few terms 
 and symbols that are useful for describing patterns. 
@@ -1109,6 +1226,7 @@ that could be observed. We can split it into two pieces,
 we can aggregate across cases to identify unique patterns of missing vs observed
 values and see how often they occur.
 :::
+::::
 
 ## Example Data: MD Patterns Plot
 
@@ -1120,7 +1238,10 @@ values and see how often they occur.
 plot_pattern(boys, square = FALSE, rotate = FALSE)
 ```
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 45-47 min by here.*
+
 This graph shows missing data patterns in the example growth data about Dutch
 boys obtained by aggregating the R matrix. Each row is a distinct pattern of
 observed values (in blue cells) versus missing values (in pink cells) across the
@@ -1142,6 +1263,7 @@ the other measures. That's 58% of the sample.
 Another thing we can see here is the construct missingness in body mass index 
 that we know is caused by item-missingness in height or weight. 
 :::
+::::
 
 ## Using MD Pattern Plots
 
@@ -1149,15 +1271,18 @@ Look for patterns that:
 
 :::{.incremental}
 
-* Are common (i.e., high frequency).
-* Have large numbers of missing values.
-* Relate item missingness to construct missingness.
-* Show entire data collection events being skipped.
-* Show intermittent attendance or dropout. 
+* Are common (i.e., high frequency)
+* Have large numbers of missing values
+* Relate item missingness to construct missingness
+* Show entire data collection events being skipped
+* Show intermittent attendance or dropout
 
 :::
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 47-49 min by here.*
+
 As with the missing data overview and variable-level missingness summaries, you
 may want to use missing data pattern plots on both long and wide versions of
 your data. Both overall and time-specific versions may be useful. These plots,
@@ -1173,6 +1298,7 @@ include patterns that:
 * ▶  Show intermittent attendance or dropout. 
 
 :::
+::::
 
 ## Rubin's Mechanisms of Missingness [@Rubin-RN8695]
 
@@ -1192,7 +1318,10 @@ Some mechanisms yield more bias: **MCAR < MAR < MNAR**
 
 :::
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 48-50 min by here.*
+
 Understanding Donald Rubin's system for classifying missing data is crucial to
 making good decisions about how to handle missing data. This system is pervasive
 in the literature on missing data because it's useful despite reliance on some
@@ -1209,10 +1338,11 @@ data. The three categories are:
 statistical analyses, with MCAR yielding the least bias and MNAR yielding the 
 most. Let's take a closer look at each mechanism. 
 :::
+::::
 
 ## MCAR
 MCAR is when neither observed nor unobserved values predict which values are 
-missing. 
+missing
 
 ```{dot}
 //| fig-width: 9
@@ -1235,20 +1365,23 @@ Unobserved -> Random -> Observed [style = "invis"]
 }
 ```
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 49-51 min by here.*
+
 MCAR is the least damaging kind of missingness because it means that neither
 observed nor unobserved values predict which values are likely to be missing.
-The missingness is entirely a result of random processes and there's no
-discernible pattern to it. That's why it causes the least bias in statistical
-analyses. However, using listwise deletion will still reduce measurement
-reliability and statistical power and precision with MAR data. There is a formal
-statistical test for whether MCAR is a plausible mechanism. I don't see it used
-very often, but that's partly because few papers fully report missing data 
-diagnostics.
+The missingness is entirely a result of random processes: there's no discernible
+pattern to it. That's why it causes the least bias in statistical analyses.
+However, using listwise deletion will still reduce measurement reliability and
+statistical power and precision with MCAR data. There is a formal statistical
+test for whether MCAR is a plausible mechanism. I don't see it used very often,
+but that's partly because few papers fully report missing data diagnostics.
 :::
+::::
 
 ## MAR
-MAR is when observed values predict which values are missing.
+MAR is when observed values predict which values are missing
 
 ```{dot}
 //| fig-width: 9
@@ -1274,7 +1407,10 @@ Unobserved -> Missing [style = "invis"]
 ```
 
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 50-52 min by here.*
+
 MAR is when observed values predict which values are likely to be missing. Thus,
 we can see patterns in what's missing because they are related to data that we
 have available. While there may still be some random influences too, the crucial
@@ -1286,9 +1422,10 @@ relationships between missingness and observed values to reduce bias. This
 mechanism is plausible for many datasets. You can run analyses to examine
 whether MAR is more plausible than MCAR.
 :::
+::::
 
 ## MNAR
-MNAR is when unobserved values predict which values are missing. 
+MNAR is when unobserved values predict which values are missing
 
 ```{dot}
 //| fig-width: 9
@@ -1313,7 +1450,10 @@ Unobserved -> Random -> Observed [style = "invis"]
 }
 ```
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 51-53 min by here.*
+
 MNAR is sometimes called non-ignorable nonresponse [@Schafer-RN425] because
 under this mechanism whether or not a value is missing depends on unobserved
 values, either on the variable itself, or on other unobserved variables. There
@@ -1329,19 +1469,23 @@ MNAR in a specific study, but other scientists may or may not be persuaded by
 those arguments when you can't provide supporting evidence due to lack of the
 necessary data.
 :::
+::::
 
 ## Rubin's Mechanisms & Cattell's Box [@Cattell-RN8693; @McKnight-RN1296; @Rubin-RN8695]
 
-Classifying large datasets according to Rubin's mechanisms is *messy*. 
+Classifying large datasets according to Rubin's mechanisms is *messy*
 
 ::: {.incremental}
 * Subsets of the data may fit into different mechanisms
 * Classify mechanisms for meaningful subsets of data defined by dimensions of 
   the data box (persons, variables, times) [@McKnight-RN1296] 
-* Consider structured approaches to diagnosing mechanisms [@Weberpals-RN8957].
+* Consider structured approaches to diagnosing mechanisms [@Weberpals-RN8957]
 :::
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 52-54 min by here.*
+
 McKnight and colleagues pointed out that classfying large datasets into Rubin's 
 mechanisms is a practical challenge because it just gets messy. The task can 
 feel overwhelming. 
@@ -1355,6 +1499,7 @@ feel overwhelming.
 * ▶ Consider structured approaches to diagnosing mechanisms [@Weberpals-RN8957].
 
 :::
+::::
 
 ## Predictors of Missingness in Longitudinal Studies
 
@@ -1365,31 +1510,32 @@ feel overwhelming.
 
 :::
 
-::: {.fragment}
-
+:::: {.fragment}
 ::: {.callout-tip}
 Consider predictors of person, item, construct, and person-period missingness. 
 Think carefully about your study context and data to look for meaningful, 
 sensible things to test when evaluating missing data issues. 
 :::
+::::
 
-:::
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 52-55 min by here.*
 
-:::{.notes}
 Because we can't prove that our missing data is MNAR, one of the key tasks is 
 differentiating between data that are MCAR and MAR. To do that, run analyses 
 that test possible predictors of which values are missing. The R matrix columns 
 are the outcome variables in such models. Here are some examples.
 
 * ▶ If you have an experiment with multiple groups (like intervention and 
-  control arms) or sites, compare the consent and attrition rates between them. 
-  If arm or site predicts such rates, you have at best a MAR situation. 
+  control arms) or sites, compare consent, attendance, and attrition rates 
+  between them. If arm or site predicts such rates, you may have a MAR 
+  situation. 
 * ▶ Check whether baseline or pretest values of the outcome measures predict
   missingness of the same outcomes at later times. People with unusually high or 
   low scores may be more likely to end up with missing data later.
-* ▶ Of course, demographics and other covariates may also be predictors of 
-  missing data. 
-* ▶  So the take away here is that your initial data analysis needs to consider 
+* ▶ Demographics and other covariates may also be predictors of missing data. 
+* ▶ So the message here is that your initial data analysis should include 
   testing for predictors of missingness. That may be a matter of predicting 
   either person-level non-response (refusal to participate), item or 
   construct-level missingness, or person-period missingness, such as attrition 
@@ -1397,19 +1543,24 @@ are the outcome variables in such models. Here are some examples.
   missingness means that you have a MAR situation. 
   
 :::
+::::
 
 # Audience Questions (2) 
 Do you have questions about diagnosing missing data issues? 
 
-::: {.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 53-56 min by here. Continue by ~ 58-61 (0:58-1:01)*
+
 Let's pause to see if there are any questions about diagnosing missing data 
 issues? 
 :::
+::::
 
 # What should we do about missing data? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-kampus-8463151.jpg" fig-alt="Photo of four people in a meeting."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
 
 :::{.notes}
-*Timing note: ~ 30 min in by this slide.*
+*Timing: ~ 58-61 min (0:59-1:01) by here.*
 
 The million-dollar question is ultimately "what should we do about missing 
 data?" Let's discuss that next. 
@@ -1430,22 +1581,25 @@ data?" Let's discuss that next.
 :::
 ::::
 
-:::{.notes}
-As the old adage says, "An ounce of prevention is worth a pound of cure." This 
-absolutely applies to handling missing data problems. 
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 59-61 min (0:59-1:01) by here.*
+
+As the old adage often attributed to Benjamin Franklin says, "An ounce of
+prevention is worth a pound of cure." This absolutely applies to missing data!
 
 Statistical methods for analyzing incomplete datasets are great, but using them 
 requires knowledge, skill, software, time, and effort. The size and complexity 
 of the missing data problem is directly related to its potential impact on your 
 study and what it will take to solve that problem.  
 
-Fortunately, good study design can help evaluators reduce the probability and 
-amount of missing data, thereby reducing its potential impact on measurement, 
-internal validity, and generalizability. The prevention suggestions I'm going 
-to share are by no means an exhaustive list; I just want you to recognize that 
-prevention is your first, and possibly best, opportunity to handle missing data 
-problems. 
+Fortunately, good study design can help researchers reduce the probability and
+amount of missing data, thereby reducing its potential impact on measurement,
+internal validity, and generalizability. The prevention suggestions I'm going to
+share are not an exhaustive list. I just want you to recognize that prevention
+is your first, and maybe best, opportunity to handle missing data problems.
 :::
+::::
 
 ## Prevention: Data Collection Frequency & Timing [@McKnight-RN1296] 
 
@@ -1454,7 +1608,10 @@ problems.
 * Collect longitudinal data at sensible times given expected temporal patterns
 :::
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 60-62 min (1:00-1:02) by here.*
+
 First, let's consider fine-tuning data collection logistics. 
 
 ▶ When participants have to put effort into responding, frequent data collection
@@ -1469,10 +1626,11 @@ focus on the critical periods that enable you to see the key aspects of
 longitudinal trajectories. Collect more often during periods where you expect
 rapid change and less often when expect relative stability or slower change.
 :::
+::::
 
 ## Prevention: Number of Variables [@de-Leeuw-RN8682; @McKnight-RN1296; @Wisniewski-RN2978] 
 
-Every variable is an opportunity for missing data. 
+Every variable is an opportunity for missing data
 
 :::{.incremental}
 * Only collect variables that you need
@@ -1481,7 +1639,10 @@ Every variable is an opportunity for missing data.
 
 :::
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 61-63 min (1:01-1:03) by here.*
+
 Remember that every variable you try to collect adds to participant burden. 
 Asking for too much risks tiring, frustrating, boring, or irritating people in 
 ways that lead to missing data. 
@@ -1500,6 +1661,7 @@ correlated and that can help you if data for one are incomplete but another is
 complete. Relationships between measures can be used to recover some of the
 missing information when modeling incomplete datasets.
 :::
+::::
 
 ## Prevention: Dropout [@de-Leeuw-RN8682; @Laurie-RN8257; @McKnight-RN1296; @Wisniewski-RN2978] 
 
@@ -1511,33 +1673,32 @@ missing information when modeling incomplete datasets.
 
 :::
 
-:::{.notes}
-*Timing should be ~33-34 min by here.*
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 62-64 min (1:02-1:04) by here.*
+
 Dropout is a major cause of missing data in longitudinal studies, but there are
-some strategies you can use to minimize it. I'll describe some strategies we use 
-on an evaluation of EFNEP, a federal nutrition education program for low-income 
-people.
+strategies you can use to minimize it. I'll describe some that we use on an 
+evaluation of a federal nutrition education program for low-income people.
 
-▶ We partner with local organizations to find participants, so establishing good 
-relationships with them means they sometimes help us keep participants engaged. 
+* ▶ We partner with local organizations to find participants; good relationships 
+  with them means they help us keep participants engaged. 
+* ▶ Another key strategy is maintaining contact with participants. Reminder
+  postcards, text messages, and phone calls encourage returning for follow-up 
+  data collection. If someone skips the one event, we still invite them to the
+  next one unless they explicitly withdraw from the study. Intermittent wave
+  non-response is better than complete dropout.
+* ▶ We also aim to offer people adequate incentives to participate. We pay 
+  participants promptly for each data collection event, with the amounts 
+  increasing over time. 
+* ▶ Finally, we make data collection convenient by scheduling events at places
+  and times participants can easily attend, or by scheduling extra sessions. We 
+  send multiple data collectors to each session so it runs efficiently and 
+  doesn't waste participants' time. For some groups, we use translated 
+  instruments and staff that speak participants' primary language.
 
-▶ Another key strategy is maintaining contact with participants. We use reminder
-postcards, text messages, and phone calls to encourage people to attend the
-follow-up data collection events. Even if someone skips the 6-month event we
-still invite them to the 12 month event unless they explicitly withdraw from the
-study because intermittent wave non-response is better than complete dropout.
-
-▶ We also aim to offer people adequate incentives to participate. We pay 
-participants promptly for each data collection event, with the amounts 
-increasing over time. 
-
-▶ Finally, we make data collection convenient by scheduling events at locations
-and times that are easy for groups of participants to attend. Sometimes we have
-to schedule extra sessions. We send multiple data collectors to each session so
-it runs efficiently and reduces how much time participants have to spend. For
-some groups, we use translated instruments and staff that speak Spanish to
-better engage participants in their primary language.
 :::
+::::
 
 ## Prevention: Data Collection Methods
 
@@ -1549,38 +1710,38 @@ better engage participants in their primary language.
 
 :::
 
-:::{.notes}
-▶ Because data collection is essential to most projects, we need to develop
-detailed protocols that will maximize data quality. Study protocols should
-anticipate the possibility of missing data and include elements that may prevent
-it. For example, make checklists of the materials required for each data
-collection event and review it in advance of each one. If you're administering
-print surveys in a group setting, check each one for skipped items or sections
-as it's handed in while there's still a chance for the participant to respond.
-If you're using an online survey, program it to notify participants when they
-skip something and give them the option to either fill it in or proceed anyway.
-Say you're going to observe a classroom setting. Consider using multiple
-observers and structured forms for recording data. Make sure the behaviors to be
-recorded are clearly defined. Keep observation sessions short enough to avoid
-fatigue and inattention. Similar ideas apply if you're going to review documents
-or abstract data from records: use multiple staff, structured forms, and clear
-definitions.
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 64-66 min (1:04-1:06) by here.*
 
-▶ Train the data collection staff on the protocols and get them to practice
-before collecting real data if possible. For data entry, plan a review process
-and give staff performance feedback. Consider using double-entry and reconciling
-discrepancies between the data entered by 2 different staff.
-
-▶ Poorly designed instruments may increase the rate of missing data. Pay close
-attention to instrument design. Make sure instructions and wording are clear,
-layout is readable, response options make sense, and generally follow principles
-of good survey design. Pilot test the instruments.
-
-▶ Make sure you test equipment regularly, have spare devices, cords, or
-batteries in case one fails. Make sure staff know how to use the equipment. If
-you're using online data collection tools, test skip patterns carefully before
-starting data collection.
+* ▶ Developing detailed study protocols can help maximize data quality. They
+  should include elements that can prevent missing data. For example, reviewing 
+  checklists of required materials before each data collection event helps 
+  ensure you take what you need. If you're administering print surveys in a 
+  group setting, check each one for skipped items or sections as it's handed in
+  while there's still a chance for the participant to respond. If you're using 
+  an online survey, program it to notify participants when they skip something 
+  and give them the option to either fill it in or proceed anyway. If you're 
+  going to observe a classroom, consider using multiple observers and structured 
+  forms for recording data. Define the behaviors to be recorded. Keep 
+  observation sessions short enough to avoid fatigue and inattention. Similar 
+  ideas apply if you're going to review documents or abstract data from records: 
+  use multiple staff, structured forms, and clear definitions.
+* ▶ Train your staff on the protocols and get them to practice before 
+  collecting real data. For data entry, plan a review process and give staff 
+  performance feedback. Consider using double-entry and reconciling discrepancies 
+  between the data entered by 2 different staff.
+* ▶ Poorly designed instruments may increase the rate of missing data. Pay close
+  attention to instrument design. Make sure instructions and wording are clear,
+  layout is readable, response options make sense, and follow principles of good 
+  survey design. Pilot test the instruments.
+* ▶ Make sure you test equipment regularly, have spare devices, cords, or 
+  batteries in case one fails. Make sure staff know how to use the equipment. If
+  you're using online data collection tools, test them thoroughly before 
+  starting data collection.
+  
 :::
+::::
 
 ## Treatment: Traditional Methods [@Enders-RN8673; @McKnight-RN1296]
 
@@ -1602,33 +1763,30 @@ data.frame(Deletion = c("Listwise deletion", "Pairwise deletion",
   column_spec(1:2, width = "4.5in")
 ```
 
-:::{.notes}
-*Timing should be ~37-38 min by here.*
-Despite effective prevention measures, you're still likely to end up with some 
-missing data. A variety of traditional methods for handling missing data have 
-been used and discussed in the literature. This table lists examples of two 
-types of approaches to the problem: data deletion methods and single imputation 
-methods. 
+::::{.notes}
+:::{style="font-size: 0.8rem;"}
 
-The deletion-based methods are flawed because they inefficiently use the data. 
-Discarding data you've spent resources collecting is wasteful.  
+*Timing: ~ 66-68 min (1:06-1:08) by here.*
 
-Listwise deletion drops every case that has missing data on any variable in the
-analysis. That's perhaps the most commonly used method because it is the default
-behavior for many statistical software packages. *It can only give you unbiased*
-*parameter estimates if the data are MCAR* and you still lose power due to 
-shrinking sample size. But MCAR is a rare situation. You're far more likley to
-have MAR, and then using listwise deletion will give you biased results in
-addition to low power. If there are high rates missingness and many different
-patterns of missingness, you may not end up with enough observations to do
-meaningful analyses.
+Despite prevention measures, you're still likely to have some missing data. 
+There are two major types of traditional methods for handling missing data 
+during analyses: data deletion and single imputation. 
 
-Pairwise deletion uses all available data by only eliminating data at the 
-variable level instead of the person level. In a correlation matrix, pairwise 
-deletion allows sample size to vary depending on which variables you're 
-correlating. That preserves more power, but is still only unbiased under MCAR 
-and it causes other problems. For example, different subsets of cases may be 
-used for each variable. That can lead to problems with standard errors.
+Deletion-based methods are flawed because they inefficiently use the data.
+Discarding data you've spent resources collecting is wasteful. Listwise deletion
+drops every case that has missing data on any variable in the analysis. That's
+the most common method because it is the default for many statistical packages. 
+*It can only give you unbiased parameter estimates if the data are MCAR* and you 
+still lose power due to shrinking sample size. But MCAR is a rare situation.
+With MAR data, listwise deletion yields biased results and lower power. If there 
+are high rates missingness and patterns affecting many variables, you may not
+have enough observations left to do meaningful analyses.
+
+Pairwise deletion discards data at the variable level instead of the person
+level. In a correlation matrix, pairwise deletion allows sample size to vary
+depending on which variables you're correlating. That preserves some power, but
+is still only unbiased under MCAR and it causes other problems, like difficulty
+computing standard errors.
 
 The available items method is used when combining multiple items to measure
 constructs. If you've got a 6 item-scale for depression but only 4 items are
@@ -1637,128 +1795,247 @@ This makes strong assumptions about the interchangeability of items and about
 the factor structure. It may decrease the variance between items and will often
 decrease reliability. 
 
-Single imputation methods represent various approaches to replacing each missing
-value with a single guess about what value should be there. They fill the holes
-in the original, incomplete dataset to create a complete, imputed dataset. For
-example, one might swap in the overall mean or a group mean for a variable, or
-use the hot deck method to swap in the observed value from an randomly selected
-but otherwise similar case. In longitudinal studies, sometimes people handle
-dropout by carrying the last observed value forward to future time points.
-Meanwhile, regression imputation uses complete variables to predict the values 
-of incomplete variables, then replaces the missing value with the conditional 
-mean of the missing variable given the observed predictors.
+Single imputation methods replace each missing value with a single guess about
+what value should be there. They fill holes in the original, incomplete
+dataset to create a complete, imputed dataset. For example, one might swap in
+the overall mean or a group mean for a variable, or use the hot deck method to
+swap in the observed value from an randomly selected but otherwise similar case.
+In longitudinal studies, sometimes people handle dropout by carrying the last
+observed value forward to future time points. Meanwhile, regression imputation
+uses complete variables to predict the values of incomplete variables, replacing 
+missing values with the conditional mean of the missing variable given the 
+observed predictors.
 
-Statisticians have identifed limitations and flaws for all single imputation
-methods. While they increase power relative to deletion methods and there are
-some narrowly defined circumstances when they work reasonably, the single
-imputation methods make untenable assumptions, generally produce biased 
-estimates even under MCAR and MAR mechanisms, and underestimate standard errors. 
-
-Fortunately, there are better, more modern methods available that don't suffer 
-the drawbacks of these traditional methods. 
+While single imputation methods increase power relative to deletion methods and
+can work reasonably in some some narrow circumstances, they make untenable
+assumptions, generally produce biased estimates even under MCAR and MAR
+mechanisms, and underestimate standard errors. *Fortunately, there are better,*
+*more modern methods available that don't suffer these drawbacks*.
 :::
+::::
 
 ## Treatment: Modern Methods [@Enders-RN8673; @McKnight-RN1296]
 
 * Full-information maximum likelihood (FIML) estimation
 * Multiple imputation (MI)
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 70-72 min (1:10-1:12) by here.*
+
 I'm going to describe two modern, state-of-the-art methods for analyzing
 incomplete datasets that solve the problems associated with the traditional
-methods: full-information maxmum likelihood estimation (FIML) and multiple
-imputation (MI). Both these methods can handle variables that are continuous, 
-nominal, ordinal, or counts. Furthermore, FIML and MI methods tend to produce 
-the same results when applied well.  
+methods. Both full-information maximum likelihood estimation (FIML) and multiple
+imputation (MI) can handle variables that are continuous, nominal, ordinal, or 
+counts. Furthermore, they tend to produce the same results when applied well.  
 :::
+::::
 
-## Treatment: FIML [@Enders-RN8673; @McKnight-RN1296]
-
+## FIML (1) [@Enders-RN8673; @McKnight-RN1296]
 FIML estimates parameters by combining observed data, relationships among 
-observed variables, & distribution assumptions. 
+observed variables, & distribution assumptions
 
+:::{.incremental}
 * Seeks parameter estimates that best fit the data
 * Uses all available data without imputing any values
 * Benefits from auxilliary variables 
-* Works well with MCAR and MAR
-* Yields biased estimates under MNAR
-* Available in structural equation modeling (SEM) software
 
-:::{.notes}
+:::
+
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 71-73 min (1:11-1:13) by here.*
+
 Let's take a closer look at the FIML method. It estimates parameters by 
 combining observed data, relationships among observed variables, and assumptions 
-about distributions. It seeks the combination of parameter estimates that best 
-fit the overall dataset, which are the ones that make the observed data most 
-likely given the model assumptions. The FIML computations take advantage of all 
-the available data from each case, whether it is complete or incomplete without 
-imputing any of the missing values. 
+about distributions. 
 
-FIML benefit from adding auxiliary variables to the model that either predict 
-missingness or are correlated with the incomplete variables. They provide a way 
-to recapture some of the information lost due to missing data. Auxiliary 
-variables are more useful when they're mostly complete and at least modestly 
-correlated with the incomplete variables, say around r =  0.40.
+* ▶ It seeks the combination of parameter estimates that best fit the overall 
+  dataset, which are the ones that make the observed data most likely given the 
+  model assumptions. 
+* ▶ The FIML computations take advantage of all the available data from each 
+  case, whether it is complete or incomplete without imputing any of the missing 
+  values. 
+* ▶ FIML benefits from adding auxiliary variables to the model that either 
+  predict missingness or are correlated with the incomplete variables. They 
+  provide a way to recapture some of the information lost due to missing data. 
+  Auxiliary variables are more useful when they're mostly complete and at least 
+  modestly correlated with the incomplete variables, say around r =  0.40.
+  
+:::
+::::
+
+## FIML (2) [@Enders-RN8673; @McKnight-RN1296]
+
+* Works well with MCAR & MAR data
+* Yields biased estimates under MNAR
+
+::::{.fragment}
+:::{.callout-tip}
+FIML is usually available in structural equation modeling (SEM) software. 
+:::
+::::
+
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 72-74 min (1:12-1:14) by here.*
 
 FIML is unbiased and yields accurate standard errors under both MCAR and MAR 
 mechanisms, but of course can't fully solve the missing data problem under MNAR, 
 though it does better than traditional methods. 
 
-If you want to use FIML methods, look in structural equation modeling software. 
+▶ If you want to use FIML methods, look in structural equation modeling software. 
 Many familiar models--such as regression, ANOVA, and mixed models--can be 
 translated into the SEM framework, which makes FIML reasonably accessible.
 :::
+::::
 
-## Treatment: MI [@Enders-RN8673; @McKnight-RN1296; @van-Buuren-RN3962]
+## MI (1) [@Enders-RN8673; @McKnight-RN1296; @van-Buuren-RN3962]
 
-MI replaces each missing value with *m* indpendent draws from the variable's 
-conditional distribution. 
+```{dot}
+//| fig-width: 10
+//| fig-height: 5
 
-* Uses all available data 
-* Requires both imputation & analysis models
-* Pools estimates across analyses of *m* imputed datasets
-* Preserves uncertainty associated with imputation
-* Quantifies influence of missing data 
-* Works well with MCAR and MAR
-* Can handle data that are MNAR 
+digraph MI {
+rankdir="LR";
 
-:::{.notes}
-Multiple imputation replaces each missing value with several independent draws
-from the variable's conditional distribution, leaving us to pool the results of
-analyzing *m* complete, imputed datasets. It uses all the available data along
-the way. The process requires building two different models. First you create an
-imputation model that uses relationships between variables to predict the values
-of incomplete variables given observed values from each case. As in FIML, the
-imputation model benefits from adding auxiliary variables that either predict
-missingness or are correlated with the incomplete variables. They facilitate
-recapturing some of the information lost due to missing data. The imputation
-model must contain effects that will be in the analysis model to perform well
-and obtain the conditional distributions used to draw good imputed values. The
-analysis model must reflect your hypotheses, using predictors and covariates to
-predict the outcome variables. It must be run on each imputed dataset. Pooling
-the parameter estimates across the set of analysis models gives you the final
-estimates while properly reflecting the uncertainty associated with replacing
-missing data with imputed values. Pooling also offers a unique advantage of MI
-over other methods: it quantifies the influence of missing data on parameter
-estimation. No other method offers that option.
+node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+OData [label = "Incomplete\nData"]
+
+subgraph cluster_0 {
+        label = "Create Imputed Datasets\n (m = 3)";
+        fontname="Lato";
+        style = "rounded, dashed"; 
+
+        // Nodes inside the box
+        node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+        
+        IModel [label = "Imputation\nModel"]
+        IData1 [label = "Dataset 1"]
+        IData2 [label = "Dataset 2"]
+        IData3 [label = "Dataset 3"]
+        
+        edge [fontname="Lato"]
+        IModel -> IData1 [label = "Draw"]
+        IModel -> IData2 [label = "Draw"]
+        IModel -> IData3 [label = "Draw"]
+        
+        {rank = same; IData1; IData2; IData3}
+    }
+    
+
+subgraph cluster_1 {
+        label = "Apply Analysis Model to\nEach Dataset";
+        fontname="Lato";
+        style = "rounded, dashed"; 
+        
+        node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+        Result1 [label = "Model 1"]
+        Result2 [label = "Model 2"]
+        Result3 [label = "Model 3"]
+        
+        edge [fontname="Lato"]
+        IData1 -> Result1 [label = "Fit"]
+        IData2 -> Result2 [label = "Fit"]
+        IData3 -> Result3 [label = "Fit"]
+        
+        {rank = same; Result1; Result2; Result3}
+    }
+
+subgraph cluster_2 {
+        label = "Apply Rubin's Rules";
+        fontname="Lato";
+        style = "rounded, dashed"; 
+        
+        node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+        Pooled [label = "Pooled\nModel\nParameters"]
+        
+        edge [fontname="Lato"]
+        Result1 -> Pooled
+        Result2 -> Pooled
+        Result3 -> Pooled
+    }
+        
+edge [fontname="Lato"]
+OData -> IModel [label = "Fit"]
+
+}
+```
+
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 73-75 min (1:13-1:15) by here.*
+
+Multiple imputation uses all the available data but it works differently than
+FIML because it uses two different models. This diagram is a high-level overview
+of the multiple imputation solution to missing data. 
+
+First you create an imputation model that uses relationships between variables
+to predict the values of incomplete variables from observed variables. That
+identifies the conditional distribution of each incomplete variable given the
+observed variables. Drawing values from those distributions allows you to
+replace each missing value. Doing that several times (using *m* to denote how
+many) leaves you with a set of *m* complete, imputed datasets. 
+
+Second, you apply the same analysis model to each imputed dataset. It must
+reflect your hypotheses, using focal predictors and relevant covariates to
+predict the outcome. Those analyses leave you with *m* sets of model parameters,
+which will differ due to variability between the imputed datasets. Then, you use
+Donald Rubin's rules for pooling the parameter estimates to get your final model
+result.
+:::
+::::
+
+## MI (2) [@Enders-RN8673; @McKnight-RN1296; @van-Buuren-RN3962]
+
+* Benefits from auxilliary variables
+* Imputation model must contain analysis model
+* Preserves uncertainty & quantifies influence of MD 
+* Works well with MCAR & MAR data
+* Can *sometimes* handle MNAR data 
+
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 74-76 min (1:14-1:16) by here.*
+
+Like FIML, MI benefits from using auxiliary variables that either predict
+missingness or are correlated with the incomplete variables. They go into the
+*imputation* model instead of the *analysis* model. 
+
+Another key issue is that the imputation model must contain all effects that
+will be in the analysis model to perform well.
+
+Pooling parameter estimates gives you final estimates that properly reflect the
+uncertainty associated with replacing missing values with imputed ones. It also
+quantifies the influence of missing data on parameter estimation, which is a
+unique advantage of MI. No other method of handling missing data does that.
 
 MI is unbiased and yields accurate standard errors under both MCAR and MAR 
 mechanisms, and it can even handle MNAR data reasonably in some circumstances. 
 :::
+::::
 
 ## Where to Learn More
 
 * Short overviews [@El-Masri-RN8683; @Fernández-García-RN4151; @Graham-RN1615; @Little-RN8684; @Newman-RN8223;  @Schafer-RN425] 
 * Some good textbooks [@Enders-RN8673; @Graham-RN2677; @McKnight-RN1296; @van-Buuren-RN3962]
+* Dealing with item-level missingness in scale scores [@Graham-RN1615; @Newman-RN8223]
+* Advanced diagnostics [@Tierney-RN8958; @Weberpals-RN8957]
 * Preventing missing data in: 
     * Clinical studies [@Wisniewski-RN2978]
     * Longitudinal studies [@Laurie-RN8257]
     * Surveys [@de-Leeuw-RN8682]
-* Dealing with item-level missingness in scale scores [@Graham-RN1615; @Newman-RN8223]
-* Diagnostics with smdi package for R [@Weberpals-RN8957]
-* Applying CART/BRT models [@Tierney-RN8958]
 
-:::{.notes}
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 75-77 min (1:15-1:17) by here.*
+
+This slide is just a way to point you toward specific, suggested resources where 
+you can learn more about specific topics. The methods literature on handling 
+missing data is extensive; this list is just to get you started. The full 
+references are on a slide near the end of the presentation. 
 :::
+::::
 
 ## Software Tools
 
@@ -1766,40 +2043,39 @@ mechanisms, and it can even handle MNAR data reasonably in some circumstances.
 * R packages: see the [CRAN Task View on Missing Data](https://cran.r-project.org/view=MissingData)
 * Both FIML and MI are supported by Mplus and the R package lavaan 
 
+::::{.notes}
+:::{style="font-size: 0.9rem;"}
+*Timing: ~ 76-78 min (1:16-1:18) by this slide.*
+
+Several of major statistical software packages have tools for handling missing 
+data. For example, SPSS has the `MVA` and `MULTIPLE IMPUTATION` commands.
+
+If you use R, check out the CRAN Task View on Missing Data. It lists a large 
+number of packages with specialized functions. 
+
+SEM software like Mplus and the lavaan package for R support FIML estimation. 
+:::
+::::
+
 ## References {.scrollable}
 
 ::: {#refs}
 :::
 
+:::{.notes}
+*Timing: ~ 77-79 min (1:17-1:19) by this slide.*
+
+This slide contains all the references cited in the other slides. You can scroll
+within this slide to see them all.
+:::
+
+
 # Discussion time! 
 What questions do you have about missing data issues? 
 
 ::: {.notes}
+*Timing: ~ 78-80 min (1:18-1:20) by this slide. Quite at ~ 90 min (1:30)*
+
 So that was a short introduction to fundamental issues with missing data. We now 
 have a little remaining time for questions and discussion. 
 :::
-
-
-## Use Decision Tree Models [@Tierney-RN8958]
-
-One innovative suggestion I've seen is using decision tree models to discover 
-predictors of missingness. 
-
-Classification and regresstion tree (CART)
-Boosted Regression Tree (BRT)
-
-
-## Structural Missing Data Investigations [@Weberpals-RN8957]
-
-Paper about smdi package for R has some good ideas. 
-
-## Example of Effect of Missingness (STRATOS)
-
-Marianne suggested read Supplemental Materials section B5 example in 
-@Heinze-RN8641 and consider discussing it. 
-
-## Causal analyses
-
-Watch @Tilling-RN8960 and see what to mention? Marianne suggested this.
-
-
