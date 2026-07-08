@@ -7,9 +7,10 @@ Steven J. Pierce
 
 <!-- badges: start -->
 
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![This repository is a work in
-progress.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
 This repository holds materials for one of my professional presentations
@@ -129,7 +130,7 @@ project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-RStudio-P
     automatically.
   - `references.bib`: This is a BibTeX file containing citation data for
     papers, software, etc. that we want to cite anywhere in our Quarto
-    scripts throughout the package.
+    scripts throughout the repository.
   - `Slides.html`: This output file contains the actual slides I used to
     give the presentation.
   - `Slides.qmd`: Rendering this Quarto script creates my HTML slides.
@@ -142,7 +143,7 @@ actually install all the software and then try rendering some files
 yourself. To render my presentation slides:
 
 - Install the necessary [software for reproducible research with
-  R](https://sjpierce.github.io/rr_software.html)
+  R](https://sjpierce.github.io/rr_software.html).
 - Download or clone the repository to your computer (preferably using
   Git).
 - Double-click the `FMD2026.Rproj` file from Windows Explorer to open
@@ -191,7 +192,12 @@ The following exceptions apply:
   intellectual property owned by Michigan State University. I use them
   for branding purposes because I am an MSU employee.
 - Similarly, I assume that graphics file for the logo of the American
-  Evaluation Association (AEA) is the intellectual property of that
+  Statistical Association (ASA) is the intellectual property of that
   organization and also does not fall under the CC BY-NC-SA license. My
   use of it in this repository should fall under fair use provisions of
   trademark law.
+
+The other graphics files used were retrieved from online sites like
+[Pexels](https://www.pexels.com) and were marked as freely available for
+use, distribution, and modification without attribution (per the [Pexels
+license page](https://www.pexels.com/license/)).
