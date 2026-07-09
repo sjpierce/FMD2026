@@ -17,8 +17,8 @@ title-slide-attributes:
   then offer resources you can use to learn more on your own. Jot down either my 
   email address or the link you see at the bottom of the screen. My slides, 
   complete with speaker notes, reference list, and links to resources, will be 
-  available from that link.
-  
+  available from that link. 
+  <br><br>
   [*Display at 1280 x 720 resolution*. In speaker notes, the symbol ▶ marks  
   when to press the spacebar or click the right arrow to reveal the next 
   animated element on a slide.]"
@@ -345,86 +345,93 @@ Let's explore each of those ideas in more detail.
 :::
 ::::
 
-## Consequences for Measurement [@McKnight-RN1296]
+## Measurement Consequences [@McKnight-RN1296]
 
+:::{.incremental}
 * Availability of constructs 
 * Decreased reliability due to increased error variance
 * Bias from poor content coverage
 * Construct validity
 
+:::
+
 ::::{.notes}
 :::{style="font-size: 0.9rem;"}
 *Timing: ~ 9-10 min by here.*
 
-Missing data can affect the availability of a construct for your analyses. 
-The extreme case would be a construct measured by a single variable.
-If that's missing, then the entire construct is missing for that individual 
-and it may be very difficult to recover that information. Missing data is still 
-a problem when we use multiple indicators to measure a construct, though perhaps 
-less severe, and it may depend on how you combine items to create the score. 
-
-Missing data decreases the reliability and construct validity of our measures. 
-Internal consistency reliability decreases because missing data increases the 
-error variance in a measure. You may recall that reliability is a function of 
-how many items are used, so fewer observed items leads to lower reliability. 
-
-Further, some items may be more important indicators of a construct than others.
-You may get a biased estimate of the construct due to poorer content coverage if 
-they are missing. Construct validity depends on both reliability and content 
-coverage, so missing data is a threat to construct validity.
+* ▶  Missing data can affect the availability of a construct for your analyses. 
+  The extreme case would be a construct measured by a single variable.
+  If that's missing, then the entire construct is missing for that individual 
+  and it may be very difficult to recover that information. Missing data is still 
+  still a problem when we use multiple indicators to measure a construct, though 
+  perhaps less severe, and it may depend on how you combine items to create the 
+  score. 
+* ▶  Missing data decreases the reliability and construct validity of our 
+  measures. Internal consistency reliability decreases because missing data 
+  increases the error variance in a measure. You may recall that reliability is 
+  a function of how many items are used, so fewer observed items leads to lower 
+  reliability. 
+* ▶  Further, some items may be more important indicators of a construct than 
+  others. You may get a biased estimate of the construct due to poorer content 
+  coverage if they are missing.
+* ▶  Construct validity depends on both reliability and content coverage, so 
+  missing data is a threat to construct validity.
+  
 :::
 ::::
 
-## Consequences for Internal Validity [@Fernández-García-RN4151; @McKnight-RN1296]
+## Internal Validity Consequences [@Fernández-García-RN4151; @McKnight-RN1296]
 
+:::{.incremental}
 * Selection bias
 * Compromised randomization
 * Power and precision 
 * Inaccurate model assumptions
 
+:::
+
 ::::{.notes}
 :::{style="font-size: 0.8rem;"}
 *Timing: ~ 11 min by here.*
 
-Missing data is a threat to a study's internal validity for several reasons.
-Selection bias can result from systematic differences between subgroups of
-participants on constructs relevant to the study conclusions. For example, those
-subgroups could be treatment versus control groups, people who complete the
-study versus drop out, or those who have complete data versus incomplete data.
-These differences may manifest with respect to demographic variables,
-covariates, predictors, mediators, moderators, or outcomes. Imagine evaluating a
-longitudinal health study where people who start out with worst symptoms drop
-out before the posttest more often than those with mild symptoms. Dropping out
-leads to missing data at posttest. If we fail to handle that properly in the
-analysis, we may draw inaccurate conclusions about the longitudinal trend in
-outcome scores. Or perhaps the retention rates differ between treatment and
-control groups in that same study. Selection biases from such differences reduce
-the sample representativeness and become rival explanations for findings, making
-them a threat to internal validity.
-
-We use randomization to make groups equivalent on measured and unmeasured 
-confounding variables as a way to strengthen validity. That works best in large 
-samples. However, missing data can compromise that effect of randomization by 
-reducing sample size. It can also reduce randomization's ability to achieve 
-equivalence between groups on confounding variables when data are missing 
-differentially across the groups. That reduces internal validity. 
-
-Most statistical software defaults to listwise deletion of cases that have any
-missing values on the variables involved in an analysis. Reducing the sample 
-size will always reduce both power to detect effects and the precision of 
-effect size estimates. In addition to reducing overall sample size, missing data 
-may lead to more unbalanced sample sizes between groups in a study, which also 
-reduces statistical power in many models. 
-
-Finally, missing data can change the distributions of variables in ways that 
-invalidate the assumptions of various statistical models. Some models are more 
-robust than others, but making inaccurate modeling assumptions risks running 
-analyses that will yield misleading conclusions. That's another threat to 
-internal validity. 
+* ▶  Missing data is a threat to a study's internal validity for several 
+  reasons. Selection bias can result from systematic differences between 
+  subgroups of participants on constructs relevant to the study conclusions. For 
+  example, those subgroups could be treatment versus control groups, people who 
+  complete the study versus drop out, or those who have complete data versus 
+  incomplete data. These differences may manifest with respect to demographic 
+  variables, covariates, predictors, mediators, moderators, or outcomes. Imagine 
+  evaluating a longitudinal health study where people who start out with worst 
+  symptoms drop out before the posttest more often than those with mild 
+  symptoms. Dropping out leads to missing data at posttest. If we fail to handle 
+  that properly in the analysis, we may draw inaccurate conclusions about the 
+  longitudinal trend in outcome scores. Or perhaps the retention rates differ 
+  between treatment and control groups in that same study. Selection biases from 
+  such differences reduce the sample representativeness and become rival 
+  explanations for findings, making them a threat to internal validity.
+* ▶  We use randomization to make groups equivalent on measured and unmeasured 
+  confounding variables as a way to strengthen validity. That works best in 
+  large samples. However, missing data can compromise that effect of 
+  randomization by reducing sample size. It can also reduce randomization's 
+  ability to achieve equivalence between groups on confounding variables when 
+  data are missing differentially across the groups. That reduces internal 
+  validity. 
+* ▶  Most statistical software defaults to listwise deletion of cases that have 
+  any missing values on the variables involved in an analysis. Reducing the 
+  sample size will always reduce both power to detect effects and the precision 
+  of effect size estimates. In addition to reducing overall sample size, missing 
+  data may lead to more unbalanced sample sizes between groups in a study, which 
+  also reduces statistical power in many models. 
+* ▶  Finally, missing data can change the distributions of variables in ways 
+  that invalidate the assumptions of various statistical models. Some models are 
+  more robust than others, but making inaccurate modeling assumptions risks 
+  running analyses that will yield misleading conclusions. That's another threat 
+  to internal validity. 
+  
 :::
 ::::
 
-## Consequences for Generalizability [@Fernández-García-RN4151; @McKnight-RN1296]
+## Generalizability Consequences [@Fernández-García-RN4151; @McKnight-RN1296]
 
 A representative sample is crucial to generalizing to the intended population!
 
@@ -491,7 +498,7 @@ framework that can guide your efforts to do that.
 **S**tudies
 
 * Advocates for systematic, transparent methodology
-* Recommends a structured approach with 3 steps
+* Recommends a 3-step approach
 * Principles are applicable beyond observational studies
 
 ::::{.notes}
