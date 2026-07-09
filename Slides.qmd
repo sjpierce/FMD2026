@@ -19,9 +19,9 @@ title-slide-attributes:
   complete with speaker notes, reference list, and links to resources, will be 
   available from that link. 
   <br><br>
-  [*Display at 1280 x 720 resolution*. In speaker notes, the symbol ▶ marks  
-  when to press the spacebar or click the right arrow to reveal the next 
-  animated element on a slide.]"
+  [*Display at 1920 x 1080 or 1280 x 720 resolution*. In speaker notes, the 
+  symbol ▶ marks  when to press the spacebar or click the right arrow to reveal 
+  the next animated element on a slide.]"
 csl: apa-numeric-superscript-brackets.csl
 bibliography: references.bib
 format: 
@@ -62,7 +62,7 @@ library(piercer)    # for cvv_missingnes(), var_missingness()
 * What should we do about missing data?
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 I've organized this talk around answering a few simple questions. They are: 
 
 * What is missing data? 
@@ -92,7 +92,7 @@ get [@Fernández-García-RN4151]
 :::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 1-2 min by here.*
 
 In the simplest terms, missing data are simply measurements that you want or
@@ -131,7 +131,7 @@ data.frame(Human = c("Participant behavior", "Researcher errors",
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 2-3 min by here.*
 
 Why do we end up with missing data? Like many things in life, data collection
@@ -179,7 +179,7 @@ Plan -> Collect -> Enter -> Manage -> Analyze
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 4 min by here.*
 
 Missing data result from events at various points in a project's lifecycle and 
@@ -209,7 +209,7 @@ Vigilance is warranted throughout the project lifecycle.
 # Why should we care about missing data?  {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;"  background-image="graphics/Hands_Raised.jpg" fig-alt="Photo of 10 hands raised, as if many people have questions."  background-size="contain" background-position="bottom" background-repeat="no-repeat"}
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 5-6 min by here.*
 
 So, I've defined missing data and identified some of the ways we can end up with
@@ -246,7 +246,7 @@ practitioner: [@ASACPE-RN8343]
 ::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 5-6 min by here.*
 
 Perhaps the broadest answer to why we should care about missing data is that 
@@ -287,7 +287,7 @@ assumptions [@Enders-RN8974]
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 7 min by here.*
 
 The relevance of those ASA guidelines to the handling of missing data becomes 
@@ -325,7 +325,7 @@ There are 3 major scientific activities that can be affected by missing data
 ::: 
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 8-9 min by here.*
 
 Broadly speaking, scientific work consists of three major activities, each of
@@ -356,7 +356,7 @@ Let's explore each of those ideas in more detail.
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 9-10 min by here.*
 
 * ▶  Missing data can affect the availability of a construct for your analyses. 
@@ -391,7 +391,7 @@ Let's explore each of those ideas in more detail.
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.8rem;"}
+:::{style="font-size: 1.3rem;"}
 *Timing: ~ 11 min by here.*
 
 * ▶  Missing data is a threat to a study's internal validity for several 
@@ -439,7 +439,7 @@ A representative sample is crucial to generalizing to the intended population!
 * Policy & decision-making
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 14 min by here.*
 
 We draw samples to study populations when it isn't feasible to collect the data
@@ -502,7 +502,7 @@ framework that can guide your efforts to do that.
 * Principles are applicable beyond observational studies
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 21-22 min by here.*
 
 The Treatment And Reporting of Missing data in Observational Studies (TARMOS)
@@ -528,7 +528,7 @@ I would make to the framework.
     * Is a sensitivity analysis required, and if so how should it be framed?
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 22-23 min by here.*
 
 The first step in TARMOS encourages you to start by identifying the analysis 
@@ -568,7 +568,7 @@ made in step 2.
 * Conduct substantive analysis, acknowledge & justify deviations from the plan
 
 ::::{.notes}
-:::{style="font-size: 0.8rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 24-25 min by here.*
 
 The second step in TARMOS is conducting analyses. The framework encourages you
@@ -607,7 +607,7 @@ were necessary.
 * Report & interpret results
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 26-27 min by here.*
 
 The third and final step in TARMOS is reporting your analysis. Your paper should
@@ -623,7 +623,7 @@ So, TARMOS can be distilled down to three words: plan, conduct, and report.
 # How can we diagnose the missing data issues for a given study?  {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-fauxels-3184634.jpg" fig-alt="Photo of a team of several people in business suits sitting at a table discussing a report."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 27-28 min by here.*
 
 So, I've laid some foundations by outlining the TARMOS framework, but each study
@@ -685,7 +685,7 @@ rglwidget()
 ::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 28-29 min by here.*
 
 Raymond Cattell described data as forming a 3-dimensional box or cube, with the
@@ -732,7 +732,7 @@ Slices -> Wide [label = "Spread"]
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 29-31 min by here.*
 
 The 3-dimensional data cube concept is useful, but actual data files are often
@@ -796,7 +796,7 @@ Cube: $P = 3, V = 3, T = 2$, $N_{cases} = P \times T = 6$
 :::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 31-33 min by here.*
 
 Suppose our data cube has measurements for P = 3 people, on three variables (X1,
@@ -835,7 +835,7 @@ Cube: $P = 3, V = 3 , T = 2$. $N_{cases} = P = 3$
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 32-34 min by here.*
 
 This table shows the same data you saw on the last slide, rearranged into wide
@@ -855,7 +855,7 @@ of 21 values, of which 18 are the contents of the original cube.
 * Use the *relevant subset* of cases & variables in diagnostics
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 32-34 min by here.*
 
 Both the long and wide data structures are useful but assessing some kinds of
@@ -881,7 +881,7 @@ diagnostic analyses.
 * Person-period level (wave nonresponse; intermittent vs. dropout)
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 34-36 min by here.*
 
 There are a variety of types of missingness to consider as we begin describing 
@@ -930,7 +930,7 @@ cvv_missingness(boys) |>
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 36-38 min by here.*
 
 Here I'm showing a table with a missingness overview for data from a study of 
@@ -972,7 +972,7 @@ kable(LvW, format = "html", align = "c",
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 37-39 min by here.*
 
 If you have longitudinal data, the meaning of incomplete cases and incomplete 
@@ -1040,7 +1040,7 @@ var_missingness(boys) |>
 :::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 39-41 min by here.*
 
 The missingness overviews tell you how many variables have missing data, but not
@@ -1082,7 +1082,7 @@ Report numbers & percentages of:
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 41-43 min by here.*
 
 To comply with TARMOS step 3, research products such as manuscripts should
@@ -1111,7 +1111,7 @@ Use a tracking system to organize & document data collection
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 42-44 min by here.*
 
 I strongly recommend designing and using a tracking system that organizes and 
@@ -1171,7 +1171,7 @@ Randomized -> Assigned2 -> Dropped2 -> Analyzed2
 ::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 43-45 min by here.*
 
 The Consolidated Standards of Reporting Trials (or CONSORT) 2025 statement is a 
@@ -1213,7 +1213,7 @@ We can aggregrate and visualize **R** to describe patterns of missingness!
 ::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 44-46 min by here.*
 
 The amount of missing data is crucial, but the patterns of which data values are 
@@ -1246,7 +1246,7 @@ plot_pattern(boys, square = FALSE, rotate = FALSE)
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 45-47 min by here.*
 
 This graph shows missing data patterns in the example growth data about Dutch
@@ -1287,7 +1287,7 @@ Look for patterns that:
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 47-49 min by here.*
 
 As with the missing data overview and variable-level missingness summaries, you
@@ -1326,7 +1326,7 @@ Some mechanisms yield more bias: **MCAR < MAR < MNAR**
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 48-50 min by here.*
 
 Understanding Donald Rubin's system for classifying missing data is crucial to
@@ -1373,7 +1373,7 @@ Unobserved -> Random -> Observed [style = "invis"]
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 49-51 min by here.*
 
 MCAR is the least damaging kind of missingness because it means that neither
@@ -1415,7 +1415,7 @@ Unobserved -> Missing [style = "invis"]
 
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 50-52 min by here.*
 
 MAR is when observed values predict which values are likely to be missing. Thus,
@@ -1458,7 +1458,7 @@ Unobserved -> Random -> Observed [style = "invis"]
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 51-53 min by here.*
 
 MNAR is sometimes called non-ignorable nonresponse [@Schafer-RN425] because
@@ -1490,7 +1490,7 @@ Classifying large datasets according to Rubin's mechanisms is *messy*
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 52-54 min by here.*
 
 McKnight and colleagues pointed out that classfying large datasets into Rubin's 
@@ -1526,7 +1526,7 @@ sensible things to test when evaluating missing data issues.
 ::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 52-55 min by here.*
 
 Because we can't prove that our missing data is MNAR, one of the key tasks is 
@@ -1556,7 +1556,7 @@ are the outcome variables in such models. Here are some examples.
 Do you have questions about diagnosing missing data issues? 
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 53-56 min by here. Continue by ~ 58-61 (0:58-1:01)*
 
 Let's pause to see if there are any questions about diagnosing missing data 
@@ -1589,7 +1589,7 @@ data?" Let's discuss that next.
 ::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 59-61 min (0:59-1:01) by here.*
 
 As the old adage often attributed to Benjamin Franklin says, "An ounce of
@@ -1616,7 +1616,7 @@ is your first, and maybe best, opportunity to handle missing data problems.
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 60-62 min (1:00-1:02) by here.*
 
 First, let's consider fine-tuning data collection logistics. 
@@ -1647,7 +1647,7 @@ Every variable is an opportunity for missing data
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 61-63 min (1:01-1:03) by here.*
 
 Remember that every variable you try to collect adds to participant burden. 
@@ -1681,7 +1681,7 @@ missing information when modeling incomplete datasets.
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 62-64 min (1:02-1:04) by here.*
 
 Dropout is a major cause of missing data in longitudinal studies, but there are
@@ -1718,7 +1718,7 @@ evaluation of a federal nutrition education program for low-income people.
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 64-66 min (1:04-1:06) by here.*
 
 * ▶ Developing detailed study protocols can help maximize data quality. They
@@ -1771,7 +1771,7 @@ data.frame(Deletion = c("Listwise deletion", "Pairwise deletion",
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.8rem;"}
+:::{style="font-size: 1.3rem;"}
 
 *Timing: ~ 66-68 min (1:06-1:08) by here.*
 
@@ -1827,7 +1827,7 @@ mechanisms, and underestimate standard errors. *Fortunately, there are better,*
 * Multiple imputation (MI)
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 70-72 min (1:10-1:12) by here.*
 
 I'm going to describe two modern, state-of-the-art methods for analyzing
@@ -1850,7 +1850,7 @@ observed variables, & distribution assumptions
 :::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 71-73 min (1:11-1:13) by here.*
 
 Let's take a closer look at the FIML method. It estimates parameters by 
@@ -1884,7 +1884,7 @@ FIML is usually available in structural equation modeling (SEM) software.
 ::::
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 72-74 min (1:12-1:14) by here.*
 
 FIML is unbiased and yields accurate standard errors under both MCAR and MAR 
@@ -1970,7 +1970,7 @@ OData -> IModel [label = "Fit"]
 ```
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 73-75 min (1:13-1:15) by here.*
 
 Multiple imputation uses all the available data but it works differently than
@@ -2002,7 +2002,7 @@ result.
 * Can *sometimes* handle MNAR data 
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 74-76 min (1:14-1:16) by here.*
 
 Like FIML, MI benefits from using auxiliary variables that either predict
@@ -2034,7 +2034,7 @@ mechanisms, and it can even handle MNAR data reasonably in some circumstances.
     * Surveys [@de-Leeuw-RN8682]
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 75-77 min (1:15-1:17) by here.*
 
 This slide is just a way to point you toward specific, suggested resources where 
@@ -2051,7 +2051,7 @@ references are on a slide near the end of the presentation.
 * Both FIML and MI are supported by Mplus and the R package lavaan 
 
 ::::{.notes}
-:::{style="font-size: 0.9rem;"}
+:::{style="font-size: 1.5rem;"}
 *Timing: ~ 76-78 min (1:16-1:18) by this slide.*
 
 Several of major statistical software packages have tools for handling missing 
