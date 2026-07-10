@@ -1761,8 +1761,8 @@ data.frame(Deletion = c("Listwise deletion", "Pairwise deletion",
                         "Available Items Analysis", 
                         " "),
            Single = c("Mean Substitution", "Hot-Deck Imputation", 
-                      "Regression Imputation", 
-                      "Last Observation Carried Forward")) |> 
+                      "Last Observation Carried Forward", 
+                      "Regression Imputation")) |> 
   kable(format = "html", 
         col.names = c("Data Deletion", "Single Imputation")) |> 
   kable_classic(full_width = FALSE, lightable_options = c("hover"), 
