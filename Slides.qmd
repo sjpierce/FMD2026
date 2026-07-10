@@ -1995,30 +1995,35 @@ result.
 
 ## MI (2) [@Enders-RN8673; @McKnight-RN1296; @van-Buuren-RN3962]
 
+:::{.incremental}
 * Benefits from auxilliary variables
 * Imputation model must contain analysis model
 * Preserves uncertainty & quantifies influence of MD 
 * Works well with MCAR & MAR data
 * Can *sometimes* handle MNAR data 
 
+:::
+
 ::::{.notes}
 :::{style="font-size: 1.5rem;"}
 *Timing: ~ 74-76 min (1:14-1:16) by here.*
 
-Like FIML, MI benefits from using auxiliary variables that either predict
+▶ Like FIML, MI benefits from using auxiliary variables that either predict
 missingness or are correlated with the incomplete variables. They go into the
 *imputation* model instead of the *analysis* model. 
 
-Another key issue is that the imputation model must contain all effects that
+▶ Another key issue is that the imputation model must contain all effects that
 will be in the analysis model to perform well.
 
-Pooling parameter estimates gives you final estimates that properly reflect the
+▶ Pooling parameter estimates gives you final estimates that properly reflect the
 uncertainty associated with replacing missing values with imputed ones. It also
 quantifies the influence of missing data on parameter estimation, which is a
 unique advantage of MI. No other method of handling missing data does that.
 
-MI is unbiased and yields accurate standard errors under both MCAR and MAR 
-mechanisms, and it can even handle MNAR data reasonably in some circumstances. 
+▶ MI is unbiased and yields accurate standard errors under both MCAR and MAR 
+mechanisms, and 
+
+▶ it can even handle MNAR data reasonably in some circumstances. 
 :::
 ::::
 
