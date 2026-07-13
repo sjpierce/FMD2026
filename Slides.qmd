@@ -648,8 +648,8 @@ data.
 ``` {r}
 #| label: data-box
 #| message: false
-#| fig-width: 5
-#| fig-height: 5
+#| fig-width: 4.5
+#| fig-height: 4.5
 
 options(rgl.useNULL=TRUE)
 open3d(silent = TRUE)
