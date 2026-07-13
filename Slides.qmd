@@ -59,7 +59,7 @@ library(piercer)    # for cvv_missingnes(), var_missingness()
 * Why should we care about missing data? 
 * How should we start addressing missing data issues? 
 * How can we diagnose the missing data issues for a given study? 
-* What should we do about missing data?
+* How should we solve missing data issues?
 
 ::::{.notes}
 :::{style="font-size: 1.5rem;"}
@@ -70,7 +70,7 @@ I've organized this talk around answering a few simple questions. They are:
 * Why should we care about missing data? 
 * How should we start addressing missing data issues? 
 * How can we diagnose the missing data issues for a given study? 
-* What should we do about missing data?
+* How should we solve missing data issues?
 
 :::
 ::::
@@ -1564,13 +1564,13 @@ issues?
 :::
 ::::
 
-# What should we do about missing data? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-kampus-8463151.jpg" fig-alt="Photo of four people in a meeting."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
+# How should we solve missing data issues? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-kampus-8463151.jpg" fig-alt="Photo of four people in a meeting."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
 
 :::{.notes}
 *Timing: ~ 58-61 min (0:59-1:01) by here.*
 
-The million-dollar question is ultimately "what should we do about missing 
-data?" Let's discuss that next. 
+The million-dollar question is ultimately "how should we solve missing data 
+issues?" Let's discuss that next. 
 :::
 
 ## Prevention [@de-Leeuw-RN8682; @McKnight-RN1296; @Wisniewski-RN2978]  {style="text-align: right;" background-image="graphics/boston-public-library-ts_mJIUonBY-unsplash.jpg" background-size="contain" background-position="left" background-repeat="no-repeat"}
