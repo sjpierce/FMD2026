@@ -1904,6 +1904,7 @@ translated into the SEM framework, which makes FIML reasonably accessible.
 //| fig-height: 5
 
 digraph MI {
+graph [start=42, ordering=out];
 rankdir="LR";
 
 node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
@@ -1929,7 +1930,6 @@ subgraph cluster_0 {
         
         {rank = same; IData1; IData2; IData3}
     }
-    
 
 subgraph cluster_1 {
         label = "Apply Analysis Model to\nEach Dataset";
@@ -1941,11 +1941,6 @@ subgraph cluster_1 {
         Result2 [label = "Model 2"]
         Result3 [label = "Model 3"]
         
-        edge [fontname="Lato"]
-        IData1 -> Result1 [label = "Fit"]
-        IData2 -> Result2 [label = "Fit"]
-        IData3 -> Result3 [label = "Fit"]
-        
         {rank = same; Result1; Result2; Result3}
     }
 
@@ -1956,16 +1951,16 @@ subgraph cluster_2 {
         
         node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
         Pooled [label = "Pooled\nModel\nParameters"]
-        
-        edge [fontname="Lato"]
-        Result1 -> Pooled
-        Result2 -> Pooled
-        Result3 -> Pooled
     }
         
 edge [fontname="Lato"]
 OData -> IModel [label = "Fit"]
-
+IData1 -> Result1 [label = "Fit"]
+IData2 -> Result2 [label = "Fit"]
+IData3 -> Result3 [label = "Fit"]
+Result1 -> Pooled
+Result2 -> Pooled
+Result3 -> Pooled
 }
 ```
 
