@@ -363,7 +363,7 @@ Let's explore each of those ideas in more detail.
   The extreme case would be a construct measured by a single variable.
   If that's missing, then the entire construct is missing for that individual 
   and it may be very difficult to recover that information. Missing data is still 
-  still a problem when we use multiple indicators to measure a construct, though 
+  a problem when we use multiple indicators to measure a construct, though 
   perhaps less severe, and it may depend on how you combine items to create the 
   score. 
 * ▶  Missing data decreases the reliability and construct validity of our 
@@ -1222,7 +1222,7 @@ and symbols that are useful for describing patterns.
 
 * ▶  Suppose Y is a complete matrix of all the cases, variables, and values 
 that could be observed. We can split it into two pieces, 
-* ▶  Y_obs which is the subset of Y that that ends up being observed and 
+* ▶  Y_obs which is the subset of Y that ends up being observed and 
 * ▶  Y_miss is the subset that ends up missing. 
 * ▶  We can then define a response matrix called R that has a set of 
   dummy-coded missingess indicators that use a 0 to denote which Y values are 
@@ -1786,7 +1786,7 @@ the most common method because it is the default for many statistical packages.
 *It can only give you unbiased parameter estimates if the data are MCAR* and you 
 still lose power due to shrinking sample size. But MCAR is a rare situation.
 With MAR data, listwise deletion yields biased results and lower power. If there 
-are high rates missingness and patterns affecting many variables, you may not
+are high rates of missingness and patterns affecting many variables, you may not
 have enough observations left to do meaningful analyses.
 
 Pairwise deletion discards data at the variable level instead of the person
