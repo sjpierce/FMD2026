@@ -3,7 +3,7 @@ Steven J. Pierce
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# FMD2026: Fundamentals of Misssing Data
+# FMD2026: Fundamentals of Missing Data
 
 <!-- badges: start -->
 
@@ -15,24 +15,23 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 This repository holds materials for one of my professional presentations
 (Pierce, 2026, July 15). Its primary purpose is for me to use version
-control tools while developing my slides, but its secondary purposes
-include distributing the slides to my audience and demonstrating how to
-use Quarto to create slides. The repository is public so that attendees
-can access the slides after the presentation.
+control tools while developing my slides but its secondary purpose is
+distributing the slides to my audience, which is why the repository is
+public.
 
 There are two different types of users of this repository: myself and my
-audience. I am an the only person editing the code in this repository
-and I assume the audience just wants copies of my slides, so I am
-omitting information about the structure of the repository and how to
-render the slides.
+audience. I am the only person editing the code in this repository and I
+assume the audience just wants copies of my slides, so I am omitting
+information about the structure of the repository and how to render the
+slides.
 
 ## Obtaining the Slides
 
-For the link below, you will land on a GitHub page with a *Download raw
-file* button in the upper right corner of the screen. Its icon looks
-like an arrow pointing down into a tray. It is just to the left of the
-pencil icon. Use that to download each file to your computer, then open
-it with a web browser.
+The link below takes you to a GitHub page with a *Download raw file*
+button in the upper right corner of the screen. Its icon looks like an
+arrow pointing down into a tray. It is just to the left of the pencil
+icon. Use that to download the file to your computer, then open it with
+a web browser.
 
 - [`Slides.html`](https://github.com/sjpierce/FMD2026/blob/main/Slides.html)
   *This file contains the most current version of the slides*.
