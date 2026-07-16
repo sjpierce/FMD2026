@@ -1,0 +1,2216 @@
+---
+title: "Fundamentos de los Datos Perdidos"
+subtitle: "Programa de Desarrollo Docente para la Universidad César Vallejo, Perú"
+author: 
+  - name: Steven J. Pierce
+    orcid: 0000-0002-0679-3019
+    email: pierces1@msu.edu
+institute: "[Center for Statistical Training and Consulting](https://cstat.msu.edu)"
+date: 2026-07-20
+title-slide-attributes: 
+  data-notes: "1.5 hr (70 min talk + 20 min Q & A) Mi charla de hoy se centra en 
+  algunos conceptos y problemas relacionados con los datos perdidos en contextos 
+  de investigación científica. Mi experiencia radica en la estadística aplicada, 
+  por lo que me enfocaré en aspectos de los datos perdidos relevantes para los 
+  métodos cuantitativos y los análisis estadísticos. Aun así, los datos perdidos 
+  son un tema amplio y esta es solo una charla breve, por lo que mi objetivo es 
+  enseñar algunas ideas fundamentales, compartir algunas perspectivas y consejos 
+  prácticos, y luego ofrecer recursos que ustedes puedan usar para aprender más 
+  por su cuenta. Anoten mi dirección de correo electrónico o el enlace que ven 
+  en la parte inferior de la pantalla. Mis diapositivas, completas con notas del 
+  orador, lista de referencias y enlaces a recursos, estarán disponibles en ese 
+  enlace.
+  <br><br>
+  [*Mostrar a resolución de 1920 x 1080 o 1280 x 720*.
+  En las notas del orador, el símbolo ▶ marca cuándo presionar la barra 
+  espaciadora o hacer clic en la flecha derecha para revelar el siguiente 
+  elemento animado en una diapositiva.]"
+csl: apa-numeric-superscript-brackets.csl
+bibliography: references.bib
+format: 
+  revealjs:
+    embed-resources: true
+    theme: [default, CSTAT_theme.scss]
+    controls: true
+    slide-number: c/t
+    show-notes: false
+    header-logo: graphics/Combomark-Horiz_Green-RGB.png
+    footer: <a href="https://github.com/sjpierce/FMD2026">https://github.com/sjpierce/FMD2026</a>
+    logo: graphics/CSTAT_5x5_Transparent.png
+    link-external-icon: true
+    link-external-newwindow: true
+filters:
+  - reveal-header
+lang: es
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+
+library(tidyverse)
+library(knitr)
+library(kableExtra) # Functions for formatting nice tables. 
+library(rgl)        # for cube3d()
+library(mice)       # for the boys dataset
+library(ggmice)     # for plot_pattern
+library(piercer)    # for cvv_missingnes(), var_missingness()
+
+```
+
+## Resumen
+
+* ¿Qué son los datos perdidos?
+* ¿Por qué terminamos con datos perdidos?
+* ¿Por qué deberían importarnos los datos perdidos?
+* ¿Cómo deberíamos empezar a abordar los problemas de datos perdidos?
+* ¿Cómo podemos diagnosticar los problemas de datos perdidos para un estudio determinado?
+* ¿Cómo deberíamos solucionar los problemas de datos perdidos?
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+He organizado esta charla en torno a responder algunas preguntas sencillas.
+Estas son:
+
+* ¿Qué son los datos perdidos?
+* ¿Por qué terminamos con datos perdidos?
+* ¿Por qué deberían importarnos los datos perdidos?
+* ¿Cómo deberíamos empezar a abordar los problemas de datos perdidos?
+* ¿Cómo podemos diagnosticar los problemas de datos perdidos para un estudio determinado?
+* ¿Cómo deberíamos solucionar los problemas de datos perdidos?
+
+:::
+::::
+
+# ¿Qué son los datos perdidos? {background-image="graphics/Woman_Raising_Hand.jpg" fig-alt="Photo of a woman raising her hand to ask a question." background-size="contain" background-position="right" background-repeat="no-repeat"}
+
+::::: {.columns}
+
+:::: {.column width="45%"}
+Los datos perdidos (DP) son mediciones que ustedes querían o tenían la intención 
+de recolectar pero no obtuvieron [@Fernández-García-RN4151]
+
+::: {.incremental}
+
+* Tener DP es *común* en los estudios de investigación
+* Si hacen mucha investigación, se *encontrarán* con DP
+
+:::
+::::
+:::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 1-2 min by here.*
+
+En los términos más simples, los datos perdidos son simplemente mediciones que
+ustedes querían o tenían la intención de recolectar pero no obtuvieron.
+Mientras que a veces pueden categorizar qué tipo de datos perdidos tienen o
+identificar por qué se perdieron, el meollo del problema es que no tener todos
+los datos deseados significa que tienen que decidir cómo adaptar sus planes
+para completar el estudio. 
+
+▶ Tener datos perdidos es un problema común que afecta a los estudios de
+investigación y evaluación. Evitarlo por completo es difícil y raro.
+
+▶ Si realizan mucho trabajo de investigación, eventualmente *se encontrarán* 
+con un problema de datos perdidos. Por lo tanto, vale la pena aprender sobre los 
+problemas que rodean a los datos perdidos y las consecuencias de cómo los 
+manejamos.
+:::
+::::
+
+# ¿Por qué terminamos con datos perdidos?
+
+La recolección de datos no siempre sale según lo planeado...
+
+::: {.fragment}
+
+```{r}
+#| label: tbl-factors
+#| tbl-cap: Factores que pueden conducir a datos perdidos
+
+data.frame(Human = c("Comportamiento del participante", "Errores del investigador", 
+                     "Comportamiento del socio"),
+           Other = c("Fallas del equipo", "Registros/Bases de datos", 
+                     "Eventos inusuales")) |>   
+  kable(format = "html", 
+        col.names = c("Factores Humanos", "Otros Factores")) |> 
+ 
+  kable_classic(full_width = FALSE, lightable_options = c("hover"), 
+                html_font = "Lato")
+
+```
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 2-3 min by here.*
+
+¿Por qué terminamos con datos perdidos?
+Como muchas cosas en la vida, la recolección de datos no siempre sale según lo planeado.
+▶
+
+La Tabla 1 aquí muestra algunos ejemplos de los tipos de cosas que pueden salir
+mal. Los factores humanos a menudo contribuyen a la ocurrencia de datos
+perdidos. Por ejemplo, un participante de la encuesta puede omitir una pregunta
+sin registrar ninguna respuesta, ofrecer una respuesta ilegible o irrelevante,
+negarse a responderla, o simplemente decir "No sé". Pueden omitir instrumentos
+completos o visitas completas de recolección de datos. Pero los participantes
+son solo una causa humana de los datos perdidos. Los investigadores
+ocasionalmente cometen errores que conducen a datos perdidos. Imaginen olvidar
+llevar consigo un formulario de recolección de datos, o programar
+incorrectamente el patrón de salto para una encuesta en línea. A veces, las
+decisiones o el comportamiento de nuestros socios de investigación pueden
+impedir la obtención de algunos datos que queríamos. Tal vez se oponen a
+compartir algo con ustedes, o no fueron diligentes al registrar algunos eventos
+de interés.
+
+Otras cosas también pueden salir mal. Quizás un instrumento físico se rompe, o
+su batería se agota, o la aplicación de su encuesta en línea falla. Si están
+utilizando los registros o bases de datos de una organización, esos pueden estar
+incompletos, ser difíciles de buscar para datos relevantes, estar codificados de
+maneras poco útiles, o podrían haberse perdido, dañado o incluso destruido según
+alguna política de retención. En términos de eventos, la recolección de datos
+para uno de mis proyectos fue interrumpida por un huracán inusualmente fuerte en
+Florida.
+:::
+::::
+
+# Datos Perdidos y Ciclo de Vida del Proyecto
+
+```{dot}
+//| fig-width: 9
+//| fig-height: 6
+
+digraph WhenMD {
+rankdir="TB";
+node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+Plan [label = "Planificación y Diseño del Estudio"]
+Collect [label = "Recolección de Datos"]
+Enter [label = "Ingreso de Datos"]
+Manage [label = "Almacenamiento y Gestión de Datos"]
+Analyze [label = "Análisis de Datos"]
+Plan -> Collect -> Enter -> Manage -> Analyze
+}
+
+```
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 4 min by here.*
+
+Los datos perdidos resultan de eventos en varios puntos del ciclo de vida de un
+proyecto y eso puede afectar sus opciones para manejar el problema. En la etapa
+de planificación, uno podría omitir un ítem por accidente al diseñar un
+instrumento. 
+
+La mayoría de los datos perdidos probablemente son resultado de cosas que
+ocurren durante los eventos de recolección de datos. Si están recolectando datos
+de estudiantes en un entorno escolar, algunos estudiantes en su muestra podrían
+estar ausentes debido a enfermedad el día de su visita. Eso podría dejarles con
+datos perdidos para ellos.
+
+Sin embargo, también hay eventos posteriores a la recolección de datos que
+pueden causar datos perdidos. Los archivos de papel pueden perderse o dañarse
+después de la recolección de datos antes de que alguien los ingrese a un archivo
+de datos electrónico. Otra posibilidad es que su personal pueda omitir
+accidentalmente uno o más ítems que fueron realmente registrados al ingresar
+datos de formularios en papel a archivos electrónicos.
+
+De manera similar, en la etapa de almacenamiento y gestión de datos antes de que
+comiencen los análisis, alguien podría cometer un error al trabajar con un
+archivo de datos o un disco duro de computadora podría fallar. Finalmente, a
+veces cometemos errores al programar análisis de datos que causan datos
+perdidos, como recodificar inexactamente una variable.
+
+Se justifica la vigilancia a lo largo del ciclo de vida del proyecto.
+:::
+::::
+
+# ¿Por qué deberían importarnos los datos perdidos? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/Hands_Raised.jpg" fig-alt="Photo of 10 hands raised, as if many people have questions." background-size="contain" background-position="bottom" background-repeat="no-repeat"}
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 5-6 min by here.*
+
+Entonces, he definido los datos perdidos y he identificado algunas de las formas
+en que podemos terminar con ellos. Pero ¿por qué deberían importarnos? Esa es la
+pregunta crucial que responderé a continuación.
+:::
+::::
+
+## Pautas Éticas {.smaller}
+
+Manejar bien los datos perdidos es una cuestión de ética.
+Un profesional estadístico ético: [@ASACPE-RN8343]
+
+:::: {.columns}
+
+::: {.column width="25%"}
+![](graphics/ASA_logo_no_title_tagRGB.png){fig-alt="American Statistical Association logo." width=150% height=150%}
+:::
+
+::: {.column width="75%"}
+
+::: {.incremental}
+
+* "Utiliza metodología y datos que son válidos, relevantes y apropiados, sin
+  favoritismo ni prejuicio, y de una manera destinada a producir resultados 
+  válidos, interpretables y reproducibles."
+* "Comunica las fuentes de datos y su idoneidad para el uso, incluyendo los 
+  procesos de generación y recolección de datos y los sesgos conocidos."
+* "Comunica los procedimientos de procesamiento y transformación de datos, 
+  incluyendo el manejo de datos perdidos."
+:::
+
+:::
+
+::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 5-6 min by here.*
+
+Quizás la respuesta más amplia a por qué deberían importarnos los datos perdidos
+es que esto es un problema ético. Aquí me basaré en las pautas éticas de una
+organización profesional a la que pertenezco. Las pautas de la Asociación
+Americana de Estadística incluyen una sección sobre integridad profesional que
+dice que un profesional estadístico ético:
+
+▶ "Utiliza metodología y datos que son válidos, relevantes y apropiados, sin
+favoritismo ni prejuicio, y de una manera destinada a producir resultados válidos,
+interpretables y reproducibles."
+
+▶ También hay una sección sobre integridad de datos y métodos que dice que un
+profesional ético "Comunica las fuentes de datos y su idoneidad para el uso,
+incluyendo los procesos de generación y recolección de datos y los sesgos
+conocidos." y
+
+▶ "Comunica los procedimientos de procesamiento y transformación de datos,
+incluyendo el manejo de datos perdidos." 
+
+Otras sociedades profesionales también tienen códigos de ética que también
+tocarían estas ideas sobre la integridad.
+:::
+::::
+
+## Ética en la Investigación
+
+La calidad ética de un análisis depende de la credibilidad de sus
+suposiciones [@Enders-RN8974]
+
+::: {.incremental}
+
+* Los análisis con datos perdidos deben hacer suposiciones, algunas de las 
+  cuales no pueden probarse empíricamente
+* El rigor exige usar métodos que puedan de manera plausible producir 
+  estimaciones válidas y sin sesgo
+* Las suposiciones deficientes conducen a sesgo y conclusiones engañosas
+* La transparencia requiere reportar la cantidad de datos perdidos, las 
+  suposiciones, los fundamentos y cómo adaptamos los análisis
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 7 min by here.*
+
+La relevancia de esas pautas de la ASA para el manejo de los datos perdidos se
+vuelve más clara cuando consideramos un artículo de Craig Enders y Amanda
+Gottschall. Ellos articularon la relación entre cómo manejamos los datos
+perdidos y la calidad ética de un estudio. Comienzan desde la premisa de que la
+calidad ética de un análisis depende de la credibilidad de sus suposiciones.
+
+▶ Continúan señalando que analizar datos con valores perdidos requiere hacer
+suposiciones, algunas de las cuales no pueden ser probadas empíricamente. Qué
+suposiciones son razonables y defendibles variará a través de los conjuntos de
+datos y los estudios.
+
+▶ En última instancia, el rigor científico y la ética exigen el uso de métodos
+que puedan de manera plausible producir estimaciones sin sesgo de las cantidades
+que queremos estudiar.
+
+▶ Realizar análisis construidos sobre malas suposiciones acerca de los datos
+perdidos conduce a resultados sesgados, inválidos y engañosos. Es poco ético
+depender de ellos.
+
+▶ De esto se deduce que la transparencia requiere reportar cosas como la
+cantidad de datos perdidos, nuestras suposiciones sobre ellos, los fundamentos
+de apoyo, y cómo adaptamos nuestros análisis para lidiar con los datos perdidos.
+:::
+::::
+
+## Actividades Científicas
+
+Existen 3 actividades científicas principales que pueden verse afectadas por los datos perdidos
+[@McKnight-RN1296]
+
+::: {.incremental}
+
+* Realizar observaciones estructuradas de constructos
+* Usar observaciones para sacar inferencias sobre las relaciones entre constructos
+* Generalizar resultados a poblaciones más allá de la muestra recolectada
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 8-9 min by here.*
+
+En términos generales, el trabajo científico consta de tres actividades principales, cada una de
+las cuales tiene problemas metodológicos asociados.
+
+* ▶ Primero, ponemos esfuerzo en hacer observaciones estructuradas de constructos.
+Tenemos que preocuparnos por cómo los datos perdidos afectan la medición de los constructos que queremos estudiar.
+* ▶ Segundo, usamos esas observaciones para sacar inferencias sobre las relaciones entre constructos.
+Aquí, tenemos que considerar cómo los datos perdidos podrían afectar la validez interna de nuestras inferencias.
+* ▶ Finalmente, a menudo queremos generalizar nuestros resultados a una población más amplia que la muestra que recolectamos.
+Los datos perdidos pueden afectar la generalizabilidad de nuestros resultados.
+
+Exploremos cada una de esas ideas con más detalle.
+:::
+::::
+
+## Consecuencias en la Medición [@McKnight-RN1296]
+
+:::{.incremental}
+
+* Disponibilidad de constructos
+* Disminución de la confiabilidad debido al aumento de la varianza del error
+* Sesgo por cobertura deficiente del contenido
+* Validez de constructo
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 9-10 min by here.*
+
+* ▶ Los datos perdidos pueden afectar la disponibilidad de un constructo para sus análisis.
+El caso extremo sería un constructo medido por una sola variable.
+Si eso se pierde, entonces todo el constructo se pierde para ese individuo y puede ser muy difícil recuperar esa información.
+Los datos perdidos siguen siendo un problema cuando usamos múltiples indicadores para medir un constructo, aunque tal vez menos severo, y puede depender de cómo combinen los ítems para crear la puntuación.
+* ▶ Los datos perdidos disminuyen la confiabilidad y la validez de constructo de nuestras medidas.
+La confiabilidad de consistencia interna disminuye porque los datos perdidos aumentan la varianza del error en una medida.
+Pueden recordar que la confiabilidad es una función de cuántos ítems se usan, por lo que menos ítems observados conducen a una menor confiabilidad.
+* ▶ Además, algunos ítems pueden ser indicadores más importantes de un constructo que otros.
+Pueden obtener una estimación sesgada del constructo debido a una cobertura deficiente del contenido si están perdidos.
+* ▶ La validez de constructo depende tanto de la confiabilidad como de la cobertura del contenido, por lo que los datos perdidos son una amenaza para la validez de constructo.
+:::
+::::
+
+## Consecuencias en la Validez Interna [@Fernández-García-RN4151; @McKnight-RN1296]
+
+:::{.incremental}
+
+* Sesgo de selección
+* Aleatorización comprometida
+* Poder y precisión
+* Suposiciones inexactas del modelo
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.3rem;"}
+*Timing: ~ 11 min by here.*
+
+* ▶ Los datos perdidos son una amenaza para la validez interna de un estudio por varias razones.
+El sesgo de selección puede resultar de diferencias sistemáticas entre subgrupos de participantes en constructos relevantes para las conclusiones del estudio.
+Por ejemplo, esos subgrupos podrían ser grupos de tratamiento versus control, personas que completan el estudio versus los que abandonan, o aquellos que tienen datos completos versus datos incompletos.
+Estas diferencias pueden manifestarse con respecto a variables demográficas, covariables, predictores, mediadores, moderadores o resultados.
+Imaginen evaluar un estudio de salud longitudinal donde las personas que comienzan con peores síntomas abandonan antes de la prueba posterior con más frecuencia que aquellos con síntomas leves.
+Abandonar conduce a datos perdidos en la prueba posterior. Si no manejamos eso adecuadamente en el análisis, podemos sacar conclusiones inexactas sobre la tendencia longitudinal en las puntuaciones de resultados.
+O tal vez las tasas de retención difieren entre los grupos de tratamiento y control en ese mismo estudio.
+Los sesgos de selección provenientes de tales diferencias reducen la representatividad de la muestra y se convierten en explicaciones rivales para los hallazgos, haciéndolos una amenaza para la validez interna.
+* ▶ Usamos la aleatorización para hacer que los grupos sean equivalentes en variables de confusión medidas y no medidas como una forma de fortalecer la validez.
+Eso funciona mejor en muestras grandes. Sin embargo, los datos perdidos pueden comprometer ese efecto de la aleatorización al reducir el tamaño de la muestra.
+También puede reducir la capacidad de la aleatorización para lograr equivalencia entre grupos en variables de confusión cuando los datos se pierden diferencialmente entre los grupos.
+Eso reduce la validez interna.
+* ▶ La mayoría del software estadístico tiene por defecto la eliminación por lista (listwise deletion) de los casos que tienen algún valor perdido en las variables involucradas en un análisis.
+Reducir el tamaño de la muestra siempre reducirá tanto el poder para detectar efectos como la precisión de las estimaciones del tamaño del efecto.
+Además de reducir el tamaño de la muestra general, los datos perdidos pueden conducir a tamaños de muestra más desequilibrados entre los grupos en un estudio, lo que también reduce el poder estadístico en muchos modelos.
+* ▶ Finalmente, los datos perdidos pueden cambiar las distribuciones de las variables de formas que invalidan las suposiciones de varios modelos estadísticos.
+Algunos modelos son más robustos que otros, pero hacer suposiciones de modelado inexactas corre el riesgo de ejecutar análisis que arrojarán conclusiones engañosas.
+Esa es otra amenaza para la validez interna.
+
+:::
+::::
+
+## Consecuencias en la Generalizabilidad [@Fernández-García-RN4151; @McKnight-RN1296]
+
+¡Una muestra representativa es crucial para generalizar a la población prevista!
+
+* Desarrollo de la teoría y conocimiento acumulativo
+* Política y toma de decisiones
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 14 min by here.*
+
+Extraemos muestras para estudiar poblaciones cuando no es factible recolectar
+los datos que queremos de toda la población. La clave para obtener inferencias
+que se generalicen adecuadamente de una muestra a la población prevista es
+obtener una muestra representativa. Los sesgos se introducen en los hallazgos
+cuando usamos muestras no representativas. Los datos perdidos pueden introducir
+sesgos sistemáticos en nuestras muestras. Supongamos que están estudiando un
+comportamiento que es ilegal o estigmatizado de alguna manera. Algunas personas
+que se involucran en él pueden ser reacias a proporcionar todos los datos que
+desean. Si ignoramos el problema de los datos perdidos, la eliminación por lista
+resultará en el análisis del subconjunto de la población prevista que está
+dispuesta a responder nuestras preguntas. Eso, en efecto, cambia la población a
+la que podríamos generalizar legítimamente nuestros hallazgos de "personas que
+participan en el comportamiento x" a "personas que participan en el
+comportamiento x y proporcionaron datos completos". Sin embargo, muchas personas
+no prestan atención a eso y asumen que sus resultados aún se aplican a la
+población prevista original.
+
+Eso tiene consecuencias para el desarrollo y prueba de teorías científicas y la
+acumulación de conocimiento a través de estudios. Un ejemplo es el efecto del
+sesgo de publicación, también llamado el problema del cajón de archivos, en los
+metaanálisis. Sabemos que los estudios con hallazgos no significativos tienen
+menos probabilidades de ser publicados. Eso significa que la literatura
+publicada tiene un problema de datos perdidos que puede distorsionar seriamente
+los resultados de los metaanálisis que apuntan a resumir los resultados de una
+colección de artículos publicados.
+
+Finalmente, el panorama general aquí es que cuando los datos perdidos perjudican
+la generalizabilidad, podríamos estar usando hallazgos inexactos o engañosos
+para informar la política pública y decisiones importantes.
+:::
+::::
+
+# Preguntas de la Audiencia (1)
+¿Tienen preguntas sobre qué son los datos perdidos y por qué son importantes?
+
+::: {.notes}
+*Timing: ~ 16 min by here. Continue by 21 min.*
+
+Hagamos una pausa para ver si hay alguna pregunta sobre el material que he cubierto
+hasta ahora.
+:::
+
+# ¿Cómo deberíamos empezar a abordar los problemas de datos perdidos? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left; "background-image="graphics/pexels-cristian-rojas-8853388.jpg" fig-alt="Photo of a woman and a man discussing a project." background-size="cover" background-position="bottom" background-repeat="no-repeat"}
+
+::: {.notes}
+*Timing: ~ 21 min in by here.*
+
+Entonces, he sentado algunas bases definiendo los datos perdidos y discutiendo por qué
+importan.
+Sabemos que plantea problemas de medición, validez interna y generalizabilidad
+para nuestros estudios.
+Ahora la siguiente pregunta lógica es "¿Cómo deberíamos empezar a abordar los problemas de datos perdidos?"
+Para responder eso, voy a introducir un marco de trabajo que puede guiar sus esfuerzos para hacer eso.
+:::
+
+## Marco TARMOS [@Lee-RN8488]
+
+**T**ratamiento y **R**eporte de **D**atos **P**erdidos en **E**studios **O**bservacionales
+(TARMOS, por sus siglas en inglés)
+
+* Aboga por una metodología sistemática y transparente
+* Recomienda un enfoque de 3 pasos
+* Los principios son aplicables más allá de los estudios observacionales
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 21-22 min by here.*
+
+El marco de Tratamiento y Reporte de Datos Perdidos en Estudios Observacionales
+(TARMOS) aboga por la aplicación de una metodología sistemática y transparente
+para manejar los datos perdidos. Recomienda adoptar un enfoque de 3 pasos para
+esa tarea. Está basado en unos pocos principios que creo que son aplicables
+tanto a los diseños de investigación observacional que fueron el enfoque de
+TARMOS como a otros diseños de investigación como estudios experimentales y
+cuasi-experimentales.
+
+A continuación, describiré brevemente los pasos en TARMOS, junto con un pequeño
+ajuste que haría al marco.
+:::
+::::
+
+## TARMOS Paso 1: Planificar el Análisis
+
+* Identifiquen los análisis que utilizarían si no hubiera datos perdidos
+    * Escriban un plan de análisis estadístico [@Cressman-RN8487]
+* Decidan cómo manejarán los datos perdidos
+    * ¿Es probable que un análisis de registros completos sea válido?
+    * ¿Es probable que la imputación múltiple ofrezca beneficios sobre un 
+      análisis de registros completos?
+    * ¿Se requiere un análisis de sensibilidad y, de ser así, cómo debería 
+      estructurarse?
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 22-23 min by here.*
+
+El primer paso en TARMOS les anima a comenzar identificando los modelos de
+análisis que utilizarían si no hubiera datos perdidos en absoluto. Aquí, puede
+ser útil aplicar recomendaciones sobre la redacción de buenos planes de análisis
+estadístico. Análisis bien elegidos describirán su muestra, responderán a sus
+preguntas de investigación y probarán sus hipótesis mientras dan cuenta
+adecuadamente del diseño de investigación y las covariables relevantes. Una
+especificación completa de los análisis requeridos revela el conjunto de
+variables que *deben estar disponibles* para lograr sus objetivos científicos.
+Los datos perdidos en esas *variables esenciales* plantean problemas; los datos
+perdidos en *otras variables* pueden ser irrelevantes para su estudio.
+
+El paso 1 de TARMOS también pide que decidan cómo manejarán los datos perdidos.
+Les pide considerar algunas preguntas clave, tales como:
+
+* ¿Es probable que un análisis de registros completos sea válido?
+* ¿Es probable que la imputación múltiple ofrezca beneficios sobre un análisis 
+  de registros completos?
+* ¿Se requiere un análisis de sensibilidad y, de ser así, cómo debería 
+  estructurarse?
+
+Entender tanto los conceptos de la literatura de datos perdidos como varios
+métodos que *podrían* aplicarse facilita la toma de decisiones. Pueden
+identificar algunas opciones generales durante el paso 1 pero mi opinión es que
+la elección real debería hacerse en el paso 2.
+
+:::
+::::
+
+## TARMOS Paso 2: Realizar el Análisis
+
+* Examinen si los datos son adecuados para el análisis planeado
+    * Apliquen pautas iniciales de análisis de datos 
+      [@Baillie-RN8311; @Heinze-RN8641; @Huebner-RN3947; @Huebner-RN3997]
+    * Diagnostiquen los problemas de datos perdidos 
+      [@Enders-RN8673; @Enders-RN8974; @McKnight-RN1296] *antes* de decidir cómo
+      manejarlos
+    * Actualicen el plan de análisis estadístico
+* Realicen el análisis sustantivo, reconozcan y justifiquen las desviaciones del 
+  plan
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 24-25 min by here.*
+
+El segundo paso en TARMOS es realizar análisis. El marco les anima a examinar si
+sus datos son adecuados para el análisis planeado. Existe una creciente
+literatura con pautas sobre la planificación y realización de análisis de datos
+iniciales que logran este propósito. Un mensaje clave es que los análisis de 
+datos iniciales *no abordan las preguntas de investigación e hipótesis*
+*sustantivas*. Se centran en evaluar si es factible llevar a cabo el análisis 
+sustantivo como se planeó originalmente o si tendrán que adaptar su plan de
+análisis para lidiar con características inesperadas de los datos.
+
+Aquí, quiero enfatizar que un diagnóstico exhaustivo de los problemas de datos
+perdidos en sus datos debería ser parte de su análisis inicial de datos. Esos
+resultados les dan el resto de la información que necesitan para tomar buenas
+decisiones sobre el manejo de los datos perdidos en sus análisis sustantivos. Si
+tienen suerte, no habrá ningún dato perdido y podrán simplemente implementar su
+plan de análisis estadístico tal cual. Sin embargo, los resultados del
+diagnóstico pueden mostrarles que el análisis planeado no producirá respuestas
+confiables a menos que lo modifiquen para manejar los datos perdidos con
+sensatez.
+
+Así que mi opinión es que TARMOS debería haber recomendado tomar la decisión 
+sobre cómo manejar los datos perdidos en el medio del paso 2. *¡Actualicen el*
+*plan de análisis después de revisar los diagnósticos de datos perdidos!* 
+
+Después de eso, terminen el paso 2 de TARMOS realizando su análisis sustantivo.
+Es importante reconocer y justificar cualquier desviación del plan de análisis
+original. Los análisis de datos iniciales deberían proporcionar evidencia de por
+qué esos cambios fueron necesarios.
+:::
+::::
+
+## TARMOS Paso 3: Reportar el Análisis
+
+* Describan los datos perdidos
+* Describan cómo se manejaron los datos perdidos y justifiquen el enfoque
+* Reporten e interpreten los resultados
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 26-27 min by here.*
+
+El tercer y último paso en TARMOS es reportar su análisis. Su artículo debería
+describir los problemas de datos perdidos que detectaron en el Paso 2, cómo los
+manejaron y por qué seleccionaron ese enfoque. Obviamente, luego deberían
+incluir e interpretar los resultados de sus análisis y cualquier análisis de
+sensibilidad o verificaciones de solidez que hayan realizado.
+
+Entonces, TARMOS puede destilarse en tres palabras: planificar, realizar y
+reportar.
+:::
+::::
+
+# ¿Cómo podemos diagnosticar los problemas de datos perdidos para un estudio determinado? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-fauxels-3184634.jpg" fig-alt="Photo of a team of several people in business suits sitting at a table discussing a report." background-size="cover" background-position="bottom" background-repeat="no-repeat"}
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 27-28 min by here.*
+
+Entonces, he sentado algunas bases al esbozar el marco TARMOS, pero cada estudio
+es único. La naturaleza y magnitud de los problemas de datos perdidos que
+enfrenten variarán a través de los estudios. No podemos tomar buenas decisiones
+sobre qué hacer con los datos perdidos hasta que entendamos a fondo los
+problemas en un estudio dado. La siguiente pregunta lógica es "¿cómo podemos
+diagnosticar los problemas de datos perdidos para un estudio determinado?"
+
+Para responder eso, voy a cubrir algunos conceptos adicionales que pertenecen a
+la descripción de las cantidades, patrones y mecanismos de los datos perdidos.
+Ayuda empezar pensando en las estructuras de datos que afectan cómo organizamos
+y usamos los datos.
+:::
+::::
+
+## La Caja de Datos de Cattell [@Cattell-RN8693] {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+``` {r}
+#| label: data-box
+#| message: false
+#| fig-width: 4.5
+#| fig-height: 4.5
+
+options(rgl.useNULL=TRUE)
+open3d(silent = TRUE)
+cube3d(scaleMatrix(5,5,5), col = "#C3FFEC", quads = 5) |> 
+  translate3d(1, 1, 1) |> 
+  shade3d()
+
+axis3d(edge = 'x--', labels = c("1", "2", ".", ".", ".", "V"))
+mtext3d(text = "Variable", edge = 'x++', line = 4, floating = TRUE)
+
+axis3d(edge = 'y-+', labels = c("1", "2", ".", ".", ".", "T"))
+mtext3d(text = "Tiempo", edge = 'y++', at = 6, line = 5, floating = TRUE)
+
+axis3d(edge = 'z--', labels = c("P", ".", ".", ".", "2", "1"))
+mtext3d(text = "Persona", edge = 'z++', line = 4, floating = TRUE)
+
+view3d(theta = 0, phi = -60, zoom = .9, interactive = FALSE)
+grid3d(side = c("x+", "y-", "z+"), col = "black")
+rglwidget()
+```
+
+:::
+
+::: {.column width="50%"}
+<br> *¿Cuántos datos hay? El volumen de datos es* $N_{valores} = P \times V \times T$
+
+* Los cortes a través del cubo representan subconjuntos de datos
+* Los constructos a menudo se miden mediante grupos de variables adyacentes (ítems)
+* ¡Los datos perdidos dejan vacíos en su cubo!
+
+:::
+::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 28-29 min by here.*
+
+Raymond Cattell describió que los datos forman una caja o cubo tridimensional,
+cuyas dimensiones son las personas, las variables y las ocasiones (o puntos de
+tiempo). Esto resulta muy útil para conceptualizar el volumen total de datos que
+planeamos recolectar. En el caso de un estudio longitudinal simple, donde
+aplicamos los mismos instrumentos a cada persona en cada punto de tiempo,
+podemos simplemente multiplicar el número deseado de participantes por el número
+de variables y por la cantidad de puntos de tiempo para obtener el total de
+valores de datos que esperamos tener. Ese es el volumen del cubo. Los diferentes
+cortes a través del cubo representan subconjuntos específicos de datos. La capa
+superior correspondería a todos los datos de una persona en particular (todas
+las variables en todos los puntos de tiempo). El corte vertical del extremo
+izquierdo representaría todos los datos de una variable específica para todas
+las personas y en todos los puntos de tiempo. La cara frontal del cubo abarcaría
+los datos del tiempo 1 para todas las variables y todas las personas. Podemos
+precisar aún más esta idea al reconocer que los constructos a menudo se miden
+mediante grupos de variables adyacentes (ítems).
+
+Los datos perdidos dejan agujeros en el cubo, convirtiéndolo en algo parecido a
+un queso suizo. El impacto de esto depende de qué tanto volumen de datos se
+pierda, así como de los patrones que determinen dónde y por qué se ubican dichos
+agujeros en relación con los datos que se desea analizar.
+:::
+::::
+
+## Corte y reorganización del cubo de datos
+
+```{dot}
+//| fig-width: 9
+//| fig-height: 5
+
+digraph CutCube {
+rankdir="TB";
+
+node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+Cube [label = "Cubo de Datos\nP x V x T"]
+Slices [label = "T Cortes\n P x V"]
+Long [label = "Formato largo univariado\nTiempo → Filas adicionales\n1 caso por persona-período"]
+Wide [label = "Formato ancho multivariado\nTiempo → Columnas adicionales\n1 caso por persona"]
+
+edge [fontname="Lato"]
+Cube -> Slices [label = "Corte por tiempo"]
+Slices -> Long [label = "Apilar"]
+Slices -> Wide [label = "Esparcir"]
+}
+```
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 29-31 min by here.*
+
+El concepto del cubo de datos tridimensional es útil, pero los archivos de datos
+reales suelen limitarse a una matriz bidimensional con filas para los casos y
+columnas para las variables. Debemos realizar cortes y reorganizar la caja para
+manejar la dimensión temporal de manera sensata. Existen dos formatos comunes
+para representar datos longitudinales o de medidas repetidas.
+
+El formato largo univariado mantiene todos los datos de una variable específica
+en una sola columna, por lo que cada punto de tiempo debe convertirse en un
+conjunto de filas diferente. Cada persona termina con una fila por punto de
+tiempo debido a que estamos apilando verticalmente los cortes temporales.
+
+El formato ancho multivariado mantiene todos los datos de una persona
+determinada en una sola fila, por lo que cada punto de tiempo debe convertirse
+en un conjunto adicional de columnas. Estamos desplegando los cortes temporales
+de manera horizontal y renombrando las variables según sea necesario en el
+proceso.
+::: 
+::::
+
+## Estructura de datos: Larga
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+```{r}
+#| label: tbl-LONG
+#| tbl-cap: Formato largo univariado
+
+set.seed(24687)
+
+LONG <- expand.grid(ID = 1:3, Tiempo = 1:2) |>  
+  mutate(X1 = sample(x = 11:33, size = 6, replace = TRUE), 
+         X2 = sample(x = 1:7, size = 6, replace = TRUE),
+         X3 = sample(x = letters[1:3], size = 6, replace = TRUE)) |>  
+  arrange(ID, Tiempo)
+
+kable(LONG, format = "html", align = "c") |> 
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato") 
+```
+
+::::
+
+:::: {.column width="10%"}
+::::
+
+:::: {.column width="40%"}
+::: {style="font-size: 0.7em;"}
+
+<br><br><br> <!-- Add line breaks to control layout-->
+
+Cubo: $P = 3, V = 3, T = 2$, $N_{casos} = P \times T = 6$
+
+* Incluyendo ID y Tiempo: $V = 5$, $N_{valores} = P \times V \times T = 30$
+* Excluyendo ID y Tiempo: $V = 3$, $N_{valores} = P \times V \times T = 18$
+    
+:::
+::::
+:::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 31-33 min by here.*
+
+Supongamos que nuestro cubo de datos tiene mediciones para P = 3 personas en
+tres variables (X1, X2 y X3), cada una medida en dos puntos de tiempo. Eso
+implica un total de 18 valores. Esta tabla es el resultado de traducir eso a un
+formato largo univariado. Debemos agregar dos variables estructurales (ID y
+tiempo) que nunca deberían tener datos faltantes y que se utilizan para
+identificar de forma única una fila de datos perteneciente a una persona
+específica en un punto de tiempo específico. Terminamos con 6 casos y 5
+variables, para un total de 30 posibles valores de datos, de los cuales 18
+constituyen el contenido del cubo de datos original.
+:::
+::::
+
+## Estructura de datos: Ancha
+
+```{r}
+#| label: tbl-WIDE
+#| tbl-cap: Formato ancho multivariado
+
+WIDE <- LONG |> 
+  pivot_wider(names_from = Tiempo, values_from = c(X1, X2, X3), 
+              names_glue = "T{Tiempo}_{.value}", names_vary = "slowest")
+
+kable(WIDE, format = "html", align = "c") |> 
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato") |> 
+  add_header_above(header = c(" ", "Tiempo 1" = 3, "Tiempo 2" = 3))
+```
+
+::: {style="font-size: 0.7em;"}
+Cubo: $P = 3, V = 3 , T = 2$. $N_{casos} = P = 3$
+
+* Incluyendo ID: $V = 7$, $N_{valores} = P \times V = 21$
+* Excluyendo ID: $V = 6$, $N_{valores} = P \times V = 18$
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 32-34 min by here.*
+
+Esta tabla muestra los mismos datos que vieron en la diapositiva anterior,
+reorganizados en formato ancho. Así que ahora tenemos una fila por ID único,
+pero necesitamos seis variables para representar X1, X2 y X3 en los dos puntos
+temporales. Agregué un prefijo temporal al nombre de cada variable y agrupé las
+variables por punto temporal. Las etiquetas de agrupación de columnas sobre los
+nombres de las variables simplemente aclaran esa estructura. Ahora tenemos un
+total de 21 valores, de los cuales 18 son el contenido del cubo original.
+:::
+::::
+
+## Elegir la Estructura de los Datos
+
+* Los conjuntos de datos largos y anchos son útiles para diferentes tareas de 
+  diagnóstico
+* Presten atención a qué estructura están utilizando
+* Es posible que necesiten *ambos* conjuntos de datos, largos y anchos
+* Usen el *subconjunto relevante* de casos y variables en los diagnósticos
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 32-34 min by here.*
+
+Tanto las estructuras de datos en formato largo como en formato ancho son
+útiles, pero evaluar algunos tipos de problemas de datos perdidos puede ser más
+fácil con una estructura que con la otra. Naturalmente, deben prestar atención a
+qué estructura de datos están utilizando y pensar si esta facilita o dificulta
+su trabajo de diagnóstico. Es posible que descubran que en realidad necesitan
+*ambos* conjuntos de datos, por lo que deben estar preparados para reestructurar
+sus datos de un formato al otro.
+
+En cualquier caso, revisen su plan de análisis para identificar los subconjuntos
+de casos y variables que son relevantes para sus análisis planificados. Estos
+deben incluirse en los análisis de diagnóstico, pero a menudo tenemos más datos
+de los que se requieren estrictamente para un análisis sustantivo determinado.
+Creen conjuntos de datos más pequeños para utilizarlos en los análisis de
+diagnóstico.
+:::
+::::
+
+## Tipos de datos faltantes [@McKnight-RN1296; @Schafer-RN425]
+
+* Nivel de ítem
+* Nivel de constructo
+* Nivel de persona (falta de respuesta de la unidad / no respuesta unitaria)
+* Nivel de persona-período (falta de respuesta por ola; intermitente vs. 
+  abandono / deserción)
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 34-36 min by here.*
+
+Existe una variedad de tipos de datos faltantes a considerar al comenzar a
+describir un conjunto de datos determinado. Un punto de partida consiste en
+examinar diferentes partes del cubo de datos. Por ejemplo, la ausencia de datos
+a nivel de ítem se refiere a una variable individual. ¿Qué porcentaje de sus
+valores falta? Contraste eso con la ausencia de datos a nivel de constructo, que
+ocurre cuando falta un constructo completo. Algunos métodos de puntuación
+consideran que un constructo es faltante si falta alguno de sus ítems, mientras
+que otros aún pueden generar una puntuación a pesar de tener algunos ítems
+faltantes. La falta de datos a nivel de constructo suele ser un problema mayor
+que los datos faltantes a nivel de ítem.
+
+Los datos faltantes a nivel de persona, a veces llamados no respuesta unitaria,
+ocurren cuando faltan todos los datos de un individuo. Negarse a participar
+generalmente causa datos faltantes a nivel de persona. Ese es un ejemplo
+extremo, pero un tipo de ausencia de datos relacionado ocurre a nivel de
+persona-período cuando un participante se salta un evento completo de
+recolección de datos. Esto también se conoce como falta de respuesta por ola y
+afecta a todos los constructos medidos en ese punto de tiempo. En estudios
+longitudinales, la ausencia de datos a nivel de persona-período puede ser
+intermitente, cuando un participante se salta un evento pero regresa para los
+eventos subsecuentes, o puede ser el resultado de un abandono o deserción que
+afecta a todos los puntos de tiempo restantes.
+:::
+::::
+
+## Datos de Ejemplo: Resumen de Tamaño y Pérdida
+
+```{r}
+#| label: tbl-CVV-Missing
+#| tbl-cap: "Resumen de datos perdidos para los datos del estudio de crecimiento de niños holandeses [@Fredriks-RN8696]"
+#| results: asis
+
+FN <- paste("<small>", 
+            "Datos transversales (formato ancho multivariado).",
+            "</small>")
+  
+cvv_missingness(boys) |> 
+  mutate(Subset = factor(Subset, levels = c("Complete", "Incomplete", "All"),
+                         labels = c("Completos", "Incompletos", "Todos"))) |> 
+  kable(format = "html", align = "r", digits = 1,
+        col.names = c("Subconjunto", rep(c("n", "%"), times = 3))) |> 
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato") |>
+  row_spec(row = 3, italic = TRUE) |> 
+  add_header_above(header = c(" " = 1, "Casos" = 2, "Variables" = 2, 
+                              "Valores" = 2)) |> 
+  footnote(general = FN, general_title = "<small>Nota: </small>", 
+           footnote_as_chunk = TRUE, escape = F, threeparttable = TRUE) |> 
+  cat()
+```
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 36-38 min by here.*
+
+Aquí muestro una tabla con un panorama general de los datos faltantes de un
+estudio sobre el crecimiento de niños holandeses. Se trata de datos
+transversales, los cuales están efectivamente en un formato ancho multivariado.
+Esto significa que cada niño está representado por un solo caso. La fila
+inferior muestra el tamaño del conjunto de datos: tenemos 748 niños y mediciones
+para 9 variables, lo que da un total de 6732 valores posibles.
+
+Esta tabla nos muestra que el 70% de los casos están incompletos, lo que
+significa que cada uno de esos niños tiene al menos una variable con un valor
+faltante en su fila de datos. También podemos ver que 8 de las 9 variables están
+incompletas, lo que significa que al menos un niño tiene datos faltantes en esa
+columna. Finalmente, las columnas de valores nos muestran que aproximadamente el
+24% de todos los valores posibles en el conjunto de datos está faltante. Por lo
+tanto, un cuarto del volumen del cubo de datos está vacío.
+
+Este tipo de panorama general proporciona información diagnóstica crucial. Por
+ejemplo, si la fila de 'Incompletos' contuviera solo ceros, usted sabría de
+inmediato que no hay datos faltantes y que no se requiere ningún diagnóstico
+adicional.
+:::
+::::
+
+## Comparación de Resúmenes de DP para Datos Largos vs. Anchos
+
+```{r}
+#| label: tbl-WIDEvsLONG
+#| tbl-cap: Significado de casos y variables incompletos por formato del conjunto de datos
+
+LvW <- data.frame(format = c("Ancho", "Largo"), 
+                  cases = c("Personas con algún DP (a través de variables y tiempos)", 
+                            "Personas con algún DP en tiempos específicos (a través de variables)"), 
+                  variables = c("Variables con algún DP en tiempos específicos (a través de personas)",
+                                "Variables con algún DP (a través de personas y tiempos)"))
+
+kable(LvW, format = "html", align = "c", 
+      col.names = c("Formato", "Casos Incompletos", "Variables Incompletas")) |> 
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                font_size = 35,
+                lightable_options = c("hover"), html_font = "Lato") 
+```
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 37-39 min by here.*
+
+Si tiene datos longitudinales, el significado de los casos incompletos y de las
+variables incompletas depende de si está resumiendo un conjunto de datos en
+formato ancho o largo. Esta tabla muestra algunos puntos clave sobre cómo
+interpretar el panorama general de datos faltantes de la diapositiva anterior.
+Note que:
+
+* En los formatos anchos, los casos incompletos son personas que presentan algún 
+  dato faltante a lo largo de todas las variables y todos los puntos de tiempo, 
+  mientras que las variables incompletas son específicas de cada momento en el 
+  tiempo.
+* Por su parte, en los formatos largos, los casos incompletos son personas con 
+  algún dato faltante en momentos específicos pero a lo largo de todas las 
+  variables. Esto significa que se están identificando observaciones de 
+  persona-período con datos faltantes. Las variables incompletas en los 
+  conjuntos de datos en formato largo son aquellas que presentan algún dato 
+  faltante en absoluto a lo largo de todas las personas y todos los momentos. 
+
+Por lo tanto, generar estos panoramas generales tanto para las versiones en
+formato largo como ancho de los conjuntos de datos longitudinales revela
+información adicional sobre la cantidad de datos faltantes. Es fácil de hacer.
+Algunos paquetes de software estadístico cuentan con funciones excelentes para
+producir estos resúmenes y otros diagnósticos de datos faltantes.
+:::
+::::
+
+## Datos de Ejemplo: Pérdida a Nivel de Variable
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+```{r}
+#| label: tbl-Var-Missing
+#| tbl-cap: "Pérdida de ítems/constructos para los datos del estudio de crecimiento de niños holandeses [@Fredriks-RN8696]"
+#| results: asis
+FN <- paste("<small>", "Datos transversales (formato multivariado ancho).", "</small>")
+var_missingness(boys) |>
+  select(-Position, -N_Total) |>
+  kable(format = "html", align = "r", digits = 1,
+        col.names = c("Variable", rep(c("n", "%"), times = 2))) |>
+  kable_classic(full_width = FALSE, bootstrap_options = c("condensed"),
+                lightable_options = c("hover"), html_font = "Lato", font_size = 25) |>
+  row_spec(row = 2:3, italic = TRUE) |>
+  row_spec(row = 4, bold = TRUE) |>
+  add_header_above(header = c(" ", "Observado" = 2, "Perdido" = 2)) |>
+  footnote(general = FN, general_title = "<small>Nota: </small>", 
+           footnote_as_chunk = TRUE, escape = F, threeparttable = TRUE) |>
+  cat()
+```
+
+::::
+
+:::: {.column width="50%"}
+<br><br> <!-- Add line breaks to control layout-->
+
+::: {.incremental}
+* La edad es un constructo de un solo ítem
+* El índice de masa corporal es un **constructo de dos ítems**: 
+    * $bmi = wgt/hgt^2$
+    * Se requieren ambos *ítems*
+
+:::
+::::
+:::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 39-41 min by here.*
+
+Los panoramas generales de datos faltantes le indican cuántas variables tienen
+datos faltantes, pero no qué variables los tienen ni cuánto falta en cada una.
+Por eso también debería examinar una tabla de estadísticas de datos faltantes a
+nivel de variable. Esta tabla muestra una para el conjunto de datos de ejemplo
+que usé hace un par de diapositivas. Esto puede revelar datos faltantes tanto a
+nivel de ítem como de constructo. Una variable puede representar un ítem, un
+constructo o ambos.
+
+* ▶ Aquí, la edad es un constructo de un solo ítem que no presenta datos 
+  faltantes
+* ▶ y el índice de masa corporal es un constructo de dos ítems definido por
+* ▶ la relación del peso dividido por la estatura al cuadrado 
+* ▶ Se requieren ambas variables para calcular el IMC, por lo que el IMC será 
+  un dato faltante siempre que falte el peso o la estatura. 
+
+Sin embargo, el IMC aún presenta una tasa baja de datos faltantes. En cambio,
+las variables gen, phb y tv —que son todas medidas del desarrollo puberal—
+tienen tasas muy elevadas de datos faltantes. La importancia de tratar
+adecuadamente los datos faltantes aumenta con la tasa de datos faltantes de las
+variables requeridas para los análisis planificados.
+
+Considere generar un resumen de datos faltantes a nivel de variable como este
+tanto para conjuntos de datos en formato largo como ancho si tiene datos
+longitudinales. Esto puede ser especialmente importante si su análisis
+planificado solo utilizará un subconjunto de los puntos de tiempo disponibles.
+:::
+::::
+
+## Describir la Cantidad de DP [@McKnight-RN1296; @van-Buuren-RN3962]
+
+Reporten números y porcentajes de:
+
+:::{.incremental}
+
+* Casos, variables y valores incompletos (en general y por tiempo)
+* Valores perdidos por variable/constructo (en general y por tiempo)
+* Participantes con *algún dato observado* en cada punto de tiempo (retención/asistencia)
+* Razones de abandono y otros tipos de datos perdidos
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 41-43 min by here.*
+
+Para cumplir con el paso 3 de TARMOS, los productos de investigación, como los
+manuscritos, deben incluir algunos resúmenes claros de la cantidad de datos
+faltantes, tales como el número y el porcentaje de:
+
+* ▶ Casos, variables y valores incompletos, como los panoramas generales que 
+  mostré anteriormente, tanto a nivel general como por punto de tiempo.
+* ▶ Valores faltantes para cada variable y constructo, tanto a nivel general 
+  como por punto de tiempo
+* ▶ Participantes con algún dato observado en cada punto de tiempo. Esto le 
+  ayuda a examinar las tasas de retención y asistencia en estudios 
+  longitudinales. 
+* ▶ Los motivos por los cuales los participantes abandonan, omiten eventos de 
+  recolección de datos o presentan otros datos faltantes.
+  
+:::
+::::
+
+## Sistemas de Seguimiento
+Utilice un sistema de seguimiento para organizar y documentar la recolección de 
+datos.
+
+::: {.incremental}
+* Si los participantes asisten a cada evento de recolección de datos y cuándo lo 
+  hacen
+* Cuándo, cómo y por qué los participantes se retiran del estudio
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 42-44 min by here.*
+
+Recomiendo encarecidamente diseñar y utilizar un sistema de seguimiento que
+organice y documente sus actividades de recolección de datos. Este debería tener
+como objetivo registrar aspectos como:
+
+* ▶ Si los participantes asisten a cada evento de recolección de datos y cuándo lo 
+  hacen
+* ▶ Cuándo, cómo y por qué los participantes se retiran del estudio, ya sea 
+  porque completaron todo según lo planificado, o porque se retiraron a mitad 
+  del proceso, se perdió el contacto con ellos o, tal vez, incluso dejaron de 
+  ser elegibles para seguir participando debido a un cambio en sus 
+  circunstancias personales.
+
+Un sistema de seguimiento de este tipo le proporciona datos que puede analizar
+para obtener perspectivas cruciales sobre los problemas de datos faltantes.
+
+:::
+::::
+
+## Declaración CONSORT 2025 [@Hopewell-RN9004]
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+* Requiere revelar cómo se manejaron los DP
+* Diagrama de flujo del tamaño de la muestra por etapa del estudio:
+    * Utiliza datos de seguimiento
+    * Revela el abandono
+    
+:::
+
+::: {.column width="60%"}
+
+```{dot}
+//| fig-width: 6
+//| fig-height: 5
+
+digraph CONSORT {
+rankdir="TB";
+node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+Assessed [label = "n, Evaluados para elegibilidad"]
+Randomized [label = "n, Asignados aleatoriamente"]
+Assigned1 [label = "Brazo 1 (Intervención)\nn, Asignados"]
+Assigned2 [label = "Brazo 2 (Control)\nn, Asignados"]
+Dropped1 [label = "Abandonó\nn, Discontinuó el brazo de estudio\n  (indicar motivos)\nn, Perdido en el seguimiento\n  (indicar motivos)"]
+Dropped2 [label = "Abandonó\nn, Discontinuó el brazo de estudio\n  (indicar motivos)\nn, Perdido en el seguimiento\n  (indicar motivos)"]
+Analyzed1 [label = "Análisis del resultado primario\nn, Incluidos\nn, Excluidos (indicar motivos)"]
+Analyzed2 [label = "Análisis del resultado primario\nn, Incluidos\nn, Excluidos (indicar motivos)"]
+
+Assessed -> Randomized
+Randomized -> Assigned1 -> Dropped1 -> Analyzed1
+Randomized -> Assigned2 -> Dropped2 -> Analyzed2
+}
+
+```
+
+:::
+::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 43-45 min by here.*
+
+La declaración de los Estándares Consolidados para el Reporte de Ensayos (o
+CONSORT) de 2025 es un conjunto de directrices de reporte específicas para
+estudios diseñados como ensayos controlados aleatorizados. Varias revistas
+requieren que los autores demuestren que han cumplido con los requisitos de la
+lista de verificación de CONSORT al enviar artículos para dichos estudios.
+
+Entre otras cosas, estos estándares exigen revelar cómo manejó los datos
+faltantes. Incluyen la creación de un diagrama de flujo como este, que muestra
+cómo cambia el tamaño de su muestra a lo largo de las etapas del estudio, desde
+la evaluación de la elegibilidad hasta el análisis de sus resultados. Esto es
+particularmente útil para identificar cuándo y por qué los participantes
+abandonan el estudio. Obviamente, el abandono temprano es una causa importante
+de datos faltantes en los estudios longitudinales.
+
+Así que la lección aquí es que diseñar su sistema de seguimiento para recopilar
+los datos necesarios para completar un diagrama CONSORT es una inversión
+prudente.
+:::
+::::
+
+## Patrones de datos faltantes [@Schafer-RN425]
+
+::: {.incremental}
+
+* **Y**: matriz de todos los valores que *podrían* observarse
+* **Y_obs**: subconjunto de los valores observados de **Y** 
+* **Y_miss**: subconjunto de los valores faltantes de **Y**
+* **R**: matriz de respuesta de indicadores de datos faltantes codificados como 
+  variables dummy, que muestra cuáles valores de **Y** son observados (0, parte 
+  de **Y_obs**) frente a los faltantes (1, parte de **Y_miss**)
+  
+:::
+
+:::: {.fragment}
+
+::: {.callout-tip}
+¡Podemos agregar y visualizar **R** para describir los patrones de datos 
+faltantes!
+:::
+
+::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 44-46 min by here.*
+
+La cantidad de datos faltantes es crucial, pero los patrones de cuáles valores
+de datos faltan también son herramientas de diagnóstico importantes. Ahora
+necesito definir algunos términos y símbolos que son útiles para describir
+patrones.
+
+* ▶  Supongamos que Y es una matriz completa de todos los casos, variables y 
+  valores que podrían observarse. Podemos dividirla en dos partes,
+* ▶  Y_obs, que es el subconjunto de Y que termina siendo observado, y
+* ▶  Y_miss es el subconjunto que termina faltando.
+* ▶ Podemos entonces definir una matriz de respuesta llamada R que tiene un c
+  onjunto de indicadores de datos faltantes codificados como variables dummy; 
+  estos usan un 0 para denotar cuáles valores de Y son observados y forman parte 
+  de Y_obs, y un 1 para aquellos que faltan y, en su lugar, pertenecen a Y_miss. 
+  R tiene el mismo número de variables que Y.
+
+▶ Crear R nos da algunas formas de examinar los problemas de datos faltantes. 
+Por ejemplo, podemos agregar a través de los casos para identificar patrones 
+únicos de valores faltantes frente a observados y ver con qué frecuencia 
+ocurren.
+:::
+::::
+
+## Datos de ejemplo: Gráfico de patrones de datos faltantes
+
+```{r}
+#| label: example-patterns
+#| fig-cap: "Patrones de datos faltantes para los datos del estudio de 
+#|           crecimiento de niños holandeses (748 niños, 9 variables, 1 punto en 
+#|           el tiempo) [@Fredriks-RN8696]"
+
+plot_pattern(boys, square = FALSE, rotate = FALSE)
+```
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 45-47 min by here.*
+
+Este gráfico muestra los patrones de datos faltantes en los datos de ejemplo
+sobre el crecimiento de niños holandeses, obtenidos al agregar la matriz R. Cada
+fila representa un patrón diferente de valores observados (en celdas azules)
+frente a valores faltantes (en celdas rosas) a lo largo de todo el conjunto de
+variables. Las columnas son las variables, ordenadas por la cantidad de valores
+faltantes. Esto nos muestra algunos puntos que ya habíamos aprendido en la
+descripción general y en las tablas de datos faltantes a nivel de variable,
+además de nuevos detalles que esas tablas más simples no podían revelar.
+
+El lado izquierdo enumera el número de niños en cada patrón, mientras que el
+lado derecho muestra cuántos valores faltantes hay en esa fila. La parte
+inferior presenta la cantidad de valores faltantes para cada variable. Sabemos
+que debería haber 748 niños, 9 variables y 6732 valores. Una nota al pie en la
+parte inferior indica que faltan 1622 valores (24%).
+
+La primera fila muestra que 223 niños (30%) tienen datos completos. El 70% de
+los niños con datos incompletos se divide en 12 patrones adicionales, pero 8 de
+ellos son muy poco comunes, ya que afectan a tres niños o menos. El patrón más
+común presenta 437 niños con datos faltantes en las 3 medidas de desarrollo
+puberal, pero con datos observados en todas las demás variables. Eso equivale al
+58% de la muestra.
+
+Otra cosa que podemos ver aquí es la ausencia de datos a nivel de constructo en
+el índice de masa corporal, que sabemos que es causada por la falta de datos
+individuales (a nivel de ítem) en la estatura o el peso.
+:::
+::::
+
+## Uso de gráficos de patrones de datos faltantes
+
+Busque patrones que:
+
+:::{.incremental}
+
+* Sean comunes (es decir, de alta frecuencia)
+* Tengan una gran cantidad de valores faltantes
+* Relacionen la falta de datos a nivel de ítem con la falta de datos a nivel de 
+  constructo
+* Muestren la omisión de eventos completos de recolección de datos
+* Muestren asistencia intermitente o abandono
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 47-49 min by here.*
+
+Al igual que con la descripción general de datos faltantes y los resúmenes de
+datos faltantes a nivel de variable, es posible que desee utilizar gráficos de
+patrones de datos faltantes tanto en las versiones largas como anchas de sus
+datos. Tanto las versiones globales como las específicas por periodo de tiempo
+pueden ser útiles. Estos gráficos, especialmente en conjunto con los datos de un
+buen sistema de seguimiento, pueden ayudarle a descubrir aspectos que puede
+utilizar más adelante para abordar los problemas de datos faltantes. Utilizarlos
+bien requiere cierta creatividad y análisis, pero algunos de los aspectos que
+podría buscar incluyen patrones que:
+
+* ▶ Sean comunes (es decir, de alta frecuencia)
+* ▶ Tengan una gran cantidad de valores faltantes
+* ▶ Relacionen la falta de datos a nivel de ítem con la falta de datos a nivel 
+  de constructo
+* ▶ Muestren la omisión de eventos completos de recolección de datos
+* ▶ Muestren asistencia intermitente o abandono
+
+:::
+::::
+
+## Mecanismos de pérdida de datos de Rubin [@Rubin-RN8695]
+
+:::{.incremental}
+
+* Datos perdidos completamente al azar (MCAR)
+* Datos perdidos al azar (MAR)
+* Datos perdidos no al azar (MNAR)
+
+:::
+
+::: {.fragment}
+
+:::{.callout-caution title = "Impact on Statistical Results [@McKnight-RN1296]"}
+Algunos mecanismos producen mayor sesgo: **MCAR < MAR < MNAR**
+:::
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 48-50 min by here.*
+
+Comprender el sistema de Donald Rubin para clasificar datos perdidos es crucial
+para tomar buenas decisiones sobre cómo manejarlos. Este sistema es omnipresente
+en la literatura sobre datos perdidos porque es muy útil, a pesar de que se
+apoya en algunos nombres poco intuitivos. Rubin definió tres categorías, cada
+una de las cuales se refiere a la probabilidad de tener valores perdidos, dada
+la información sobre las variables con datos perdidos, otras covariables y un
+mecanismo hipotético que causa la pérdida de datos. Las tres categorías son:
+
+* ▶ Datos perdidos completamente al azar
+* ▶ Datos perdidos al azar (MAR)
+* ▶ Datos perdidos no al azar (MNAR)
+
+▶ Estos tres mecanismos afectan la cantidad de sesgo que los datos perdidos 
+causan en los análisis estadísticos, donde MCAR genera el menor sesgo y MNAR el 
+mayor. Examinemos más de cerca cada mecanismo.
+:::
+::::
+
+## MCAR
+MCAR ocurre cuando ni los valores observados ni los no observados predicen qué 
+valores están perdidos
+
+```{dot}
+//| fig-width: 9
+//| fig-height: 4
+
+digraph MCAR {
+rankdir="LR";
+
+node [shape = "ellipse", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+Missing [label = "Pérdida de datos\n(R)"]
+Observed [label = "Valores observados\n(Y_obs)", style = "dashed"]
+Random [label = "Procesos aleatorios\nno relacionados con Y"]
+Unobserved [label = "Valores no observados\n(Y_miss)", style = "dashed"]
+
+edge [fontname="Lato"]
+Random -> Missing [label = "Predecir"]
+Unobserved -> Random -> Observed [style = "invis"]
+
+{rank = same; Unobserved; Random; Observed}
+}
+```
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 49-51 min by here.*
+
+MCAR es el tipo de pérdida de datos menos perjudicial porque significa que ni
+los valores observados ni los no observados predicen qué valores tienen mayor
+probabilidad de estar perdidos. La pérdida de datos es enteramente el resultado
+de procesos aleatorios: no existe un patrón discernible en ella. Por eso es que
+causa el menor sesgo en los análisis estadísticos. Sin embargo, utilizar la
+eliminación por lista seguirá reduciendo la confiabilidad de la medición, así
+como la potencia y la precisión estadísticas con datos MCAR. Existe una prueba
+estadística formal para evaluar si MCAR es un mecanismo plausible. No veo que se
+utilice muy a menudo, pero eso se debe en parte a que pocos artículos reportan
+completamente los diagnósticos de datos perdidos.
+:::
+::::
+
+## MAR
+MAR ocurre cuando los valores observados predicen qué valores están perdidos.
+
+```{dot}
+//| fig-width: 9
+//| fig-height: 4
+
+digraph MAR {
+rankdir="LR";
+
+node [shape = "ellipse", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+Missing [label = "Pérdida de datos\n(R)"]
+Observed [label = "Valores observados\n(Y_obs)"]
+Random [label = "Procesos aleatorios\nno relacionados con Y"]
+Unobserved [label = "Valores no observados\n(Y_miss)", style = "dashed"]
+
+edge [fontname="Lato"]
+Observed -> Missing [label = "Predecir"]
+Unobserved -> Random -> Observed [style = "invis"]
+Random -> Missing [label = "Predecir"]
+Unobserved -> Missing [style = "invis"]
+
+{rank = same; Unobserved; Random; Observed}
+}
+```
+
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 50-52 min by here.*
+
+MAR ocurre cuando los valores observados predicen qué valores tienen mayor
+probabilidad de estar perdidos. Por lo tanto, podemos ver patrones en lo que
+está perdido porque están relacionados con los datos que tenemos disponibles.
+Aunque también puede haber algunas influencias aleatorias, la característica
+crucial de MAR es que la probabilidad de pérdida de datos depende de los datos
+observados pero no de los propios datos no observados y perdidos. A veces se
+denomina a MAR como no respuesta ignorable [@Schafer-RN425], pero esa
+ignorabilidad requiere un manejo adecuado de los datos perdidos durante los
+análisis. Debemos dar cuenta de las relaciones entre la pérdida de datos y los
+valores observados para reducir el sesgo. Este mecanismo es plausible para
+muchos conjuntos de datos. Pueden ejecutar análisis para examinar si MAR es más
+plausible que MCAR.
+:::
+::::
+
+## MNAR
+MNAR ocurre cuando los valores no observados predicen qué valores están 
+perdidos.
+
+```{dot}
+//| fig-width: 9
+//| fig-height: 4
+
+digraph MNAR {
+rankdir="LR";
+
+node [shape = "ellipse", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+Missing [label = "Pérdida de datos\n(R)"]
+Observed [label = "Valores observados\n(Y_obs)"]
+Random [label = "Procesos aleatorios\nno relacionados con Y"]
+Unobserved [label = "Valores no observados\n(Y_miss)"]
+
+edge [fontname="Lato"]
+Unobserved -> Missing [label = "Predecir"]
+Random -> Missing [label = "Predecir"]
+Observed -> Missing [label = "Predecir"]
+Unobserved -> Random -> Observed [style = "invis"]
+
+{rank = same; Unobserved; Random; Observed}
+}
+```
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 51-53 min by here.*
+
+A veces se denomina a MNAR como no respuesta no ignorable [@Schafer-RN425]
+porque, bajo este mecanismo, el hecho de que un valor esté perdido o no depende
+de valores no observados, ya sea en la variable misma o en otras variables no
+observadas. Existen patrones ocultos en la pérdida de datos de los que no
+podemos dar cuenta fácilmente en nuestros análisis. Eso conduce a sesgos
+potencialmente graves en nuestros resultados.
+
+Hay investigadores que han propuesto métodos que pueden generar indicios de que
+los mecanismos MNAR podrían estar actuando [@Weberpals-RN8957], pero no podemos
+probar definitivamente que nuestros datos son MNAR sin obtener realmente los
+datos que están perdidos. Sin embargo, si pudiéramos obtenerlos, entonces ya ni
+siquiera tendríamos datos perdidos. Es posible que ustedes puedan formular
+argumentos lógicos sobre por qué podríamos esperar que los datos sean MNAR en un
+estudio específico, pero otros científicos pueden o no dejarse persuadir por
+esos argumentos cuando no se puede proporcionar evidencia de respaldo debido a
+la falta de los datos necesarios.
+:::
+::::
+
+## Los Mecanismos de Rubin y la Caja de Cattell [@Cattell-RN8693; @McKnight-RN1296; @Rubin-RN8695]
+
+Clasificar grandes conjuntos de datos de acuerdo con los mecanismos de Rubin es *complicado*
+
+::: {.incremental}
+
+* Subconjuntos de los datos pueden encajar en diferentes mecanismos
+* Clasifiquen los mecanismos para subconjuntos significativos de datos definidos por las dimensiones de la caja de datos (personas, variables, tiempos) [@McKnight-RN1296]
+* Consideren enfoques estructurados para diagnosticar los mecanismos [@Weberpals-RN8957]
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 52-54 min by here.*
+
+McKnight y sus colegas señalaron que clasificar grandes conjuntos de datos
+dentro de los mecanismos de Rubin es un desafío práctico porque simplemente se
+vuelve caótico. La tarea puede resultar abrumadora.
+
+* ▶ Puede ser desalentador debido a que las variables pueden estar sujetas a 
+  diferentes mecanismos de pérdida de datos. Un conjunto de variables podría ser 
+  realmente MCAR, mientras que otros son MAR.
+
+* ▶ Una manera de comenzar a resolver ese problema es utilizar las dimensiones 
+  de la caja de Cattell (personas, variables y momentos) para describir los 
+  datos perdidos y clasificar los mecanismos de pérdida en subconjuntos 
+  significativos de los datos.
+
+* ▶ Consideren enfoques estructurados para diagnosticar los mecanismos 
+  [@Weberpals-RN8957].
+
+:::
+::::
+
+## Predictores de la pérdida de datos en estudios longitudinales
+
+::: {.incremental}
+* Brazos de estudio y/o centros (sitios)
+* Valores de línea de base/pretest de las variables de resultado
+* Otras covariables (demográficas)
+
+:::
+
+:::: {.fragment}
+::: {.callout-tip}
+Consideren los predictores de la pérdida de datos a nivel de persona, ítem,
+constructo y persona-periodo. Piensen cuidadosamente en el contexto de su
+estudio y en sus datos para buscar elementos significativos y sensatos que
+puedan evaluar al analizar los problemas de datos perdidos.
+:::
+::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 52-55 min by here.*
+
+Debido a que no podemos probar que nuestros datos perdidos son MNAR, una de las
+tareas clave es diferenciar entre datos que son MCAR y MAR. Para hacer eso,
+ejecuten análisis que evalúen posibles predictores de qué valores están
+perdidos. Las columnas de la matriz R son las variables de resultado en dichos
+modelos. Aquí tienen algunos ejemplos.
+
+* ▶ Si tienen un experimento con múltiples grupos (como los brazos de 
+  intervención y control) o centros, comparen las tasas de consentimiento, 
+  asistencia y atrición (abandono) entre ellos. Si el brazo o el centro predice 
+  dichas tasas, es posible que estén ante una situación MAR.
+* ▶ CVerifiquen si los valores de línea de base o pretest de las medidas de 
+  resultado predicen la pérdida de datos de esos mismos resultados en momentos 
+  posteriores. Las personas con puntuaciones inusualmente altas o bajas pueden 
+  tener una mayor probabilidad de terminar con datos perdidos más adelante.
+* ▶ Las variables demográficas y otras covariables también pueden ser 
+  predictores de la pérdida de datos.
+* ▶ Por lo tanto, el mensaje clave aquí es que su análisis inicial de datos 
+  debe incluir la evaluación de predictores de la pérdida de datos. Esto puede 
+  tratarse de predecir ya sea la no respuesta a nivel de persona (el rechazo a 
+  participar), la pérdida de datos a nivel de ítem o constructo, o la pérdida de 
+  datos a nivel de persona-periodo, como la atrición o la omisión intermitente 
+  de eventos de recopilación de datos. Encontrar predictores de la pérdida de 
+  datos significa que están ante una situación MAR.
+  
+:::
+::::
+
+# Preguntas de la Audiencia (2) 
+¿Tienen preguntas sobre el diagnóstico de problemas de datos perdidos?
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 53-56 min by here. Continue by ~ 58-61 (0:58-1:01)*
+
+Hagamos una pausa para ver si hay alguna pregunta sobre el diagnóstico de 
+problemas de datos perdidos.
+:::
+::::
+
+# ¿Cómo deberíamos solucionar los problemas de datos perdidos? {style="padding: 0.25em .5em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 20px; text-align: left;" background-image="graphics/pexels-kampus-8463151.jpg" fig-alt="Photo of four people in a meeting."  background-size="cover" background-position="bottom" background-repeat="no-repeat"}
+
+:::{.notes}
+*Timing: ~ 58-61 min (0:59-1:01) by here.*
+
+La pregunta del millón es, en última instancia, «¿cómo deberíamos resolver los 
+problemas de datos perdidos?». Discutamos eso a continuación.
+:::
+
+## Prevención [@de-Leeuw-RN8682; @McKnight-RN1296; @Wisniewski-RN2978]  {style="text-align: right;" background-image="graphics/boston-public-library-ts_mJIUonBY-unsplash.jpg" background-size="contain" background-position="left" background-repeat="no-repeat"}
+
+:::: {.columns}
+::: {.column width="55%"}
+:::
+
+::: {.column width="45%"}
+"Más vale prevenir que lamentar." (Benjamin Franklin, 1735)
+
+* La cantidad de datos perdidos afecta su impacto potencial en el estudio
+* Diseñen su estudio para reducir la cantidad de datos perdidos
+
+:::
+::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 59-61 min (0:59-1:01) by here.*
+
+Como dice el viejo adagio a menudo atribuido a Benjamin Franklin: 'Más vale
+prevenir que lamentar'. ¡Esto se aplica absolutamente a los datos perdidos!
+
+Los métodos estadísticos para analizar conjuntos de datos incompletos son
+excelentes, pero utilizarlos requiere conocimiento, habilidad, software, tiempo
+y esfuerzo. El tamaño y la complejidad del problema de los datos perdidos están
+directamente relacionados con su impacto potencial en su estudio y con lo que se
+requerirá para resolver dicho problema.
+
+Afortunadamente, un buen diseño de estudio puede ayudar a los investigadores a
+reducir la probabilidad y la cantidad de datos perdidos, disminuyendo así su
+impacto potencial en la medición, la validez interna y la generalización. Las
+sugerencias de prevención que voy a compartir no son una lista exhaustiva. Solo
+quiero que reconozcan que la prevención es su primera, y tal vez mejor,
+oportunidad para manejar los problemas de datos perdidos.
+
+:::
+::::
+
+## Prevención: Frecuencia y temporalidad de la recopilación de datos [@McKnight-RN1296] 
+
+:::{.incremental}
+* La recopilación frecuente de datos con intervalos cortos entre eventos 
+  representa una carga pesada
+* Recopilen datos longitudinales en momentos sensatos, considerando los patrones 
+  temporales esperados
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 60-62 min (1:00-1:02) by here.*
+
+Primero, consideremos perfeccionar la logística de la recopilación de datos.
+
+▶ Cuando los participantes tienen que esforzarse para responder, la 
+  recopilación frecuente de datos a intervalos cortos aumenta su carga. Esto 
+  corre el riesgo de disminuir su motivación y el esfuerzo dedicado a una 
+  respuesta en particular, lo que podría causar la no respuesta a nivel de ítem, 
+  de constructo o de ola (fase de medición), o incluso conducir al abandono.
+
+▶ Aunque tener datos longitudinales enriquecidos es bueno para el modelado, es 
+  mejor tener datos más completos recopilados en los momentos adecuados que 
+  tener muchos puntos en el tiempo. A menudo tenemos una idea de los patrones 
+  temporales de cambio que esperamos, así que enfóquense en los periodos 
+  críticos que les permitan ver los aspectos clave de las trayectorias 
+  longitudinales. Recopilen datos con mayor frecuencia durante los periodos en 
+  los que esperan un cambio rápido, y con menor frecuencia cuando esperen una 
+  estabilidad relativa o un cambio más lento.
+:::
+::::
+
+## Prevención: Número de variables [@de-Leeuw-RN8682; @McKnight-RN1296; @Wisniewski-RN2978] 
+
+Cada variable es una oportunidad para la pérdida de datos
+
+:::{.incremental}
+* Solo recopilen las variables que necesiten
+* Elijan los instrumentos con prudencia (cortos, confiables, válidos y 
+  relevantes)
+* Consideren recopilar múltiples medidas de los constructos clave
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 61-63 min (1:01-1:03) by here.*
+
+Recuerden que cada variable que intentan recopilar se suma a la carga del
+participante. Pedir demasiado corre el riesgo de cansar, frustrar, aburrir o
+irritar a las personas de formas que conducen a la pérdida de datos.
+
+▶ Pueden reducir los problemas de datos perdidos recopilando únicamente las 
+  variables que necesitan. Deben tener claro por qué necesitan cada variable o 
+  instrumento.
+
+▶ Del mismo modo, deben elegir los instrumentos con prudencia: opten por 
+  herramientas que sean cortas, confiables y válidas siempre que sea posible. 
+  Asegurarse de que su relevancia sea clara para los participantes también puede 
+  ayudar, ya que las personas suelen ser más propensas a omitir elementos que 
+  consideran irrelevantes u ofensivos.
+
+▶ Por otra parte, vale la pena considerar la recopilación estratégica de 
+  múltiples medidas de los constructos clave. Las diferentes medidas de un 
+  constructo suelen estar correlacionadas, lo cual puede ayudarlos si los datos 
+  de una de ellas están incompletos pero otra está completa. Las relaciones 
+  entre estas medidas pueden utilizarse para recuperar parte de la información 
+  perdida al modelar conjuntos de datos incompletos.
+:::
+::::
+
+## Prevención: Abandono [@de-Leeuw-RN8682; @Laurie-RN8257; @McKnight-RN1296; @Wisniewski-RN2978] 
+
+:::{.incremental}
+* Establezcan relaciones
+* Mantengan el contacto con los participantes
+* Ofrezcan incentivos adecuados
+* Faciliten la participación (hagan que sea conveniente)
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 62-64 min (1:02-1:04) by here.*
+
+El abandono es una de las causas principales de la pérdida de datos en estudios
+longitudinales, pero existen estrategias que ustedes pueden utilizar para
+minimizarlo. Describiré algunas de las que utilizamos en la evaluación de un
+programa federal de educación nutricional para personas de bajos recursos.
+
+* ▶ Nos asociamos con organizaciones locales para encontrar participantes; m
+  antener una buena relación con ellas significa que nos ayudan a mantener a los 
+  participantes comprometidos.
+* ▶ Otra estrategia clave es mantener el contacto con los participantes. Las 
+  postales de recordatorio, los mensajes de texto y las llamadas telefónicas los 
+  motivan a regresar para la recopilación de datos de seguimiento. Si alguien se 
+  salta un evento, de todos modos lo invitamos al siguiente, a menos que se 
+  retire explícitamente del estudio. La no respuesta intermitente por olas es 
+  mejor que el abandono completo.
+* ▶ También buscamos ofrecer incentivos adecuados a las personas para que 
+  participen. Pagamos a los participantes de manera oportuna por cada evento de 
+  recopilación de datos, y los montos aumentan con el tiempo.
+* ▶ Finalmente, facilitamos la recopilación de datos programando los eventos en 
+  lugares y horarios a los que los participantes puedan asistir fácilmente, o 
+  planificando sesiones adicionales. Enviamos a múltiples recopiladores de datos 
+  a cada sesión para que se desarrolle de manera eficiente y no se pierda el 
+  tiempo de los participantes. Para algunos grupos, utilizamos instrumentos 
+  traducidos y personal que habla el idioma principal de los participantes.
+
+:::
+::::
+
+## Prevención: Métodos de recopilación de datos
+
+:::{.incremental}
+* Desarrollen protocolos detallados
+* Capaciten al personal de recopilación e ingreso de datos
+* Presten atención al diseño de los instrumentos
+* Prueben los equipos e instrumentos
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 64-66 min (1:04-1:06) by here.*
+
+* ▶ Desarrollar protocolos de estudio detallados puede ayudar a maximizar la 
+  calidad de los datos. Estos deben incluir elementos que puedan prevenir la 
+  pérdida de datos. Por ejemplo, revisar las listas de verificación de los
+  materiales requeridos antes de cada evento de recopilación de datos ayuda a
+  asegurar que lleven lo que necesitan. Si están aplicando encuestas impresas en
+  un entorno grupal, revisen cada una para detectar ítems o secciones omitidos a
+  medida que se las entregan, mientras aún haya oportunidad de que el
+  participante responda. Si están utilizando una encuesta en línea, prográmenla
+  para notificar a los participantes cuando omitan algo y darles la opción de
+  completarlo o continuar de todos modos. Si van a realizar observaciones en un
+  aula de clase, consideren utilizar múltiples observadores y formularios
+  estructurados para registrar los datos. Definan las conductas que se van a
+  registrar. Mantengan las sesiones de observación lo suficientemente cortas
+  como para evitar la fatiga y la falta de atención. Se aplican ideas similares
+  si van a revisar documentos o extraer datos de registros: utilicen a varios
+  miembros del personal, formularios estructurados y definiciones claras.
+* ▶ Capaciten a su personal en los protocolos y hagan que practiquen antes de 
+  recopilar datos reales. Para el ingreso de datos, planifiquen un proceso de
+  revisión y ofrezcan retroalimentación sobre el desempeño del personal.
+  Consideren utilizar la doble digitación (doble entrada) y conciliar las
+  discrepancias entre los datos ingresados por dos personas distintas.
+* ▶ Los instrumentos mal diseñados pueden aumentar la tasa de datos perdidos. 
+  Presten mucha atención al diseño de los instrumentos. Asegúrense de que las
+  instrucciones y la redacción sean claras, que el diseño visual sea legible,
+  que las opciones de respuesta tengan sentido y que sigan los principios de un
+  buen diseño de encuestas. Realicen pruebas piloto de los instrumentos.
+* ▶ Asegúrense de probar los equipos con regularidad, y de contar con 
+  dispositivos, cables o baterías de repuesto en caso de que alguno falle.
+  Asegúrense de que el personal sepa cómo utilizar los equipos. Si están
+  utilizando herramientas de recopilación de datos en línea, pruébenlas a fondo
+  antes de comenzar con la recolección de los datos.
+  
+:::
+::::
+
+## Tratamiento: Traditional Methods [@Enders-RN8673; @McKnight-RN1296]
+
+<br>
+
+``` {r}
+#| label: tbl-outdated
+
+data.frame(Deletion = c("Eliminación por lista", "Eliminación por pares", 
+                        "Análisis de ítems disponibles", 
+                        " "),
+           Single = c("Sustitución por la media", "Imputación hot-deck", 
+                      "Última observación llevada hacia adelante", 
+                      "Imputación por regresión")) |> 
+  kable(format = "html", 
+        col.names = c("Eliminación de datos", "Imputación simple")) |> 
+  kable_classic(full_width = FALSE, lightable_options = c("hover"), 
+                html_font = "Lato") |> 
+  column_spec(1:2, width = "4.5in")
+```
+
+::::{.notes}
+:::{style="font-size: 1.3rem;"}
+
+*Timing: ~ 66-68 min (1:06-1:08) by here.*
+
+A pesar de las medidas de prevención, es muy probable que sigan teniendo algunos
+datos perdidos. Existen dos tipos principales de métodos tradicionales para el
+manejo de datos perdidos durante los análisis: la eliminación de datos y la
+imputación simple.
+
+Los métodos basados en la eliminación tienen deficiencias porque utilizan los
+datos de manera ineficiente. Descartar datos que les ha costado recursos
+recopilar es un desperdicio. La eliminación por lista descarta cada caso que
+tenga datos perdidos en cualquier variable del análisis. Este es el método más
+común debido a que es la opción predeterminada en muchos paquetes estadísticos.
+*Solo puede proporcionarles estimaciones de parámetros insesgadas si los datos*
+*son MCAR*, y aun así perderán potencia estadística debido a la reducción del
+tamaño de la muestra. Sin embargo, MCAR es una situación poco común. Con datos
+MAR, la eliminación por lista produce resultados sesgados y una menor potencia
+estadística. Si hay tasas altas de datos perdidos y patrones que afectan a
+muchas variables, es posible que no les queden suficientes observaciones para
+realizar análisis significativos.
+
+La eliminación por pares descarta datos a nivel de variable en lugar de a nivel
+de persona. En una matriz de correlación, la eliminación por pares permite que
+el tamaño de la muestra varíe según las variables que se estén correlacionando.
+Esto preserva algo de potencia estadística, pero sigue siendo insesgada
+únicamente bajo MCAR y causa otros problemas, como la dificultad para calcular
+los errores estándar.
+
+El método de ítems disponibles se utiliza al combinar múltiples ítems para medir
+constructos. Si tienen una escala de depresión de 6 ítems pero solo 4 de ellos
+están completos, podrían calcular la media de esos 4 y usarla como la puntuación
+de la escala. Esto parte de supuestos muy fuertes sobre la intercambiabilidad de
+los ítems y sobre la estructura factorial. Puede disminuir la varianza entre los
+ítems y, a menudo, reducirá la confiabilidad.
+
+Los métodos de imputación simple reemplazan cada valor perdido con una única
+estimación sobre qué valor debería estar allí. Llenan los vacíos en el conjunto
+de datos original e incompleto para crear un conjunto de datos completo e
+imputado. Por ejemplo, se podría sustituir el valor perdido por la media general
+o la media de un grupo para esa variable, o utilizar el método hot-deck para
+reemplazarlo por el valor observado de un caso seleccionado al azar pero similar
+en otros aspectos. En los estudios longitudinales, a veces se maneja el abandono
+llevando la última observación hacia adelante (Last Observation Carried Forward)
+en los puntos temporales futuros. Por su parte, la imputación por regresión
+utiliza variables completas para predecir los valores de las variables
+incompletas, reemplazando los datos perdidos con la media condicional de la
+variable perdida dados los predictores observados.
+
+Aunque los métodos de imputación simple aumentan la potencia estadística en
+comparación con los métodos de eliminación y pueden funcionar de manera
+razonable en algunas circunstancias muy específicas, parten de supuestos
+insostenibles, por lo general producen estimaciones sesgadas incluso bajo los
+mecanismos MCAR y MAR, y subestiman los errores estándar. *Afortunadamente,*
+*existen métodos mejores y más modernos que no sufren de estas desventajas.*
+
+:::
+::::
+
+## Tratamiento: Métodos Modernos [@Enders-RN8673; @McKnight-RN1296]
+
+* Estimación de máxima verosimilitud con información completa (FIML)
+* Imputación múltiple (MI)
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 70-72 min (1:10-1:12) by here.*
+
+Voy a describir dos métodos modernos y de vanguardia para analizar conjuntos de
+datos incompletos que resuelven los problemas asociados con los métodos
+tradicionales. Tanto la estimación de máxima verosimilitud con información
+completa (FIML) como la imputación múltiple (MI) pueden manejar variables que
+son continuas, nominales, ordinales o de conteo. Además, tienden a producir los
+mismos resultados cuando se aplican bien.
+:::
+::::
+
+## FIML (1) [@Enders-RN8673; @McKnight-RN1296]
+
+FIML estima parámetros combinando datos observados, relaciones entre variables
+observadas y suposiciones de distribución
+
+:::{.incremental}
+
+* Busca estimaciones de parámetros que mejor se ajusten a los datos
+* Utiliza todos los datos disponibles sin imputar ninguno
+* Se beneficia de las variables auxiliares
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 71-73 min (1:11-1:13) by here.*
+
+Echemos un vistazo más de cerca al método FIML. Estima los parámetros combinando
+los datos observados, las relaciones entre las variables observadas y los
+supuestos sobre las distribuciones.
+
+* ▶ Busca la combinación de estimaciones de parámetros que mejor se ajuste al 
+  conjunto de datos general; es decir, aquellas que hacen que los datos 
+  observados sean más probables dados los supuestos del modelo.
+
+* ▶ Los cálculos de FIML aprovechan todos los datos disponibles de cada caso, 
+  ya sea que esté completo o incompleto, sin imputar ninguno de los valores 
+  perdidos.
+
+* ▶ FIML se beneficia al agregar al modelo variables auxiliares que ya sea que 
+  predigan la pérdida de datos o estén correlacionadas con las variables
+  incompletas. Estas proporcionan una manera de recuperar parte de la
+  información perdida debido a los datos perdidos. Las variables auxiliares son
+  más útiles cuando están mayormente completas y están al menos moderadamente
+  correlacionadas con las variables incompletas, digamos alrededor de r = 0.40.
+  
+:::
+::::
+
+## FIML (2) [@Enders-RN8673; @McKnight-RN1296]
+
+* Funciona bien con datos MCAR y MAR
+* Produce estimaciones sesgadas bajo MNAR
+
+::::{.fragment}
+:::{.callout-tip}
+FIML generalmente está disponible en software de modelado de ecuaciones 
+estructurales (SEM).
+:::
+::::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 72-74 min (1:12-1:14) by here.*
+
+FIML es insesgado y produce errores estándar precisos bajo los mecanismos tanto
+MCAR como MAR, pero, por supuesto, no puede resolver por completo el problema de
+los datos perdidos bajo MNAR, aunque funciona mejor que los métodos
+tradicionales.
+
+▶ Si desean utilizar los métodos FIML, busquen en software de modelado de
+ecuaciones estructurales (SEM). Muchos modelos conocidos —como la regresión, el
+ANOVA y los modelos mixtos— pueden adaptarse al marco de SEM, lo que hace que
+FIML sea razonablemente accesible.
+:::
+::::
+
+## MI (1) [@Enders-RN8673; @McKnight-RN1296; @van-Buuren-RN3962]
+
+```{dot}
+//| fig-width: 10
+//| fig-height: 5
+
+digraph MI {
+graph [start=42, ordering=out];
+rankdir="LR";
+
+node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+OData [label = "Datos\nincompletos"]
+
+subgraph cluster_0 {
+        label = "Crear conjuntos de datos imputados\n (m = 3)";
+        fontname="Lato";
+        style = "rounded, dashed"; 
+
+        // Nodes inside the box
+        node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+        
+        IModel [label = "Modelo de\nimputación"]
+        IData1 [label = "Conjunto\nde datos 1"]
+        IData2 [label = "Conjunto\nde datos 2"]
+        IData3 [label = "Conjunto\nde datos 3"]
+        
+        edge [fontname="Lato"]
+        IModel -> IData1 [label = "Extracción"]
+        IModel -> IData2 [label = "Extracción"]
+        IModel -> IData3 [label = "Extracción"]
+        
+        {rank = same; IData1; IData2; IData3}
+    }
+
+subgraph cluster_1 {
+        label = "Aplicar el modelo de análisis\na cada conjunto de datos";
+        fontname="Lato";
+        style = "rounded, dashed"; 
+        
+        node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+        Result1 [label = "Modelo 1"]
+        Result2 [label = "Modelo 2"]
+        Result3 [label = "Modelo 3"]
+        
+        {rank = same; Result1; Result2; Result3}
+    }
+
+subgraph cluster_2 {
+        label = "Aplicar las reglas de Rubin";
+        fontname="Lato";
+        style = "rounded, dashed"; 
+        
+        node [shape = "box", style= "filled", fontname="Lato", fillcolor = "#C3FFEC"]
+        Pooled [label = "Parámetros\ncombinados\ndel modelo"]
+    }
+        
+edge [fontname="Lato"]
+OData -> IModel [label = "Ajustar\n(el modelo)"]
+IData1 -> Result1 [label = "Ajustar\n(el modelo)"]
+IData2 -> Result2 [label = "Ajustar\n(el modelo)"]
+IData3 -> Result3 [label = "Ajustar\n(el modelo)"]
+Result1 -> Pooled
+Result2 -> Pooled
+Result3 -> Pooled
+}
+```
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 73-75 min (1:13-1:15) by here.*
+
+La imputación múltiple utiliza todos los datos disponibles, pero funciona de
+manera diferente a FIML porque emplea dos modelos distintos. Este diagrama es
+una perspectiva general de alto nivel sobre cómo la imputación múltiple aborda
+el problema de los datos perdidos.
+
+Primero, crean un modelo de imputación que utiliza las relaciones entre las
+variables para predecir los valores de las variables incompletas a partir de las
+variables observadas. Esto identifica la distribución condicional de cada
+variable incompleta dadas las variables observadas. Extraer valores de esas
+distribuciones les permite reemplazar cada valor perdido. Repetir este proceso
+varias veces (usando *m* para representar cuántas) les deja con un conjunto de 
+*m* conjuntos de datos completos e imputados.
+
+Segundo, aplican el mismo modelo de análisis a cada conjunto de datos imputado.
+Este debe reflejar sus hipótesis, utilizando los predictores focales y las
+covariables pertinentes para predecir el resultado. Esos análisis les
+proporcionarán *m* conjuntos de parámetros del modelo, los cuales diferirán
+debido a la variabilidad entre los conjuntos de datos imputados. Luego, aplican
+las reglas de Donald Rubin para combinar las estimaciones de los parámetros y
+obtener el resultado final del modelo.
+:::
+::::
+
+## MI (2) [@Enders-RN8673; @McKnight-RN1296; @van-Buuren-RN3962]
+
+:::{.incremental}
+* Se beneficia de las variables auxiliares
+* El modelo de imputación debe contener el modelo de análisis
+* Preserva la incertidumbre y cuantifica la influencia de los datos perdidos
+* Funciona bien con datos MCAR y MAR
+* Puede, *a veces*, manejar datos MNAR
+
+:::
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 74-76 min (1:14-1:16) by here.*
+
+▶ Al igual que FIML, la MI se beneficia del uso de variables auxiliares que
+predigan la pérdida de datos o estén correlacionadas con las variables
+incompletas. Estas se incorporan en el modelo de imputación en lugar del modelo
+de análisis.
+
+▶ Otro aspecto clave es que, para que funcione bien, el modelo de imputación
+debe contener todos los efectos que estarán presentes en el modelo de análisis.
+
+▶ Combinar las estimaciones de los parámetros les proporciona estimaciones
+finales que reflejan adecuadamente la incertidumbre asociada con el reemplazo de
+los valores perdidos por valores imputados. También cuantifica la influencia de
+los datos perdidos en la estimación de los parámetros, lo cual es una ventaja
+única de la MI. Ningún otro método de manejo de datos perdidos hace eso.
+
+▶ La MI es insesgada y produce errores estándar precisos bajo los mecanismos
+tanto MCAR como MAR, y
+
+▶ e incluso puede manejar datos MNAR de manera razonable en algunas
+circunstancias.
+:::
+::::
+
+## Dónde Aprender Más
+
+* Resúmenes breves [@El-Masri-RN8683; @Fernández-García-RN4151; @Graham-RN1615; @Little-RN8684; @Newman-RN8223; @Schafer-RN425]
+* Algunos buenos libros de texto [@Enders-RN8673; @Graham-RN2677; @McKnight-RN1296; @van-Buuren-RN3962]
+* Manejo de la pérdida a nivel de ítem en las puntuaciones de escala [@Graham-RN1615; @Newman-RN8223]
+* Diagnósticos avanzados [@Tierney-RN8958; @Weberpals-RN8957]
+* Prevención de datos perdidos en:
+    * Estudios clínicos [@Wisniewski-RN2978]
+    * Estudios longitudinales [@Laurie-RN8257]
+    * Encuestas [@de-Leeuw-RN8682]
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 75-77 min (1:15-1:17) by here.*
+
+Esta diapositiva es solo una manera de orientarles hacia recursos específicos
+recomendados donde pueden aprender más sobre temas particulares. La literatura
+metodológica sobre el manejo de datos perdidos es muy amplia; esta lista es solo
+para que puedan comenzar. Las referencias completas se encuentran en una
+diapositiva cerca del final de la presentación.
+:::
+::::
+
+
+## Herramientas de Software
+
+* SPSS: revisen los comandos de sintaxis `MVA` y `MULTIPLE IMPUTATION`
+* Paquetes de R: vean la [Vista de tareas de CRAN sobre datos perdidos](https://cran.r-project.org/view=MissingData)
+* Tanto FIML como MI son compatibles con Mplus y el paquete lavaan de R
+
+::::{.notes}
+:::{style="font-size: 1.5rem;"}
+*Timing: ~ 76-78 min (1:16-1:18) by this slide.*
+
+Varios de los principales paquetes de software estadístico tienen herramientas
+para manejar datos perdidos. Por ejemplo, SPSS tiene los comandos `MVA` y
+`MULTIPLE IMPUTATION`.
+
+Si usan R, revisen la Vista de Tareas de CRAN sobre Datos Perdidos. Enumera una
+gran cantidad de paquetes con funciones especializadas.
+
+El software SEM como Mplus y el paquete lavaan para R admiten la estimación
+FIML.
+:::
+::::
+
+## Referencias {.scrollable}
+
+::: {#refs}
+:::
+
+:::{.notes}
+*Timing: ~ 77-79 min (1:17-1:19) by this slide.*
+
+Esta diapositiva contiene todas las referencias citadas en las otras
+diapositivas. Pueden desplazarse dentro de esta diapositiva para verlas todas.
+:::
+
+# ¡Momento de discusión! 
+¿Qué preguntas tienen sobre los problemas de datos perdidos?
+
+::: {.notes}
+*Timing: ~ 78-80 min (1:18-1:20) by this slide. Quit at ~ 90 min (1:30)*
+
+Bien, esa fue una breve introducción a los problemas fundamentales de los datos
+perdidos. Ahora nos queda un poco de tiempo restante para preguntas y discusión.
+:::
