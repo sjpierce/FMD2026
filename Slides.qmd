@@ -6,7 +6,7 @@ author:
     orcid: 0000-0002-0679-3019
     email: pierces1@msu.edu
 institute: "[Center for Statistical Training and Consulting](https://cstat.msu.edu)"
-date: 2026-07-15
+date: 2026-07-20
 title-slide-attributes: 
   data-notes: "1.5 hr (70 min talk + 20 min Q & A) My talk today focuses on 
   some concepts and issues related to missing data in scientific research 
@@ -1167,7 +1167,6 @@ Randomized -> Assigned2 -> Dropped2 -> Analyzed2
 ```
 
 :::
-
 ::::
 
 ::::{.notes}
@@ -2081,7 +2080,7 @@ within this slide to see them all.
 What questions do you have about missing data issues? 
 
 ::: {.notes}
-*Timing: ~ 78-80 min (1:18-1:20) by this slide. Quite at ~ 90 min (1:30)*
+*Timing: ~ 78-80 min (1:18-1:20) by this slide. Quit at ~ 90 min (1:30)*
 
 So that was a short introduction to fundamental issues with missing data. We now 
 have a little remaining time for questions and discussion. 
