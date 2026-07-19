@@ -1630,7 +1630,7 @@ more complete data collected at the right times than to have many time points.
 Often we have an idea about the temporal patterns of change that we expect, so
 focus on the critical periods that enable you to see the key aspects of
 longitudinal trajectories. Collect more often during periods where you expect
-rapid change and less often when expect relative stability or slower change.
+rapid change and less often when you expect relative stability or slower change.
 :::
 ::::
 
@@ -1691,7 +1691,7 @@ evaluation of a federal nutrition education program for low-income people.
   with them means they help us keep participants engaged. 
 * ▶ Another key strategy is maintaining contact with participants. Reminder
   postcards, text messages, and phone calls encourage returning for follow-up 
-  data collection. If someone skips the one event, we still invite them to the
+  data collection. If someone skips one event, we still invite them to the
   next one unless they explicitly withdraw from the study. Intermittent wave
   non-response is better than complete dropout.
 * ▶ We also aim to offer people adequate incentives to participate. We pay 
